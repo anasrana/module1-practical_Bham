@@ -1,5 +1,4 @@
-# Practical: Linear Regression {-}
-# Introducion 
+# Practical: Linear Regression 
 
 In this practical you will go through some of the basics of linear modelling in `R` as well as simulating data. The practical contains the following elements:
 
@@ -22,7 +21,7 @@ library(reshape2)
 library(bbmle)
 ```
 
-# Simulating data
+## Simulating data
 
 You will simulate data based on the simple linear regression model:
 
@@ -96,7 +95,7 @@ lr_plot <- ggplot(sim_data, aes(x = x, y = y)) +
 print(lr_plot)
 ```
 
-# Fitting simple linear regression model
+## Fitting simple linear regression model
 
 ## Least squared estimation
 

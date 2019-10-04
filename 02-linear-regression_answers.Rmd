@@ -1,7 +1,6 @@
-
 # Model answers: Linear Regression {-}
 
-# Excercise I
+## Excercise I
 
 ```{r }
 library(ggplot2)
@@ -30,7 +29,7 @@ cor(stork_dat$no_storks, stork_dat$peopl)
 
 This is a very high correlation, and obviously there is no causation. Think about why there would be a correlation between these two random variables.
 
-# Excersise II
+## Excersise II
 
 ```{r }
 # load first data set and create data.frame
@@ -46,7 +45,7 @@ lr_fit2 <- lm(y ~ x, data = sim_data2)
 
 ```
 
-## Comparison of data
+### Comparison of data
 
 ```{r comp-scatter}
 ggplot(sim_data1, aes(x = x, y = y)) +
@@ -86,7 +85,7 @@ Her we can see that the distribution of the residuals has significantly changed 
 A change in only 4 data points was sufficient to change the regression coefficients.
 
 
-# Excersise II
+## Excersise II
 
 ```{r }
 b0 <- 10 # regression coefficient for intercept
