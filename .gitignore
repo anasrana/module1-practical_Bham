@@ -20,44 +20,16 @@ src/init.o
 # RStudio files
 .Rproj.user/
 
-# produced vignettes
-vignettes/*.html
-vignettes/*.pdf
-doc/report/*.html
-doc/paper/*.html
-
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth
 
 # Project specific
-# Directories
-log/
-logs/
-tmp/
-cache/
-data/
-results/
-doc/presentation/
-doc/report/libs/
-*_cache/
-analysis/
-
 # OS X
 .DS_Store
 ._*
 .Spotlight-V100
 .Trashes
 .Rproj.user
-
-# image / binary files
-*.ai
-*.jpg
-*.tif
-*.pdf
-*.png
-*.key
-*.eps
-*.svg
 
 # Misc
 notebook.md
