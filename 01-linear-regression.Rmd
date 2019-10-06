@@ -1,8 +1,8 @@
-# Practical: Linear Regression 
+# Practical: Linear Regression
 
 In this practical you will go through some of the basics of linear modelling in `R` as well as simulating data. The practical contains the following elements:
 
-- simulate linear regression model 
+- simulate linear regression model
 - investigate parameters
 - characterise prediction accurary
 - correlation of real world data
@@ -52,7 +52,7 @@ Next we simulate the error term:
 
 ```{r }
 # simulate the noise terms, rnorm requires the standard deviation
-e <- rnorm(N, mean = 0, sd = sqrt(sigma2)) 
+e <- rnorm(N, mean = 0, sd = sqrt(sigma2))
 ```
 
 Finally we have all the parameters and variables to simulate the response variable $y$:
@@ -69,12 +69,12 @@ We will plot our data using `ggplot2` so the data need to be in a `data.frame` o
 sim_data <- data.frame(x = x, y = y)
 
 # create a new scatter plot using ggplot2
-ggplot(sim_data, aes(x = x, y = y)) + 
+ggplot(sim_data, aes(x = x, y = y)) +
   geom_point()
 
 ```
 
-We define the true data `y_true` to be the true linear relationship between the covariate and the response without the noise. 
+We define the true data `y_true` to be the true linear relationship between the covariate and the response without the noise.
 
 ```{r }
 # Compute true y values
@@ -97,7 +97,7 @@ print(lr_plot)
 
 ## Fitting simple linear regression model
 
-## Least squared estimation
+### Least squared estimation
 
 Now that you have simulated data you can use it to regress $y$ on $x$, since this is simulated data we know the parameters and can make a comparison. In `R` we can use the function `lm()` for this, by default it implements a least squares estimate:
 
@@ -125,7 +125,7 @@ b1_hat <- ls_coef[2] # alternative ls_fit$coefficients[2]
 y_hat <- b0_hat + b1_hat * x
 sim_data$y_hat <- y_hat # add to the existing data frame
 
-# Create scatter plot and lines for the original and fitted 
+# Create scatter plot and lines for the original and fitted
 lr_plot <- ggplot(sim_data, aes(x = x, y = y)) +
   geom_point() +
   geom_line(aes(x = x, y = y_true), colour = "red", size = 1.3) +
@@ -136,7 +136,7 @@ lr_plot <- ggplot(sim_data, aes(x = x, y = y)) +
   print(lr_plot)
 ```
 
-The estimated parameters and the plot shows a good correspondence between fitted regression parameters and the true relationship between $y$ and $x$. We can check this by plotting the residuals, this data is stored as the `residuals` parameter in the `ls_fit` object. 
+The estimated parameters and the plot shows a good correspondence between fitted regression parameters and the true relationship between $y$ and $x$. We can check this by plotting the residuals, this data is stored as the `residuals` parameter in the `ls_fit` object.
 
 ```{r resid-scatter}
 # Residuals
@@ -154,7 +154,7 @@ hist(ls_residual)
 
 ```
 
-We expect the mean and variance of the residuals to be close to the level used to generate the data. 
+We expect the mean and variance of the residuals to be close to the level used to generate the data.
 
 ```{r }
 print(mean(ls_residual))
@@ -164,7 +164,7 @@ print(var(ls_residual))
 
 This is as expected since subtracting a good fit from the data leaves $\epsilon$ which has $0$ mean and $0.5$ variance.
 
-# Maximum likelihood estimation
+### Maximum likelihood estimation
 
 Next you will look at maximum likelihood estimation based on the same data you simulated earlier. This is a bit more involved as it requires you to explicitly write the function you wish to minimise. The function we use is part of the `bbmle` package.
 
@@ -196,9 +196,9 @@ mle_fit <- mle2(mle_ll, start = list(beta0 = -1, beta1 = 20, sigma = 10))
 summary(mle_fit)
 ```
 
-The estimated parameters using the maximum likelihood are also a very good estimate of the true values. 
+The estimated parameters using the maximum likelihood are also a very good estimate of the true values.
 
-# Effect of variance
+## Effect of variance
 
 Now investigate the quality of the predictions further by simulating more data sets and seeing how the variance affects the quality of the fit as indicated by the mean-squared error (mse).
 
@@ -206,7 +206,7 @@ To start you will define some parameter for the simulations, the number of simul
 
 ```{r }
 # number of simulations for each noise level
-n_simulations <- 100 
+n_simulations <- 100
 
 # A vector of noise levels to try
 sigma_v <- c(0.1, 0.4, 1.0, 2.0, 4.0, 6.0, 8.0)
@@ -216,33 +216,33 @@ n_sigma <- length(sigma_v)
 mse_matrix <- matrix(0, nrow = n_simulations, ncol = n_sigma)
 
 # name row and column
-rownames(mse_matrix) <- c(1:n_simulations) 
-colnames(mse_matrix) <- sigma_v 
+rownames(mse_matrix) <- c(1:n_simulations)
+colnames(mse_matrix) <- sigma_v
 ```
 
-Next we will write a nested `for` loop. The first loop will be over the variances and a second loop over the number of repeats. We will simulate the data, perform a fit with `lm()`. We can use the `fitted()` function on the resulting object to extract the fitted values $\hat{y}$ and use this to compute the mean-squared error from the true value $y$. 
+Next we will write a nested `for` loop. The first loop will be over the variances and a second loop over the number of repeats. We will simulate the data, perform a fit with `lm()`. We can use the `fitted()` function on the resulting object to extract the fitted values $\hat{y}$ and use this to compute the mean-squared error from the true value $y$.
 
 ```{r }
 # loop over variance
 for (i in 1:n_sigma) {
   sigma2 <- sigma_v[i]
-  
+
   # for each simulation
   for (it in 1:n_simulations) {
-    
+
     # Simulate the data
-    x <- rnorm(N, mean = 0, sd = 1) 
-    e <- rnorm(N, mean = 0, sd = sqrt(sigma2)) 
-    y <- b0 + b1 * x + e 
-    
+    x <- rnorm(N, mean = 0, sd = 1)
+    e <- rnorm(N, mean = 0, sd = sqrt(sigma2))
+    y <- b0 + b1 * x + e
+
     # set up a data frame and run lm()
     sim_data <- data.frame(x = x, y = y)
     lm_fit <- lm(y ~ x, data = sim_data)
-    
+
     # compute the mean squared error between the fit and the actual y's
     y_hat <- fitted(lm_fit)
     mse_matrix[it, i] <- mean((y_hat - y)^2)
-    
+
   }
 }
 ```
@@ -256,9 +256,9 @@ library(reshape2)
 # convert the matrix into a data frame for ggplot2
 mse_df <- melt(mse_matrix)
 # rename the columns
-names(mse_df) <- c("Simulation", "variance", "MSE") 
+names(mse_df) <- c("Simulation", "variance", "MSE")
 
-# now use a boxplot to look at the relationship between 
+# now use a boxplot to look at the relationship between
 # mean-squared prediction error and variance
 mse_plt <- ggplot(mse_df, aes(x = variance, y = MSE)) +
   geom_boxplot(aes(group = variance))
@@ -266,19 +266,19 @@ mse_plt <- ggplot(mse_df, aes(x = variance, y = MSE)) +
 print(mse_plt)
 ```
 
-You can see that the variances of the mse and the value of the mse go up with increasing variance in the simulation. 
+You can see that the variances of the mse and the value of the mse go up with increasing variance in the simulation.
 
 What changes do you need to make to the above function to plot the accuracy of the estimated regression coefficients as a function of variance?
 
-# Exercise
+## Exercise
 
-## Part I
+### Part I
 
-Read in the data in `storks.txt`, compute the correlation and comment on it. 
+Read in the data in `storks.txt`, compute the correlation and comment on it.
 
 The data represents `no of storks` (column 1) in Oldenburg Germany from $1930 - 1939$ and the number of people (column 2).
 
-## Part II
+### Part II
 
 Fit a simple linear model to the two data sets supplied (`lr_data1.Rdata` and `lr_data2.Rdata`). In both files the $(x,y)$ data is saved in two vectors, $x$ and $y$.
 
@@ -296,7 +296,7 @@ plot(x, y)
 Fit the linear model and comment on the differences between the data.
 
 
-## Part III
+### Part III
 
 Investigate how the sample size will affect the quality of the fit using mse, use the code for investigating the affect of variance as inspiration.
 
