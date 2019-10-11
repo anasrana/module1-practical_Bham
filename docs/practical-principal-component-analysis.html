@@ -200,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exercise-i-1" class="section level2">
 <h2><span class="header-section-number">3.1</span> Exercise I</h2>
 <p>There are many datasets built into <code>R</code>. Wed will look at the <code>mtcars</code> dataset. Type <code>?mtcars</code> to get the descriptions. Then use <code>head()</code> function to have a look at the first few rows; and <code>dim()</code> to get the dimensions of the data.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="practical-principal-component-analysis.html#cb47-1"></a><span class="kw">head</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="practical-principal-component-analysis.html#cb48-1"></a><span class="kw">head</span>(mtcars)</span></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -208,14 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 ## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 ## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="practical-principal-component-analysis.html#cb49-1"></a><span class="kw">dim</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="practical-principal-component-analysis.html#cb50-1"></a><span class="kw">dim</span>(mtcars)</span></code></pre></div>
 <pre><code>## [1] 32 11</code></pre>
 <p>In this case we have <span class="math inline">\(32\)</span> examples (cars in this case), and <span class="math inline">\(11\)</span> features.
 Now we can perform a principal component analysis, in <code>R</code> it is implemented as the <code>prcomp()</code> function. You can type <code>?prcomp</code> to see a description of the function and some help on possible arguments. Here we set <code>center</code> and <code>scale</code> arguments to <code>TRUE</code>, recall from the lecture why this is important. You can try to perform PCA without scaling and centering and compare.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="practical-principal-component-analysis.html#cb51-1"></a>cars_pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(mtcars, <span class="dt">center =</span> <span class="ot">TRUE</span>, <span class="dt">scale =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="practical-principal-component-analysis.html#cb52-1"></a>cars_pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(mtcars, <span class="dt">center =</span> <span class="ot">TRUE</span>, <span class="dt">scale =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p>We can use the <code>summary()</code> function to summarise the results from PCA, it will return the standard deviation, the proportion of variance explained by each principal component, and the cumulative proportion.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="practical-principal-component-analysis.html#cb52-1"></a>pca_summary &lt;-<span class="st"> </span><span class="kw">summary</span>(cars_pca)</span>
-<span id="cb52-2"><a href="practical-principal-component-analysis.html#cb52-2"></a><span class="kw">print</span>(pca_summary)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="practical-principal-component-analysis.html#cb53-1"></a>pca_summary &lt;-<span class="st"> </span><span class="kw">summary</span>(cars_pca)</span>
+<span id="cb53-2"><a href="practical-principal-component-analysis.html#cb53-2"></a><span class="kw">print</span>(pca_summary)</span></code></pre></div>
 <pre><code>## Importance of components:
 ##                           PC1    PC2     PC3     PC4     PC5     PC6
 ## Standard deviation     2.5707 1.6280 0.79196 0.51923 0.47271 0.46000
@@ -227,14 +227,15 @@ Now we can perform a principal component analysis, in <code>R</code> it is imple
 ## Cumulative Proportion  0.9751 0.98626 0.9933 0.99800 1.0000</code></pre>
 <p><em>Note,</em> <code>Proportion of Variance</code> will always add up to <span class="math inline">\(1\)</span>. Here the <code>PC1</code> explain <span class="math inline">\(60.08%\)</span> of the variance, and <code>PC2</code> explains <span class="math inline">\(24.09%\)</span>, which means together <code>PC1</code> and <code>PC2</code> account for <span class="math inline">\(84.17%\)</span> of the variance.</p>
 <p>Using the <code>str()</code> function you can see the full structure of an <code>R</code> object, or alternatively using <code>?prcomp</code> in the <em>Value</em> section. In this case the <code>cars_pca</code> variable is a list containing several variables, <code>x</code> is the data represented using the new principal components. We can now plot the data in the first two principal components:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="practical-principal-component-analysis.html#cb54-1"></a>pca_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(cars_pca<span class="op">$</span>x)</span>
-<span id="cb54-2"><a href="practical-principal-component-analysis.html#cb54-2"></a></span>
-<span id="cb54-3"><a href="practical-principal-component-analysis.html#cb54-3"></a><span class="kw">ggplot</span>(pca_df, <span class="kw">aes</span>(<span class="dt">x =</span> PC1, <span class="dt">y =</span> PC2)) <span class="op">+</span></span>
-<span id="cb54-4"><a href="practical-principal-component-analysis.html#cb54-4"></a><span class="kw">geom_point</span>(<span class="dt">col =</span> <span class="st">&quot;orangered4&quot;</span>, <span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span></span>
-<span id="cb54-5"><a href="practical-principal-component-analysis.html#cb54-5"></a><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;PC1 60.08%&quot;</span>,</span>
-<span id="cb54-6"><a href="practical-principal-component-analysis.html#cb54-6"></a>     <span class="dt">y =</span> <span class="st">&quot;PC2 24.09 %&quot;</span>,</span>
-<span id="cb54-7"><a href="practical-principal-component-analysis.html#cb54-7"></a>     <span class="dt">title =</span> <span class="st">&quot;Principal components for mtcars&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="practical-principal-component-analysis.html#cb55-1"></a>pca_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(cars_pca<span class="op">$</span>x)</span>
+<span id="cb55-2"><a href="practical-principal-component-analysis.html#cb55-2"></a></span>
+<span id="cb55-3"><a href="practical-principal-component-analysis.html#cb55-3"></a><span class="kw">ggplot</span>(pca_df, <span class="kw">aes</span>(<span class="dt">x =</span> PC1, <span class="dt">y =</span> PC2)) <span class="op">+</span></span>
+<span id="cb55-4"><a href="practical-principal-component-analysis.html#cb55-4"></a><span class="kw">geom_point</span>(<span class="dt">col =</span> <span class="st">&quot;orangered4&quot;</span>, <span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb55-5"><a href="practical-principal-component-analysis.html#cb55-5"></a><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;PC1 60.08%&quot;</span>,</span>
+<span id="cb55-6"><a href="practical-principal-component-analysis.html#cb55-6"></a>     <span class="dt">y =</span> <span class="st">&quot;PC2 24.09 %&quot;</span>,</span>
+<span id="cb55-7"><a href="practical-principal-component-analysis.html#cb55-7"></a>     <span class="dt">title =</span> <span class="st">&quot;Principal components for mtcars&quot;</span>)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/plot_2d-1.png" width="768" /></p>
+<p>We created this plot using the <code>ggplot2</code> package, it is also possible to do this using base plot if you prefer.</p>
 </div>
 <div id="exercise-ii-2" class="section level2">
 <h2><span class="header-section-number">3.2</span> Exercise II</h2>
@@ -243,11 +244,11 @@ Now we can perform a principal component analysis, in <code>R</code> it is imple
 <h2><span class="header-section-number">3.3</span> Excercise III</h2>
 <p>Let us now try to apply PCA to a more realistic dataset.</p>
 <p><strong>Single cell data</strong></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="practical-principal-component-analysis.html#cb55-1"></a>b &lt;-<span class="kw">read.table</span>(<span class="st">&quot;data/Pollen2014.txt&quot;</span>, <span class="dt">sep=</span><span class="st">&#39;,&#39;</span>, <span class="dt">header =</span> T,<span class="dt">row.names=</span><span class="dv">1</span>)</span>
-<span id="cb55-2"><a href="practical-principal-component-analysis.html#cb55-2"></a></span>
-<span id="cb55-3"><a href="practical-principal-component-analysis.html#cb55-3"></a>lb &lt;-<span class="kw">read.table</span>(<span class="st">&quot;data/SupplementaryLabels.txt&quot;</span>, <span class="dt">sep=</span><span class="st">&#39;,&#39;</span>, <span class="dt">header =</span> T)</span>
-<span id="cb55-4"><a href="practical-principal-component-analysis.html#cb55-4"></a></span>
-<span id="cb55-5"><a href="practical-principal-component-analysis.html#cb55-5"></a>D &lt;-<span class="st"> </span><span class="kw">log2</span>(<span class="kw">as.matrix</span>(b) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="practical-principal-component-analysis.html#cb56-1"></a>b &lt;-<span class="kw">read.table</span>(<span class="st">&quot;data/Pollen2014.txt&quot;</span>, <span class="dt">sep=</span><span class="st">&#39;,&#39;</span>, <span class="dt">header =</span> T,<span class="dt">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb56-2"><a href="practical-principal-component-analysis.html#cb56-2"></a></span>
+<span id="cb56-3"><a href="practical-principal-component-analysis.html#cb56-3"></a>lb &lt;-<span class="kw">read.table</span>(<span class="st">&quot;data/SupplementaryLabels.txt&quot;</span>, <span class="dt">sep=</span><span class="st">&#39;,&#39;</span>, <span class="dt">header =</span> T)</span>
+<span id="cb56-4"><a href="practical-principal-component-analysis.html#cb56-4"></a></span>
+<span id="cb56-5"><a href="practical-principal-component-analysis.html#cb56-5"></a>D &lt;-<span class="st"> </span><span class="kw">log2</span>(<span class="kw">as.matrix</span>(b) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</span></code></pre></div>
 
 
 
