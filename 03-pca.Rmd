@@ -17,9 +17,10 @@ Recall:
 
 ## Exercise I
 
-There are many datasets built into `R`. Wed will look at the `mtcars` dataset. Type `?mtcars` to get the descriptions. Then use `head()` function to have a look at the first few rows; and `dim()` to get the dimensions of the data.
+There are many datasets built into `R`. Wed will look at the `mtcars` dataset. Type `?mtcars` to get a description of data. Then use `head()` function to have a look at the first few rows; and `dim()` to get the dimensions of the data.
 
 ```{r mtcars-data}
+library(ggplot2)
 head(mtcars)
 
 
@@ -36,7 +37,7 @@ theme_anas <- theme_update(
 ```
 
 In this case we have $32$ examples (cars in this case), and $11$ features.
-Now we can perform a principal component analysis, in `R` it is implemented as the `prcomp()` function. You can type `?prcomp` to see a description of the function and some help on possible arguments. Here we set `center` and `scale` arguments to `TRUE`, recall from the lecture why this is important. You can try to perform PCA without scaling and centering and compare.
+Now we can perform a principal component analysis, in `R` it is implemented as the `prcomp()` function. We can type `?prcomp` to see a description of the function and some help on possible arguments. Here we set `center` and `scale` arguments to `TRUE`, recall from the lecture why this is important. We can try to perform PCA without scaling and centering and compare.
 
 ```{r pca}
 cars_pca <- prcomp(mtcars, center = TRUE, scale = TRUE)
@@ -52,39 +53,118 @@ print(pca_summary)
 
 *Note,* `Proportion of Variance` will always add up to $1$. Here the `PC1` explain $60.08%$ of the variance, and `PC2` explains $24.09%$, which means together `PC1` and `PC2` account for $84.17%$  of the variance.
 
-Using the `str()` function you can see the full structure of an `R` object, or alternatively using `?prcomp` in the *Value* section. In this case the `cars_pca` variable is a list containing several variables, `x` is the data represented using the new principal components. We can now plot the data in the first two principal components:
+Using the `str()` function we can see the full structure of an `R` object, or alternatively using `?prcomp` in the *Value* section. In this case the `cars_pca` variable is a list containing several variables, `x` is the data represented using the new principal components. We can now plot the data in the first two principal components:
 
-```{r plot_2d, fig.width=8, fig.height=8}
+```{r plot_2d, fig.width=10, fig.height=10}
 
-pca_df <- data.frame(cars_pca$x)
+pca_df <- data.frame(cars_pca$x, make = stringr::word(rownames(mtcars), 1))
 
-ggplot(pca_df, aes(x = PC1, y = PC2)) +
-geom_point(col = "orangered4", size = 3) +
+ggplot(pca_df, aes(x = PC1, y = PC2, col = make)) +
+geom_point(size = 3) +
 labs(x = "PC1 60.08%",
      y = "PC2 24.09 %",
-     title = "Principal components for mtcars")
+     title = "Principal components for mtcars") +
+theme(legend.position = "bottom")
 
 ```
 
-We created this plot using the `ggplot2` package.
+Here we added a color based on the make of each car. We can observe which samples (or cars) cluster together. Have a look at these variables and decide why certain cars or models would cluster together.
+
+We created this plot using the `ggplot2` package, it is also possible to do this using base plot if you prefer.
+
+```{r pca_plot-base, eval=FALSE}
+plot(pca_df$PC1, pca_df$PC2)
+```
 
 ## Exercise II
 
+Next we look at another representation of the data, the *biplot*. This is a combination of a PCA plot of the data and a *score plot*. We saw the PCA plot in the previous section in a *biplot* we add the original axis as arrows.
 
+```{r biplot, fig.width=10, fig.height=10}
+biplot(cars_pca)
+```
 
-## Excercise III
+We can see the original axis starting from the origin. Therefore we can make observations about the original variables (e.g. `cyl` and `mpg` contribute to PC1) and how the data points relates to these axes.
 
-Let us now try to apply PCA to a more realistic dataset.
+## Exercise III
 
-**Single cell data**
+Now try to perform a PCA on the `USArrests` data also build into `R`. Typing `?USArrests` will give you further information on the data. Perform the analysis on the subset `USArrests[, -3]` data.
+
+## Exercise IV: Single cell data
+
+We can now try to apply what we learned above on a more realistic datasets. You can download the data either on *canvas* or using these links [Pollen2014.txt](https://raw.github.com/anasrana/module1-practical_Bham/blob/master/data/Pollen2014.txt) and [SupplementaryLabels.txt](https://raw.github.com/anasrana/module1-practical_Bham/blob/master/data/SupplementaryLabels.txt). Her we will be dealing with single cell RNA-Seq (scRNA-Seq) data, which consist of $300$ single cells measured across $8686$ genes.
 
 ```{r sc-data}
 
-b <-read.table("data/Pollen2014.txt", sep=',', header = T,row.names=1)
+pollen_df <-read.table("Pollen2014.txt", sep=',', header = T,row.names=1)
 
-lb <-read.table("data/SupplementaryLabels.txt", sep=',', header = T)
+label_df <-read.table("SupplementaryLabels.txt", sep=',', header = T)
 
-D <- log2(as.matrix(b) + 1)
+pollen_df[1:10, 1:6]
+
+dim(pollen_df)
 
 ```
 
+Measurements of scRNA-Seq data are integer counts, this data does not have good properties so we perform a transformation on the data. The most commonly used transformation on RNA-Seq count data is $\log_2$. We will also transpose the data matrix to rows representing cells and columns representing genes. This is the data we can use to perform PCA.
+
+```{r sc_data}
+# scRNA-Seq data transformation
+pollen_mat <- log2(as.matrix(pollen_df) + 1)
+# transpose the data
+pollen_mat <- t(pollen_mat)
+
+```
+
+We will now use information that we read into the `label_df` variable to rename cells.
+
+```{r }
+# Check which columns we have available
+colnames(label_df)
+
+# rename rows
+rownames(pollen_mat) <- label_df$Cell_names
+
+```
+
+Next we perform PCA on the data and extract the proportion of variance explained by each component.
+
+```{r pca-sc}
+sc_pca <- prcomp(pollen_mat)
+
+# variance is the square of the standard deviation
+pr_var <- sc_pca$sdev^2
+
+# compute the variance explained by each principal component
+prop_var_exp <- pr_var / sum(pr_var)
+
+```
+
+Think about the calculation and what exactly it means. We can visualise this
+
+```{r pca-scree, fig.width=10, fig.height=6}
+
+var_exp <- data.frame(variance = prop_var_exp, pc = 1:length(prop_var_exp))
+
+ggplot(var_exp[1:30, ], aes(x = pc, y = variance)) +
+    geom_bar(stat = "identity") +
+    labs(x = "Principal Component",
+         y  = "Variance explained")
+
+
+```
+
+We see that the first few principal components explain significant variance, but after about the PC10, there is very limited contribution. Next we will plot the data using the first two Principal components as before.
+
+```{r sc-pca_plot, fig.width=10, fig.height=12}
+
+sc_pca_df <- data.frame(sc_pca$x, cell = rownames(sc_pca$x),
+                        var_exp = prop_var_exp)
+
+ggplot(sc_pca_df, aes(x = PC1, y = PC2, col = cell)) +
+    geom_point(size = 2) +
+    theme(legend.position = "bottom")
+
+```
+
+Why is it not useful to create biplot for this example?
