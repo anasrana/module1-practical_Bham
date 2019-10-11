@@ -1,6 +1,6 @@
 # Model answers: Linear Regression {-}
 
-## Excercise I
+## Exercise I
 
 ```{r }
 library(ggplot2)
@@ -21,7 +21,7 @@ ggplot(stork_dat, aes(x = no_storks, y = people)) +
 
 ```
 
-This is a plot of number of people in Oldenburg (Germany) against the number of storks. We can calculate the correlation in `R` 
+This is a plot of number of people in Oldenburg (Germany) against the number of storks. We can calculate the correlation in `R`
 
 ```{r }
 cor(stork_dat$no_storks, stork_dat$peopl)
@@ -29,7 +29,7 @@ cor(stork_dat$no_storks, stork_dat$peopl)
 
 This is a very high correlation, and obviously there is no causation. Think about why there would be a correlation between these two random variables.
 
-## Excersise II
+## Exercise II
 
 ```{r }
 # load first data set and create data.frame
@@ -54,7 +54,7 @@ ggplot(sim_data1, aes(x = x, y = y)) +
 
 ```
 
-If we plot the data on tope of each other, the first data set in black and the second one in red, we can see a small number of points are different between the two data sets.
+If we plot the data on top of each other, the first data set in black and the second one in red, we can see a small number of points are different between the two data sets.
 
 ```{r }
 summary(lr_fit1)
@@ -62,7 +62,7 @@ summary(lr_fit1)
 summary(lr_fit2)
 ```
 
-From the summary data we can see a discrepancy between the two estimates in the regression coefficients ($\approx 1$), though the error in the estimate is quite large. The other thing to notice is that the summary of the residuals look quite different. If we investigate further and plot them we se:
+From the summary data we can see a discrepancy between the two estimates in the regression coefficients ($\approx 1$), though the error in the estimate is quite large. The other thing to notice is that the summary of the residuals look quite different. If we investigate further and plot them we see:
 
 ```{r resid}
 plot(residuals(lr_fit1))
@@ -80,12 +80,12 @@ hist(residuals(lr_fit2))
 boxplot(residuals(lr_fit2), residuals(lr_fit1))
 ```
 
-Her we can see that the distribution of the residuals has significantly changed in data set 2. 
+Her we can see that the distribution of the residuals has significantly changed in data set 2.
 
 A change in only 4 data points was sufficient to change the regression coefficients.
 
 
-## Excersise II
+## Exercise II
 
 ```{r }
 b0 <- 10 # regression coefficient for intercept
@@ -93,10 +93,10 @@ b1 <- -8 # regression coefficient for slope
 sigma2 <- 0.5 # noise variance
 
 # number of simulations for each sample size
-n_simulations <- 100 
+n_simulations <- 100
 
 # A vector of sample sizes to try
-sample_size_v <- c( 5, 20, 40, 80, 100, 150, 200, 300, 500, 750, 1000 ) 
+sample_size_v <- c( 5, 20, 40, 80, 100, 150, 200, 300, 500, 750, 1000 )
 
 n_sample_size <- length(sample_size_v)
 
@@ -104,30 +104,30 @@ n_sample_size <- length(sample_size_v)
 mse_matrix <- matrix(0, nrow = n_simulations, ncol = n_sample_size)
 
 # name row and column
-rownames(mse_matrix) <- c(1:n_simulations) 
-colnames(mse_matrix) <- sample_size_v 
+rownames(mse_matrix) <- c(1:n_simulations)
+colnames(mse_matrix) <- sample_size_v
 ```
 
 ```{r }
 # loop over sample size
 for (i in 1:n_sample_size) {
   N <- sample_size_v[i]
-  
+
   # for each simulation
   for (it in 1:n_simulations) {
-    
-    x <- rnorm(N, mean = 0, sd = 1) 
-    e <- rnorm(N, mean = 0, sd = sqrt(sigma2)) 
-    y <- b0 + b1 * x + e 
-    
+
+    x <- rnorm(N, mean = 0, sd = 1)
+    e <- rnorm(N, mean = 0, sd = sqrt(sigma2))
+    y <- b0 + b1 * x + e
+
     # set up a data frame and run lm()
     sim_data <- data.frame(x = x, y = y)
     lm_fit <- lm(y ~ x, data = sim_data)
-    
+
     # compute the mean squared error between the fit and the actual y's
     y_hat <- fitted(lm_fit)
     mse_matrix[it, i] <- mean((y_hat - y)^2)
-    
+
   }
 }
 ```

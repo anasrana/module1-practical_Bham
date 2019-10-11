@@ -1,13 +1,13 @@
 # Practical: Linear Regression
 
-In this practical you will go through some of the basics of linear modelling in `R` as well as simulating data. The practical contains the following elements:
+In this practical you will go through some of the basics of linear modeling in `R` as well as simulating data. The practical contains the following elements:
 
 - simulate linear regression model
 - investigate parameters
-- characterise prediction accurary
+- characterize prediction accuracy
 - correlation of real world data
 
-We will use `reshape2`, `ggplo2`, and `bbmle` pcakges. Run the following command to make sure they are installed and loaded
+We will use `reshape2`, `ggplo2`, and `bbmle` packages. Run the following command to make sure they are installed and loaded
 
 ```{r eval=FALSE}
 install.packages("ggplot2")
@@ -19,6 +19,15 @@ install.packages("bbmle")
 library(ggplot2)
 library(reshape2)
 library(bbmle)
+```
+
+```{r set, echo = F}
+library(hrbrthemes)
+theme_anas <- theme_set(theme_ipsum_ps())
+theme_anas <- theme_update(
+  axis.title.x = element_text(size = rel(1.7)),
+  axis.title.y = element_text(size = rel(1.7))
+)
 ```
 
 ## Simulating data
