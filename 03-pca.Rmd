@@ -1,0 +1,90 @@
+# Practical: Principal component analysis
+
+We use Principal Component Analysis (PCA) in order to explore complex datasets. By performing dimensionality reduction we can better visualize the data that has many variables. This technique is probably the most popular tool applied across bioscience problems (e.g. for gene expression problems).
+
+In many real-world dataset we deal with a high dimensional data, e.g. for a number of individuals we can take a number of health related measurement (called variables). This is great, however having a large number of variables also means that it is difficult to plot the data as it is (in its "*raw*" format), and in turn it might be difficult to understand if this dataset contains any interesting patterns/trends/relationships across individuals. Using PCA we visualize such data in a more "*human friendly*" fashion.
+
+Recall:
+
+- PCA performs a linear transformation to data.
+- This means that any input data can be visualized in a new coordinate system. The first coordinate (PC 1) variance is found on the first coordinate; each subsequent coordinate is orthogonal to the previous one and contains the larges variance from what was left.
+- Each principal component is associated with certain percentage of the total variation in the dataset.
+- If variables are strongly correlated with one another, a first few principal components will enable us to visualize the relationships present in any dataset.
+- Eigenvectors describe new directions, whereas accompanying eigenvalues tell us how much variance there is in the data in given direction.
+- The eigenvector with the highest eigenvalue is called the first principal component. The second highest eigenvalue would correspond to a second principle component and etc.
+- There exist a $d$ number of eigenvalues and eigenvectors; $d$ is also equal to the size of the data (number of dimensions).
+- For the purpose of visualization we preselect the first $q$ components, where $q < d$.
+
+## Exercise I
+
+There are many datasets built into `R`. Wed will look at the `mtcars` dataset. Type `?mtcars` to get the descriptions. Then use `head()` function to have a look at the first few rows; and `dim()` to get the dimensions of the data.
+
+```{r mtcars-data}
+head(mtcars)
+
+
+dim(mtcars)
+```
+
+```{r setpca, echo = F}
+library(hrbrthemes)
+theme_anas <- theme_set(theme_ipsum_ps())
+theme_anas <- theme_update(
+  axis.title.x = element_text(size = rel(1.7)),
+  axis.title.y = element_text(size = rel(1.7))
+)
+```
+
+In this case we have $32$ examples (cars in this case), and $11$ features.
+Now we can perform a principal component analysis, in `R` it is implemented as the `prcomp()` function. You can type `?prcomp` to see a description of the function and some help on possible arguments. Here we set `center` and `scale` arguments to `TRUE`, recall from the lecture why this is important. You can try to perform PCA without scaling and centering and compare.
+
+```{r pca}
+cars_pca <- prcomp(mtcars, center = TRUE, scale = TRUE)
+
+```
+
+We can use the `summary()` function to summarise the results from PCA, it will return the standard deviation, the proportion of variance explained by each principal component, and the cumulative proportion.
+
+```{r pca-sum}
+pca_summary <- summary(cars_pca)
+print(pca_summary)
+```
+
+*Note,* `Proportion of Variance` will always add up to $1$. Here the `PC1` explain $60.08%$ of the variance, and `PC2` explains $24.09%$, which means together `PC1` and `PC2` account for $84.17%$  of the variance.
+
+Using the `str()` function you can see the full structure of an `R` object, or alternatively using `?prcomp` in the *Value* section. In this case the `cars_pca` variable is a list containing several variables, `x` is the data represented using the new principal components. We can now plot the data in the first two principal components:
+
+```{r plot_2d, fig.width=8, fig.height=8}
+
+pca_df <- data.frame(cars_pca$x)
+
+ggplot(pca_df, aes(x = PC1, y = PC2)) +
+geom_point(col = "orangered4", size = 3) +
+labs(x = "PC1 60.08%",
+     y = "PC2 24.09 %",
+     title = "Principal components for mtcars")
+
+```
+
+We created this plot using the `ggplot2` package.
+
+## Exercise II
+
+
+
+## Excercise III
+
+Let us now try to apply PCA to a more realistic dataset.
+
+**Single cell data**
+
+```{r sc-data}
+
+b <-read.table("data/Pollen2014.txt", sep=',', header = T,row.names=1)
+
+lb <-read.table("data/SupplementaryLabels.txt", sep=',', header = T)
+
+D <- log2(as.matrix(b) + 1)
+
+```
+
