@@ -10,10 +10,10 @@
 
   <meta property="og:title" content="Model answers: Linear Regression | Essentials of Mathematics and Statistics" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
   
   <meta property="og:description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
-  
+  <meta name="github-repo" content="anasrana/module1-practical_Bham" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Model answers: Linear Regression | Essentials of Mathematics and Statistics" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Anas A Rana" />
 
 
-<meta name="date" content="2019-10-04" />
+<meta name="date" content="2019-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="practical-linear-regression.html"/>
-
+<link rel="next" href="practical-principal-component-analysis.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -135,6 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#data-sets"><i class="fa fa-check"></i><b>1.2</b> Data sets</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Practical: Linear Regression</a><ul>
 <li class="chapter" data-level="2.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#simulating-data"><i class="fa fa-check"></i><b>2.1</b> Simulating data</a></li>
@@ -150,11 +151,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html"><i class="fa fa-check"></i>Model answers: Linear Regression</a><ul>
-<li class="chapter" data-level="2.5" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#excercise-i"><i class="fa fa-check"></i><b>2.5</b> Excercise I</a></li>
-<li class="chapter" data-level="2.6" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#excersise-ii"><i class="fa fa-check"></i><b>2.6</b> Excersise II</a><ul>
+<li class="chapter" data-level="2.5" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-i"><i class="fa fa-check"></i><b>2.5</b> Exercise I</a></li>
+<li class="chapter" data-level="2.6" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii"><i class="fa fa-check"></i><b>2.6</b> Exercise II</a><ul>
 <li class="chapter" data-level="2.6.1" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#comparison-of-data"><i class="fa fa-check"></i><b>2.6.1</b> Comparison of data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#excersise-ii-1"><i class="fa fa-check"></i><b>2.7</b> Excersise II</a></li>
+<li class="chapter" data-level="2.7" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii-1"><i class="fa fa-check"></i><b>2.7</b> Exercise II</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html"><i class="fa fa-check"></i><b>3</b> Practical: Principal component analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-i-1"><i class="fa fa-check"></i><b>3.1</b> Exercise I</a></li>
+<li class="chapter" data-level="3.2" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-ii-2"><i class="fa fa-check"></i><b>3.2</b> Exercise II</a></li>
+<li class="chapter" data-level="3.3" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#excercise-iii"><i class="fa fa-check"></i><b>3.3</b> Excercise III</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -178,8 +184,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="model-answers-linear-regression" class="section level1 unnumbered">
 <h1>Model answers: Linear Regression</h1>
-<div id="excercise-i" class="section level2">
-<h2><span class="header-section-number">2.5</span> Excercise I</h2>
+<div id="exercise-i" class="section level2">
+<h2><span class="header-section-number">2.5</span> Exercise I</h2>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="model-answers-linear-regression.html#cb28-1"></a><span class="kw">library</span>(ggplot2)</span>
 <span id="cb28-2"><a href="model-answers-linear-regression.html#cb28-2"></a><span class="kw">library</span>(reshape2)</span></code></pre></div>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="model-answers-linear-regression.html#cb29-1"></a>stork_dat &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;stork.txt&quot;</span>, <span class="dt">hedaer =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
@@ -191,8 +197,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 0.9443965</code></pre>
 <p>This is a very high correlation, and obviously there is no causation. Think about why there would be a correlation between these two random variables.</p>
 </div>
-<div id="excersise-ii" class="section level2">
-<h2><span class="header-section-number">2.6</span> Excersise II</h2>
+<div id="exercise-ii" class="section level2">
+<h2><span class="header-section-number">2.6</span> Exercise II</h2>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="model-answers-linear-regression.html#cb33-1"></a><span class="co"># load first data set and create data.frame</span></span>
 <span id="cb33-2"><a href="model-answers-linear-regression.html#cb33-2"></a><span class="kw">load</span>(<span class="st">&quot;lr_data1.Rdata&quot;</span>)</span>
 <span id="cb33-3"><a href="model-answers-linear-regression.html#cb33-3"></a>sim_data1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)</span>
@@ -209,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb34-2"><a href="model-answers-linear-regression.html#cb34-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="fl">1.5</span>) <span class="op">+</span></span>
 <span id="cb34-3"><a href="model-answers-linear-regression.html#cb34-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> sim_data2, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">shape =</span> <span class="dv">18</span>)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/comp-scatter-1.png" width="672" /></p>
-<p>If we plot the data on tope of each other, the first data set in black and the second one in red, we can see a small number of points are different between the two data sets.</p>
+<p>If we plot the data on top of each other, the first data set in black and the second one in red, we can see a small number of points are different between the two data sets.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="model-answers-linear-regression.html#cb35-1"></a><span class="kw">summary</span>(lr_fit1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
@@ -248,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 7.87 on 98 degrees of freedom
 ## Multiple R-squared:  0.08245,    Adjusted R-squared:  0.07309 
 ## F-statistic: 8.806 on 1 and 98 DF,  p-value: 0.003772</code></pre>
-<p>From the summary data we can see a discrepancy between the two estimates in the regression coefficients (<span class="math inline">\(\approx 1\)</span>), though the error in the estimate is quite large. The other thing to notice is that the summary of the residuals look quite different. If we investigate further and plot them we se:</p>
+<p>From the summary data we can see a discrepancy between the two estimates in the regression coefficients (<span class="math inline">\(\approx 1\)</span>), though the error in the estimate is quite large. The other thing to notice is that the summary of the residuals look quite different. If we investigate further and plot them we see:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="model-answers-linear-regression.html#cb39-1"></a><span class="kw">plot</span>(<span class="kw">residuals</span>(lr_fit1))</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/resid-1.png" width="672" /></p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="model-answers-linear-regression.html#cb40-1"></a><span class="kw">plot</span>(<span class="kw">residuals</span>(lr_fit2))</span></code></pre></div>
@@ -264,17 +270,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A change in only 4 data points was sufficient to change the regression coefficients.</p>
 </div>
 </div>
-<div id="excersise-ii-1" class="section level2">
-<h2><span class="header-section-number">2.7</span> Excersise II</h2>
+<div id="exercise-ii-1" class="section level2">
+<h2><span class="header-section-number">2.7</span> Exercise II</h2>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="model-answers-linear-regression.html#cb44-1"></a>b0 &lt;-<span class="st"> </span><span class="dv">10</span> <span class="co"># regression coefficient for intercept</span></span>
 <span id="cb44-2"><a href="model-answers-linear-regression.html#cb44-2"></a>b1 &lt;-<span class="st"> </span><span class="dv">-8</span> <span class="co"># regression coefficient for slope</span></span>
 <span id="cb44-3"><a href="model-answers-linear-regression.html#cb44-3"></a>sigma2 &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="co"># noise variance</span></span>
 <span id="cb44-4"><a href="model-answers-linear-regression.html#cb44-4"></a></span>
 <span id="cb44-5"><a href="model-answers-linear-regression.html#cb44-5"></a><span class="co"># number of simulations for each sample size</span></span>
-<span id="cb44-6"><a href="model-answers-linear-regression.html#cb44-6"></a>n_simulations &lt;-<span class="st"> </span><span class="dv">100</span> </span>
+<span id="cb44-6"><a href="model-answers-linear-regression.html#cb44-6"></a>n_simulations &lt;-<span class="st"> </span><span class="dv">100</span></span>
 <span id="cb44-7"><a href="model-answers-linear-regression.html#cb44-7"></a></span>
 <span id="cb44-8"><a href="model-answers-linear-regression.html#cb44-8"></a><span class="co"># A vector of sample sizes to try</span></span>
-<span id="cb44-9"><a href="model-answers-linear-regression.html#cb44-9"></a>sample_size_v &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">80</span>, <span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">500</span>, <span class="dv">750</span>, <span class="dv">1000</span> ) </span>
+<span id="cb44-9"><a href="model-answers-linear-regression.html#cb44-9"></a>sample_size_v &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">80</span>, <span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">500</span>, <span class="dv">750</span>, <span class="dv">1000</span> )</span>
 <span id="cb44-10"><a href="model-answers-linear-regression.html#cb44-10"></a></span>
 <span id="cb44-11"><a href="model-answers-linear-regression.html#cb44-11"></a>n_sample_size &lt;-<span class="st"> </span><span class="kw">length</span>(sample_size_v)</span>
 <span id="cb44-12"><a href="model-answers-linear-regression.html#cb44-12"></a></span>
@@ -282,27 +288,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb44-14"><a href="model-answers-linear-regression.html#cb44-14"></a>mse_matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> n_simulations, <span class="dt">ncol =</span> n_sample_size)</span>
 <span id="cb44-15"><a href="model-answers-linear-regression.html#cb44-15"></a></span>
 <span id="cb44-16"><a href="model-answers-linear-regression.html#cb44-16"></a><span class="co"># name row and column</span></span>
-<span id="cb44-17"><a href="model-answers-linear-regression.html#cb44-17"></a><span class="kw">rownames</span>(mse_matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>n_simulations) </span>
-<span id="cb44-18"><a href="model-answers-linear-regression.html#cb44-18"></a><span class="kw">colnames</span>(mse_matrix) &lt;-<span class="st"> </span>sample_size_v </span></code></pre></div>
+<span id="cb44-17"><a href="model-answers-linear-regression.html#cb44-17"></a><span class="kw">rownames</span>(mse_matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>n_simulations)</span>
+<span id="cb44-18"><a href="model-answers-linear-regression.html#cb44-18"></a><span class="kw">colnames</span>(mse_matrix) &lt;-<span class="st"> </span>sample_size_v</span></code></pre></div>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="model-answers-linear-regression.html#cb45-1"></a><span class="co"># loop over sample size</span></span>
 <span id="cb45-2"><a href="model-answers-linear-regression.html#cb45-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_sample_size) {</span>
 <span id="cb45-3"><a href="model-answers-linear-regression.html#cb45-3"></a>  N &lt;-<span class="st"> </span>sample_size_v[i]</span>
-<span id="cb45-4"><a href="model-answers-linear-regression.html#cb45-4"></a>  </span>
+<span id="cb45-4"><a href="model-answers-linear-regression.html#cb45-4"></a></span>
 <span id="cb45-5"><a href="model-answers-linear-regression.html#cb45-5"></a>  <span class="co"># for each simulation</span></span>
 <span id="cb45-6"><a href="model-answers-linear-regression.html#cb45-6"></a>  <span class="cf">for</span> (it <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_simulations) {</span>
-<span id="cb45-7"><a href="model-answers-linear-regression.html#cb45-7"></a>    </span>
-<span id="cb45-8"><a href="model-answers-linear-regression.html#cb45-8"></a>    x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>) </span>
-<span id="cb45-9"><a href="model-answers-linear-regression.html#cb45-9"></a>    e &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sigma2)) </span>
-<span id="cb45-10"><a href="model-answers-linear-regression.html#cb45-10"></a>    y &lt;-<span class="st"> </span>b0 <span class="op">+</span><span class="st"> </span>b1 <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>e </span>
-<span id="cb45-11"><a href="model-answers-linear-regression.html#cb45-11"></a>    </span>
+<span id="cb45-7"><a href="model-answers-linear-regression.html#cb45-7"></a></span>
+<span id="cb45-8"><a href="model-answers-linear-regression.html#cb45-8"></a>    x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb45-9"><a href="model-answers-linear-regression.html#cb45-9"></a>    e &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sigma2))</span>
+<span id="cb45-10"><a href="model-answers-linear-regression.html#cb45-10"></a>    y &lt;-<span class="st"> </span>b0 <span class="op">+</span><span class="st"> </span>b1 <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>e</span>
+<span id="cb45-11"><a href="model-answers-linear-regression.html#cb45-11"></a></span>
 <span id="cb45-12"><a href="model-answers-linear-regression.html#cb45-12"></a>    <span class="co"># set up a data frame and run lm()</span></span>
 <span id="cb45-13"><a href="model-answers-linear-regression.html#cb45-13"></a>    sim_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)</span>
 <span id="cb45-14"><a href="model-answers-linear-regression.html#cb45-14"></a>    lm_fit &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> sim_data)</span>
-<span id="cb45-15"><a href="model-answers-linear-regression.html#cb45-15"></a>    </span>
+<span id="cb45-15"><a href="model-answers-linear-regression.html#cb45-15"></a></span>
 <span id="cb45-16"><a href="model-answers-linear-regression.html#cb45-16"></a>    <span class="co"># compute the mean squared error between the fit and the actual y&#39;s</span></span>
 <span id="cb45-17"><a href="model-answers-linear-regression.html#cb45-17"></a>    y_hat &lt;-<span class="st"> </span><span class="kw">fitted</span>(lm_fit)</span>
 <span id="cb45-18"><a href="model-answers-linear-regression.html#cb45-18"></a>    mse_matrix[it, i] &lt;-<span class="st"> </span><span class="kw">mean</span>((y_hat <span class="op">-</span><span class="st"> </span>y)<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb45-19"><a href="model-answers-linear-regression.html#cb45-19"></a>    </span>
+<span id="cb45-19"><a href="model-answers-linear-regression.html#cb45-19"></a></span>
 <span id="cb45-20"><a href="model-answers-linear-regression.html#cb45-20"></a>  }</span>
 <span id="cb45-21"><a href="model-answers-linear-regression.html#cb45-21"></a>}</span></code></pre></div>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="model-answers-linear-regression.html#cb46-1"></a><span class="kw">library</span>(reshape2)</span>
@@ -325,8 +331,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="practical-linear-regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="practical-linear-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="practical-principal-component-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
