@@ -1,4 +1,4 @@
-# Model answers: Linear Regression {-}
+# Model answers: Linear regression {-}
 
 ## Exercise I
 

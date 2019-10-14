@@ -1,4 +1,4 @@
-# Practical: Linear Regression
+# Practical: Linear regression
 
 In this practical you will go through some of the basics of linear modeling in `R` as well as simulating data. The practical contains the following elements:
 
