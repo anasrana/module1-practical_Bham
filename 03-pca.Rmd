@@ -1,6 +1,17 @@
 # Practical: Principal component analysis
 
-We use Principal Component Analysis (PCA) in order to explore complex datasets. By performing dimensionality reduction we can better visualize the data that has many variables. This technique is probably the most popular tool applied across bioscience problems (e.g. for gene expression problems).
+In this practical we will practice some of the ideas outlined in the lecture on Principal Component Analysis (PCA), this will include computing principal components, visualisation techniques and an application to real data.
+
+## Data
+
+For this practical we will use some data that is built into R and we require two additional files you will download:
+
+- `Pollen2014.txt` ([download](https://canvas.bham.ac.uk/files/8117072/download?download_frd=1))
+- `SupplementaryLabels.txt` ([download](https://canvas.bham.ac.uk/files/8117074/download?download_frd=1))
+
+## Introduction
+
+We use PCA in order to explore complex datasets. By performing dimensionality reduction we can better visualize the data that has many variables. This technique is probably the most popular tool applied across bioscience problems (e.g. for gene expression problems).
 
 In many real-world dataset we deal with a high dimensional data, e.g. for a number of individuals we can take a number of health related measurement (called variables). This is great, however having a large number of variables also means that it is difficult to plot the data as it is (in its "*raw*" format), and in turn it might be difficult to understand if this dataset contains any interesting patterns/trends/relationships across individuals. Using PCA we visualize such data in a more "*human friendly*" fashion.
 
@@ -92,7 +103,7 @@ Now try to perform a PCA on the `USArrests` data also build into `R`. Typing `?U
 
 ## Exercise IV: Single cell data
 
-We can now try to apply what we learned above on a more realistic datasets. You can download the data either on *canvas* or using these links [Pollen2014.txt](https://raw.github.com/anasrana/module1-practical_Bham/blob/master/data/Pollen2014.txt) and [SupplementaryLabels.txt](https://raw.github.com/anasrana/module1-practical_Bham/blob/master/data/SupplementaryLabels.txt). Her we will be dealing with single cell RNA-Seq (scRNA-Seq) data, which consist of $300$ single cells measured across $8686$ genes.
+We can now try to apply what we learned above on a more realistic datasets. You can download the data either on *canvas* or using these links [`Pollen2014.txt`](https://raw.github.com/anasrana/module1-practical_Bham/master/data/Pollen2014.txt) and [`SupplementaryLabels.txt`](https://raw.github.com/anasrana/module1-practical_Bham/master/data/SupplementaryLabels.txt). Her we will be dealing with single cell RNA-Seq (scRNA-Seq) data, which consist of $300$ single cells measured across $8686$ genes.
 
 ```{r sc-data}
 

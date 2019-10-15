@@ -30,6 +30,14 @@ theme_anas <- theme_update(
 )
 ```
 
+## Data
+
+For this practical you will require three datasets:
+
+- `stork.txt` ([download](https://canvas.bham.ac.uk/files/8117073/download?download_frd=1))
+- `lr_data1.Rdata` ([download](https://raw.github.com/anasrana/module1-practical_Bham/master/data/lr_data1.Rdata))
+- `lr_data2.Rdata` ([download](https://raw.github.com/anasrana/module1-practical_Bham/master/data/lr_data2.Rdata)).
+
 ## Simulating data
 
 You will simulate data based on the simple linear regression model:
@@ -283,7 +291,7 @@ What changes do you need to make to the above function to plot the accuracy of t
 
 ### Part I
 
-Read in the data in `storks.txt`, compute the correlation and comment on it.
+Read in the data in `stork.txt`, compute the correlation and comment on it.
 
 The data represents `no of storks` (column 1) in Oldenburg Germany from $1930 - 1939$ and the number of people (column 2).
 

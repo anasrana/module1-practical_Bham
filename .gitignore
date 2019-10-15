@@ -14,6 +14,7 @@ src/init.o
 .RData
 *.Rproj
 
+
 # Example code in package build process
 *-Ex.R
 
@@ -68,3 +69,6 @@ vignettes/*.pdf
 /README.html
 
 /notes.md
+
+/*.Rdata
+/*.txt

@@ -10,11 +10,16 @@ Suppose I observe the following genotypes for a SNP in 4,000 individuals (2,000 
 
 The cases seem to have relatively more `A` alleles than the controls. This might make us suspect that having `A` alleles at this SNP is associated with the disease.
 
+## Data
+
+For this practical we will use two files you can use these links to download them:
+
+- `gwas-cc-ex1.Rdata` ([download](https://raw.github.com/anasrana/module1-practical_Bham/master/data/gwas-cc-ex1.Rdata))
+- `gwas-cc-ex2.Rdata` ([download](https://raw.github.com/anasrana/module1-practical_Bham/master/data/gwas-cc-ex2.Rdata))
+
 ## Detecting SNP associations
 
 We have seen in lectures that we can do statistical tests for this type of contingency table using Chi Squared Tests. Let's load example data set and and prepare
-
-
 
 ```{r }
 library(ggplot2) # for plots later
