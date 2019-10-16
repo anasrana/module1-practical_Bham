@@ -468,6 +468,7 @@ The coefficients in the model can be interpreted as follows:</p>
 <span id="cb92-5"><a href="practical-multiple-regression.html#cb92-5"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;y&quot;</span>,</span>
 <span id="cb92-6"><a href="practical-multiple-regression.html#cb92-6"></a>         <span class="dt">title =</span> <span class="st">&quot;Estimated response at each step during optimisation&quot;</span>)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/vis_gd-3.png" width="960" /></p>
+<p>Now compare these results to the ones obtained by fitting a linear model in R using the function <code>lm()</code>, how different are the results. Try to reproduce these plots with $= $ (0.02, 0.1, 0.5), and different number of iterations in the optimisation and compare the estimated <span class="math inline">\(\hat{\beta_0}\)</span>, and <span class="math inline">\(\hat{\beta_1}\)</span> to the values you use during the simulation step. This will give you an idea how important the right choice of these two parameters is.</p>
 
 </div>
 </div>
