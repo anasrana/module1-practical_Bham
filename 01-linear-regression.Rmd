@@ -21,7 +21,7 @@ library(reshape2)
 library(bbmle)
 ```
 
-```{r set, echo = F}
+```{r set, echo = F, warning=F}
 library(hrbrthemes)
 theme_anas <- theme_set(theme_ipsum_ps())
 theme_anas <- theme_update(
@@ -29,7 +29,7 @@ theme_anas <- theme_update(
   axis.title.y = element_text(size = rel(1.7))
 )
 
-import_plex_sans()
+
 extrafont::loadfonts(device = "postscript", quiet = TRUE)
 
 knitr::opts_chunk$set(dev = 'png',

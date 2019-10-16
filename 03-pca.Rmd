@@ -38,7 +38,7 @@ head(mtcars)
 dim(mtcars)
 ```
 
-```{r setpca, echo = F}
+```{r setpca, echo = F, warning=F}
 library(hrbrthemes)
 theme_anas <- theme_set(theme_ipsum_ps())
 theme_anas <- theme_update(
@@ -46,7 +46,7 @@ theme_anas <- theme_update(
   axis.title.y = element_text(size = rel(1.7))
 )
 extrafont::loadfonts(quiet=TRUE)
-import_plex_sans()
+
 ```
 
 In this case we have $32$ examples (cars in this case), and $11$ features.

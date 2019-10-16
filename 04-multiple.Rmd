@@ -15,7 +15,7 @@ library(ggplot2)
 
 ``` -->
 
-```{r setmr, echo = F}
+```{r setmr, echo = F, warning=F}
 library(ggplot2)
 library(hrbrthemes)
 theme_anas <- theme_set(theme_ipsum_ps())
@@ -24,7 +24,7 @@ theme_anas <- theme_update(
   axis.title.y = element_text(size = rel(1.7))
 )
 extrafont::loadfonts(quiet=TRUE)
-import_plex_sans()
+
 ```
 
 ## Multiple regression

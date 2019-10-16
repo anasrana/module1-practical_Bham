@@ -75,7 +75,7 @@ for (i_p in 1:p) {
 
 We went through each SNP (rows in matrix `X`), extracted the counts of each genotype (marked `1.` in code) for cases and controls, then we compute expected probability (marked `2.` in code). Finally, we perform a chi-squared contingency table test comparing those observed counts to expected probabilities assuming that genotype is not related to disease status (marked `3.` in code).
 
-```{r setlgm, echo = F}
+```{r setlgm, echo = F, warning=F}
 library(hrbrthemes)
 theme_anas <- theme_set(theme_ipsum_ps())
 theme_anas <- theme_update(
@@ -83,7 +83,7 @@ theme_anas <- theme_update(
   axis.title.y = element_text(size = rel(1.7))
 )
 extrafont::loadfonts(quiet=TRUE)
-import_plex_sans()
+
 ```
 
 ```{r plot, fig.width=10, fig.height=5, warning=F}
