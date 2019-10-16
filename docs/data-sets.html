@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 Simulating data | Essentials of Mathematics and Statistics</title>
+  <title>1.2 Data sets | Essentials of Mathematics and Statistics</title>
   <meta name="description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 Simulating data | Essentials of Mathematics and Statistics" />
+  <meta property="og:title" content="1.2 Data sets | Essentials of Mathematics and Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="anasrana/module1-practical_Bham" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 Simulating data | Essentials of Mathematics and Statistics" />
+  <meta name="twitter:title" content="1.2 Data sets | Essentials of Mathematics and Statistics" />
   
   <meta name="twitter:description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data.html"/>
-<link rel="next" href="fitting-simple-linear-regression-model.html"/>
+<link rel="prev" href="prerequisites.html"/>
+<link rel="next" href="practical-linear-regression.html"/>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -199,56 +199,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="simulating-data" class="section level2">
-<h2><span class="header-section-number">2.2</span> Simulating data</h2>
-<p>You will simulate data based on the simple linear regression model:</p>
-<p><span class="math display">\[
-y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
-\]</span></p>
-<p>where <span class="math inline">\((x_i, y_i)\)</span> represent the <span class="math inline">\(i\)</span>-th measurement pair with <span class="math inline">\(i = 1, \ldots, N\)</span>, <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are regression coefficients representing intercept and slope respectively. We assume the noise term <span class="math inline">\(\epsilon_i \sim N(0, \sigma^2)\)</span> is normally distributed with zero mean and variance <span class="math inline">\(\sigma^2\)</span>.</p>
-<p>First we define the values of the parameters of linear regression <span class="math inline">\((\beta_0, \beta_1, \sigma^2)\)</span>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="simulating-data.html#cb3-1"></a>b0 &lt;-<span class="st"> </span><span class="dv">10</span> <span class="co"># regression coefficient for intercept</span></span>
-<span id="cb3-2"><a href="simulating-data.html#cb3-2"></a>b1 &lt;-<span class="st"> </span><span class="dv">-8</span> <span class="co"># regression coefficient for slope</span></span>
-<span id="cb3-3"><a href="simulating-data.html#cb3-3"></a>sigma2 &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="co"># noise variance</span></span></code></pre></div>
-<p>In the next step we will simulate <span class="math inline">\(N = 100\)</span> covariates <span class="math inline">\(x_i\)</span> by randomly sampling from the standard normal distribution:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="simulating-data.html#cb4-1"></a><span class="kw">set.seed</span>(<span class="dv">198</span>) <span class="co"># set a seed to ensure data is reproducible</span></span>
-<span id="cb4-2"><a href="simulating-data.html#cb4-2"></a>N &lt;-<span class="st"> </span><span class="dv">100</span> <span class="co"># no of data points to simulate</span></span>
-<span id="cb4-3"><a href="simulating-data.html#cb4-3"></a>x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>) <span class="co"># simulate covariate</span></span></code></pre></div>
-<p>Next we simulate the error term:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="simulating-data.html#cb5-1"></a><span class="co"># simulate the noise terms, rnorm requires the standard deviation</span></span>
-<span id="cb5-2"><a href="simulating-data.html#cb5-2"></a>e &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sigma2))</span></code></pre></div>
-<p>Finally we have all the parameters and variables to simulate the response variable <span class="math inline">\(y\)</span>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="simulating-data.html#cb6-1"></a><span class="co"># compute (simulate) the response variable</span></span>
-<span id="cb6-2"><a href="simulating-data.html#cb6-2"></a>y =<span class="st"> </span>b0 <span class="op">+</span><span class="st"> </span>b1 <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>e</span></code></pre></div>
-<p>We will plot our data using <code>ggplot2</code> so the data need to be in a <code>data.frame</code> object:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="simulating-data.html#cb7-1"></a><span class="co"># Set up the data point</span></span>
-<span id="cb7-2"><a href="simulating-data.html#cb7-2"></a>sim_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)</span>
-<span id="cb7-3"><a href="simulating-data.html#cb7-3"></a></span>
-<span id="cb7-4"><a href="simulating-data.html#cb7-4"></a><span class="co"># create a new scatter plot using ggplot2</span></span>
-<span id="cb7-5"><a href="simulating-data.html#cb7-5"></a><span class="kw">ggplot</span>(sim_data, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
-<span id="cb7-6"><a href="simulating-data.html#cb7-6"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="Practicals-module_1_files/figure-html/sim-data-1.png" width="672" /></p>
-<p>We define the true data <code>y_true</code> to be the true linear relationship between the covariate and the response without the noise.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="simulating-data.html#cb8-1"></a><span class="co"># Compute true y values</span></span>
-<span id="cb8-2"><a href="simulating-data.html#cb8-2"></a>y_true &lt;-<span class="st"> </span>b0 <span class="op">+</span><span class="st"> </span>b1 <span class="op">*</span><span class="st"> </span>x</span>
-<span id="cb8-3"><a href="simulating-data.html#cb8-3"></a></span>
-<span id="cb8-4"><a href="simulating-data.html#cb8-4"></a><span class="co"># Add the data to the existing data frame</span></span>
-<span id="cb8-5"><a href="simulating-data.html#cb8-5"></a>sim_data<span class="op">$</span>y_true &lt;-<span class="st"> </span>y_true</span></code></pre></div>
-<p>Now we will add the true values of <span class="math inline">\(y\)</span> to the scatter plot:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="simulating-data.html#cb9-1"></a>lr_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(sim_data, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
-<span id="cb9-2"><a href="simulating-data.html#cb9-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb9-3"><a href="simulating-data.html#cb9-3"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y_true), <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb9-4"><a href="simulating-data.html#cb9-4"></a></span>
-<span id="cb9-5"><a href="simulating-data.html#cb9-5"></a><span class="kw">print</span>(lr_plot)</span></code></pre></div>
-<p><img src="Practicals-module_1_files/figure-html/scatter-true-1.png" width="672" /></p>
+<div id="data-sets" class="section level2">
+<h2><span class="header-section-number">1.2</span> Data sets</h2>
+<p>For each practical there are some datasets required, you will find all data required for week two of practicals in the data folder <a href="https://github.com/anasrana/module1-practical_Bham/tree/master/data">here</a>. Links to individual datasets requried can be found at the beginning of each practical or on Canvas.</p>
+
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="fitting-simple-linear-regression-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prerequisites.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="practical-linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Practical: Linear regression | Essentials of Mathematics and Statistics</title>
+  <title>2 Practical: Linear regression | Essentials of Mathematics and Statistics</title>
   <meta name="description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Practical: Linear regression | Essentials of Mathematics and Statistics" />
+  <meta property="og:title" content="2 Practical: Linear regression | Essentials of Mathematics and Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="anasrana/module1-practical_Bham" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Practical: Linear regression | Essentials of Mathematics and Statistics" />
+  <meta name="twitter:title" content="2 Practical: Linear regression | Essentials of Mathematics and Statistics" />
   
   <meta name="twitter:description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Anas A Rana" />
 
 
-<meta name="date" content="2019-10-14" />
+<meta name="date" content="2019-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,14 +33,14 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="model-answers-linear-regression.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -138,42 +138,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#data-sets"><i class="fa fa-check"></i><b>1.2</b> Data sets</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Practical: Linear regression</a><ul>
-<li class="chapter" data-level="2.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#simulating-data"><i class="fa fa-check"></i><b>2.1</b> Simulating data</a></li>
-<li class="chapter" data-level="2.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#fitting-simple-linear-regression-model"><i class="fa fa-check"></i><b>2.2</b> Fitting simple linear regression model</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#least-squared-estimation"><i class="fa fa-check"></i><b>2.2.1</b> Least squared estimation</a></li>
-<li class="chapter" data-level="2.2.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>2.2.2</b> Maximum likelihood estimation</a></li>
+<li class="chapter" data-level="2.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#data"><i class="fa fa-check"></i><b>2.1</b> Data</a></li>
+<li class="chapter" data-level="2.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#simulating-data"><i class="fa fa-check"></i><b>2.2</b> Simulating data</a></li>
+<li class="chapter" data-level="2.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#fitting-simple-linear-regression-model"><i class="fa fa-check"></i><b>2.3</b> Fitting simple linear regression model</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#least-squared-estimation"><i class="fa fa-check"></i><b>2.3.1</b> Least squared estimation</a></li>
+<li class="chapter" data-level="2.3.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>2.3.2</b> Maximum likelihood estimation</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#effect-of-variance"><i class="fa fa-check"></i><b>2.3</b> Effect of variance</a></li>
-<li class="chapter" data-level="2.4" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#exercise"><i class="fa fa-check"></i><b>2.4</b> Exercise</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-i"><i class="fa fa-check"></i><b>2.4.1</b> Part I</a></li>
-<li class="chapter" data-level="2.4.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-ii"><i class="fa fa-check"></i><b>2.4.2</b> Part II</a></li>
-<li class="chapter" data-level="2.4.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-iii"><i class="fa fa-check"></i><b>2.4.3</b> Part III</a></li>
+<li class="chapter" data-level="2.4" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#effect-of-variance"><i class="fa fa-check"></i><b>2.4</b> Effect of variance</a></li>
+<li class="chapter" data-level="2.5" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#exercise"><i class="fa fa-check"></i><b>2.5</b> Exercise</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-i"><i class="fa fa-check"></i><b>2.5.1</b> Part I</a></li>
+<li class="chapter" data-level="2.5.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-ii"><i class="fa fa-check"></i><b>2.5.2</b> Part II</a></li>
+<li class="chapter" data-level="2.5.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-iii"><i class="fa fa-check"></i><b>2.5.3</b> Part III</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html"><i class="fa fa-check"></i>Model answers: Linear regression</a><ul>
-<li class="chapter" data-level="2.5" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-i"><i class="fa fa-check"></i><b>2.5</b> Exercise I</a></li>
-<li class="chapter" data-level="2.6" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii"><i class="fa fa-check"></i><b>2.6</b> Exercise II</a><ul>
-<li class="chapter" data-level="2.6.1" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#comparison-of-data"><i class="fa fa-check"></i><b>2.6.1</b> Comparison of data</a></li>
+<li class="chapter" data-level="2.6" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-i"><i class="fa fa-check"></i><b>2.6</b> Exercise I</a></li>
+<li class="chapter" data-level="2.7" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii"><i class="fa fa-check"></i><b>2.7</b> Exercise II</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#comparison-of-data"><i class="fa fa-check"></i><b>2.7.1</b> Comparison of data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii-1"><i class="fa fa-check"></i><b>2.7</b> Exercise II</a></li>
+<li class="chapter" data-level="2.8" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii-1"><i class="fa fa-check"></i><b>2.8</b> Exercise II</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html"><i class="fa fa-check"></i><b>3</b> Practical: Principal component analysis</a><ul>
-<li class="chapter" data-level="3.1" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-i-1"><i class="fa fa-check"></i><b>3.1</b> Exercise I</a></li>
-<li class="chapter" data-level="3.2" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-ii-2"><i class="fa fa-check"></i><b>3.2</b> Exercise II</a></li>
-<li class="chapter" data-level="3.3" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iii"><i class="fa fa-check"></i><b>3.3</b> Exercise III</a></li>
-<li class="chapter" data-level="3.4" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iv-single-cell-data"><i class="fa fa-check"></i><b>3.4</b> Exercise IV: Single cell data</a></li>
+<li class="chapter" data-level="3.1" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#data-1"><i class="fa fa-check"></i><b>3.1</b> Data</a></li>
+<li class="chapter" data-level="3.2" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-i-1"><i class="fa fa-check"></i><b>3.3</b> Exercise I</a></li>
+<li class="chapter" data-level="3.4" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-ii-2"><i class="fa fa-check"></i><b>3.4</b> Exercise II</a></li>
+<li class="chapter" data-level="3.5" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iii"><i class="fa fa-check"></i><b>3.5</b> Exercise III</a></li>
+<li class="chapter" data-level="3.6" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iv-single-cell-data"><i class="fa fa-check"></i><b>3.6</b> Exercise IV: Single cell data</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="practical-multivariate-regression.html"><a href="practical-multivariate-regression.html"><i class="fa fa-check"></i><b>4</b> Practical: Multivariate regression</a></li>
+<li class="chapter" data-level="4" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html"><i class="fa fa-check"></i><b>4</b> Practical: Multiple regression</a><ul>
+<li class="chapter" data-level="4.1" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#multiple-regression"><i class="fa fa-check"></i><b>4.1</b> Multiple regression</a></li>
+<li class="chapter" data-level="4.2" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#categorical-covariates"><i class="fa fa-check"></i><b>4.2</b> Categorical covariates</a></li>
+<li class="chapter" data-level="4.3" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#residuals"><i class="fa fa-check"></i><b>4.3</b> Residuals</a></li>
+<li class="chapter" data-level="4.4" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#gradient-descent-algorithm"><i class="fa fa-check"></i><b>4.4</b> Gradient descent algorithm (+)</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html"><i class="fa fa-check"></i><b>5</b> Practical: Generalised linear models</a><ul>
-<li class="chapter" data-level="5.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#detecting-snp-associations"><i class="fa fa-check"></i><b>5.1</b> Detecting SNP associations</a></li>
-<li class="chapter" data-level="5.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#gwas-and-logistic-regression"><i class="fa fa-check"></i><b>5.2</b> GWAS and logistic regression</a></li>
-<li class="chapter" data-level="5.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-and-poisson-regression"><i class="fa fa-check"></i><b>5.3</b> Negative binomial and Poisson regression</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#count-based-glms"><i class="fa fa-check"></i><b>5.3.1</b> Count-based GLMs</a></li>
-<li class="chapter" data-level="5.3.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#fitting-a-glm"><i class="fa fa-check"></i><b>5.3.2</b> Fitting a GLM</a></li>
-<li class="chapter" data-level="5.3.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#comparing-nested-models"><i class="fa fa-check"></i><b>5.3.3</b> Comparing nested models</a></li>
+<li class="chapter" data-level="5.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#data-2"><i class="fa fa-check"></i><b>5.1</b> Data</a></li>
+<li class="chapter" data-level="5.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#detecting-snp-associations"><i class="fa fa-check"></i><b>5.2</b> Detecting SNP associations</a></li>
+<li class="chapter" data-level="5.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#gwas-and-logistic-regression"><i class="fa fa-check"></i><b>5.3</b> GWAS and logistic regression</a></li>
+<li class="chapter" data-level="5.4" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-and-poisson-regression"><i class="fa fa-check"></i><b>5.4</b> Negative binomial and Poisson regression</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#count-based-glms"><i class="fa fa-check"></i><b>5.4.1</b> Count-based GLMs</a></li>
+<li class="chapter" data-level="5.4.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#fitting-a-glm"><i class="fa fa-check"></i><b>5.4.2</b> Fitting a GLM</a></li>
+<li class="chapter" data-level="5.4.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#comparing-nested-models"><i class="fa fa-check"></i><b>5.4.3</b> Comparing nested models</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-vs-poisson-glms"><i class="fa fa-check"></i><b>5.4</b> Negative-Binomial vs Poisson GLMs</a></li>
-<li class="chapter" data-level="5.5" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#further-understanding-the-model-optional"><i class="fa fa-check"></i><b>5.5</b> Further understanding the model (<strong>OPTIONAL</strong>)</a></li>
+<li class="chapter" data-level="5.5" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-vs-poisson-glms"><i class="fa fa-check"></i><b>5.5</b> Negative-Binomial vs Poisson GLMs</a></li>
+<li class="chapter" data-level="5.6" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#further-understanding-the-model-optional"><i class="fa fa-check"></i><b>5.6</b> Further understanding the model (<strong>OPTIONAL</strong>)</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -196,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="practical-linear-regression" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Practical: Linear regression</h1>
+<h1><span class="header-section-number">2</span> Practical: Linear regression</h1>
 <p>In this practical you will go through some of the basics of linear modeling in <code>R</code> as well as simulating data. The practical contains the following elements:</p>
 <ul>
 <li>simulate linear regression model</li>
@@ -211,8 +220,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="practical-linear-regression.html#cb2-1"></a><span class="kw">library</span>(ggplot2)</span>
 <span id="cb2-2"><a href="practical-linear-regression.html#cb2-2"></a><span class="kw">library</span>(reshape2)</span>
 <span id="cb2-3"><a href="practical-linear-regression.html#cb2-3"></a><span class="kw">library</span>(bbmle)</span></code></pre></div>
+<div id="data" class="section level2">
+<h2><span class="header-section-number">2.1</span> Data</h2>
+<p>For this practical you will require three datasets:</p>
+<ul>
+<li><code>stork.txt</code> (<a href="https://canvas.bham.ac.uk/files/8117073/download?download_frd=1">download</a>)</li>
+<li><code>lr_data1.Rdata</code> (<a href="https://raw.github.com/anasrana/module1-practical_Bham/master/data/lr_data1.Rdata">download</a>)</li>
+<li><code>lr_data2.Rdata</code> (<a href="https://raw.github.com/anasrana/module1-practical_Bham/master/data/lr_data2.Rdata">download</a>).</li>
+</ul>
+</div>
 <div id="simulating-data" class="section level2">
-<h2><span class="header-section-number">2.1</span> Simulating data</h2>
+<h2><span class="header-section-number">2.2</span> Simulating data</h2>
 <p>You will simulate data based on the simple linear regression model:</p>
 <p><span class="math display">\[
 y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
@@ -255,9 +273,9 @@ y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
 <p><img src="Practicals-module_1_files/figure-html/scatter-true-1.png" width="672" /></p>
 </div>
 <div id="fitting-simple-linear-regression-model" class="section level2">
-<h2><span class="header-section-number">2.2</span> Fitting simple linear regression model</h2>
+<h2><span class="header-section-number">2.3</span> Fitting simple linear regression model</h2>
 <div id="least-squared-estimation" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Least squared estimation</h3>
+<h3><span class="header-section-number">2.3.1</span> Least squared estimation</h3>
 <p>Now that you have simulated data you can use it to regress <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span>, since this is simulated data we know the parameters and can make a comparison. In <code>R</code> we can use the function <code>lm()</code> for this, by default it implements a least squares estimate:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="practical-linear-regression.html#cb10-1"></a><span class="co"># Use the lm function to fit the data</span></span>
 <span id="cb10-2"><a href="practical-linear-regression.html#cb10-2"></a>ls_fit &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> sim_data)</span>
@@ -325,7 +343,7 @@ y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
 <p>This is as expected since subtracting a good fit from the data leaves <span class="math inline">\(\epsilon\)</span> which has <span class="math inline">\(0\)</span> mean and <span class="math inline">\(0.5\)</span> variance.</p>
 </div>
 <div id="maximum-likelihood-estimation" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> Maximum likelihood estimation</h3>
+<h3><span class="header-section-number">2.3.2</span> Maximum likelihood estimation</h3>
 <p>Next you will look at maximum likelihood estimation based on the same data you simulated earlier. This is a bit more involved as it requires you to explicitly write the function you wish to minimise. The function we use is part of the <code>bbmle</code> package.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="practical-linear-regression.html#cb21-1"></a><span class="co"># Loading the required package</span></span>
 <span id="cb21-2"><a href="practical-linear-regression.html#cb21-2"></a><span class="kw">library</span>(bbmle)</span>
@@ -371,7 +389,7 @@ y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
 </div>
 </div>
 <div id="effect-of-variance" class="section level2">
-<h2><span class="header-section-number">2.3</span> Effect of variance</h2>
+<h2><span class="header-section-number">2.4</span> Effect of variance</h2>
 <p>Now investigate the quality of the predictions further by simulating more data sets and seeing how the variance affects the quality of the fit as indicated by the mean-squared error (mse).</p>
 <p>To start you will define some parameter for the simulations, the number of simulations to run for each variance, and the variance values to try.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="practical-linear-regression.html#cb23-1"></a><span class="co"># number of simulations for each noise level</span></span>
@@ -429,14 +447,14 @@ y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
 <p>What changes do you need to make to the above function to plot the accuracy of the estimated regression coefficients as a function of variance?</p>
 </div>
 <div id="exercise" class="section level2">
-<h2><span class="header-section-number">2.4</span> Exercise</h2>
+<h2><span class="header-section-number">2.5</span> Exercise</h2>
 <div id="part-i" class="section level3">
-<h3><span class="header-section-number">2.4.1</span> Part I</h3>
-<p>Read in the data in <code>storks.txt</code>, compute the correlation and comment on it.</p>
+<h3><span class="header-section-number">2.5.1</span> Part I</h3>
+<p>Read in the data in <code>stork.txt</code>, compute the correlation and comment on it.</p>
 <p>The data represents <code>no of storks</code> (column 1) in Oldenburg Germany from <span class="math inline">\(1930 - 1939\)</span> and the number of people (column 2).</p>
 </div>
 <div id="part-ii" class="section level3">
-<h3><span class="header-section-number">2.4.2</span> Part II</h3>
+<h3><span class="header-section-number">2.5.2</span> Part II</h3>
 <p>Fit a simple linear model to the two data sets supplied (<code>lr_data1.Rdata</code> and <code>lr_data2.Rdata</code>). In both files the <span class="math inline">\((x,y)\)</span> data is saved in two vectors, <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
 <p>Download the data from Canvas, you can read it into <code>R</code> and plot it with the following commands:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="practical-linear-regression.html#cb26-1"></a><span class="kw">load</span>(<span class="st">&quot;lr_data1.Rdata&quot;</span>)</span>
@@ -448,7 +466,7 @@ y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
 <p>Fit the linear model and comment on the differences between the data.</p>
 </div>
 <div id="part-iii" class="section level3">
-<h3><span class="header-section-number">2.4.3</span> Part III</h3>
+<h3><span class="header-section-number">2.5.3</span> Part III</h3>
 <p>Investigate how the sample size will affect the quality of the fit using mse, use the code for investigating the affect of variance as inspiration.</p>
 
 </div>
@@ -463,15 +481,15 @@ y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
 <a href="model-answers-linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -499,9 +517,12 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Practicals-module_1.pdf", "Practicals-module_1.epub"],
+"download": ["Practicals-module_1.pdf"],
 "toc": {
 "collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
 }
 });
 });

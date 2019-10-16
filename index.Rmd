@@ -4,9 +4,18 @@ author: "Anas A Rana"
 date: "`r Sys.Date()`"
 bibliography:
 - book.bib
-- packages.bib
 description: This contains practicals for the second week of module 1 (_Essentials of Mathematics and Statistics_).
-documentclass: book
+documentcalss: book
+output:
+    bookdown::gitbook:
+        lib_dir: assets
+        split_by: chapter
+        config:
+            toolbar:
+                position: static
+    bookdown::pdf_book:
+        keep_tex: no
+        number_sections: no
 link-citations: yes
 site: bookdown::gitbook
 subtitle: 'Practical: Module 1'
@@ -32,4 +41,4 @@ Ensure you have attended Module 1 lectures and have the installed `R` and/or `Rs
 
 ## Data sets
 
-For each practical there are some datasets required, you will find links to those in data folder [here](https://github.com/anasrana/module1-practical_Bham/tree/master/data).
+For each practical there are some datasets required, you will find all data required for week two of practicals in the data folder [here](https://github.com/anasrana/module1-practical_Bham/tree/master/data). Links to individual datasets requried can be found at the beginning of each practical or on Canvas.
