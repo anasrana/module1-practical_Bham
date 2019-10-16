@@ -9,6 +9,7 @@ documentcalss: book
 output:
     bookdown::gitbook:
         lib_dir: assets
+        self_contained: true
         split_by: chapter
         config:
             toolbar:
