@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Practical: Principal component analysis | Essentials of Mathematics and Statistics</title>
+  <meta name="description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Practical: Principal component analysis | Essentials of Mathematics and Statistics" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
+  
+  <meta property="og:description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
+  <meta name="github-repo" content="anasrana/module1-practical_Bham" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Practical: Principal component analysis | Essentials of Mathematics and Statistics" />
+  
+  <meta name="twitter:description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
+  
+
+<meta name="author" content="Anas A Rana" />
+
+
+<meta name="date" content="2019-10-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="model-answers-linear-regression.html"/>
+<link rel="next" href="practical-multiple-regression.html"/>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Essentials of Mathematics and Statistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#data-sets"><i class="fa fa-check"></i><b>1.2</b> Data sets</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Practical: Linear regression</a><ul>
+<li class="chapter" data-level="2.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#data"><i class="fa fa-check"></i><b>2.1</b> Data</a></li>
+<li class="chapter" data-level="2.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#simulating-data"><i class="fa fa-check"></i><b>2.2</b> Simulating data</a></li>
+<li class="chapter" data-level="2.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#fitting-simple-linear-regression-model"><i class="fa fa-check"></i><b>2.3</b> Fitting simple linear regression model</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#least-squared-estimation"><i class="fa fa-check"></i><b>2.3.1</b> Least squared estimation</a></li>
+<li class="chapter" data-level="2.3.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>2.3.2</b> Maximum likelihood estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#effect-of-variance"><i class="fa fa-check"></i><b>2.4</b> Effect of variance</a></li>
+<li class="chapter" data-level="2.5" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#exercise"><i class="fa fa-check"></i><b>2.5</b> Exercise</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-i"><i class="fa fa-check"></i><b>2.5.1</b> Part I</a></li>
+<li class="chapter" data-level="2.5.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-ii"><i class="fa fa-check"></i><b>2.5.2</b> Part II</a></li>
+<li class="chapter" data-level="2.5.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-iii"><i class="fa fa-check"></i><b>2.5.3</b> Part III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html"><i class="fa fa-check"></i>Model answers: Linear regression</a><ul>
+<li class="chapter" data-level="2.6" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-i"><i class="fa fa-check"></i><b>2.6</b> Exercise I</a></li>
+<li class="chapter" data-level="2.7" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii"><i class="fa fa-check"></i><b>2.7</b> Exercise II</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#comparison-of-data"><i class="fa fa-check"></i><b>2.7.1</b> Comparison of data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii-1"><i class="fa fa-check"></i><b>2.8</b> Exercise II</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html"><i class="fa fa-check"></i><b>3</b> Practical: Principal component analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#data-1"><i class="fa fa-check"></i><b>3.1</b> Data</a></li>
+<li class="chapter" data-level="3.2" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-i-1"><i class="fa fa-check"></i><b>3.3</b> Exercise I</a></li>
+<li class="chapter" data-level="3.4" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-ii-2"><i class="fa fa-check"></i><b>3.4</b> Exercise II</a></li>
+<li class="chapter" data-level="3.5" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iii"><i class="fa fa-check"></i><b>3.5</b> Exercise III</a></li>
+<li class="chapter" data-level="3.6" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iv-single-cell-data"><i class="fa fa-check"></i><b>3.6</b> Exercise IV: Single cell data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html"><i class="fa fa-check"></i><b>4</b> Practical: Multiple regression</a><ul>
+<li class="chapter" data-level="4.1" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#multiple-regression"><i class="fa fa-check"></i><b>4.1</b> Multiple regression</a></li>
+<li class="chapter" data-level="4.2" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#categorical-covariates"><i class="fa fa-check"></i><b>4.2</b> Categorical covariates</a></li>
+<li class="chapter" data-level="4.3" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#residuals"><i class="fa fa-check"></i><b>4.3</b> Residuals</a></li>
+<li class="chapter" data-level="4.4" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#gradient-descent-algorithm"><i class="fa fa-check"></i><b>4.4</b> Gradient descent algorithm (+)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html"><i class="fa fa-check"></i><b>5</b> Practical: Generalised linear models</a><ul>
+<li class="chapter" data-level="5.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#data-2"><i class="fa fa-check"></i><b>5.1</b> Data</a></li>
+<li class="chapter" data-level="5.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#detecting-snp-associations"><i class="fa fa-check"></i><b>5.2</b> Detecting SNP associations</a></li>
+<li class="chapter" data-level="5.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#gwas-and-logistic-regression"><i class="fa fa-check"></i><b>5.3</b> GWAS and logistic regression</a></li>
+<li class="chapter" data-level="5.4" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-and-poisson-regression"><i class="fa fa-check"></i><b>5.4</b> Negative binomial and Poisson regression</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#count-based-glms"><i class="fa fa-check"></i><b>5.4.1</b> Count-based GLMs</a></li>
+<li class="chapter" data-level="5.4.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#fitting-a-glm"><i class="fa fa-check"></i><b>5.4.2</b> Fitting a GLM</a></li>
+<li class="chapter" data-level="5.4.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#comparing-nested-models"><i class="fa fa-check"></i><b>5.4.3</b> Comparing nested models</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-vs-poisson-glms"><i class="fa fa-check"></i><b>5.5</b> Negative-Binomial vs Poisson GLMs</a></li>
+<li class="chapter" data-level="5.6" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#further-understanding-the-model-optional"><i class="fa fa-check"></i><b>5.6</b> Further understanding the model (<strong>OPTIONAL</strong>)</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Essentials of Mathematics and Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="practical-principal-component-analysis" class="section level1">
+<h1><span class="header-section-number">3</span> Practical: Principal component analysis</h1>
+<p>In this practical we will practice some of the ideas outlined in the lecture on Principal Component Analysis (PCA), this will include computing principal components, visualisation techniques and an application to real data.</p>
+<div id="data-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> Data</h2>
+<p>For this practical we will use some data that is built into R and we require two additional files you will download:</p>
+<ul>
+<li><code>Pollen2014.txt</code> (<a href="https://canvas.bham.ac.uk/files/8117072/download?download_frd=1">download</a>)</li>
+<li><code>SupplementaryLabels.txt</code> (<a href="https://canvas.bham.ac.uk/files/8117074/download?download_frd=1">download</a>)</li>
+</ul>
+</div>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">3.2</span> Introduction</h2>
+<p>We use PCA in order to explore complex datasets. By performing dimensionality reduction we can better visualize the data that has many variables. This technique is probably the most popular tool applied across bioscience problems (e.g. for gene expression problems).</p>
+<p>In many real-world dataset we deal with a high dimensional data, e.g. for a number of individuals we can take a number of health related measurement (called variables). This is great, however having a large number of variables also means that it is difficult to plot the data as it is (in its “<em>raw</em>” format), and in turn it might be difficult to understand if this dataset contains any interesting patterns/trends/relationships across individuals. Using PCA we visualize such data in a more “<em>human friendly</em>” fashion.</p>
+<p>Recall:</p>
+<ul>
+<li>PCA performs a linear transformation to data.</li>
+<li>This means that any input data can be visualized in a new coordinate system. The first coordinate (PC 1) variance is found on the first coordinate; each subsequent coordinate is orthogonal to the previous one and contains the larges variance from what was left.</li>
+<li>Each principal component is associated with certain percentage of the total variation in the dataset.</li>
+<li>If variables are strongly correlated with one another, a first few principal components will enable us to visualize the relationships present in any dataset.</li>
+<li>Eigenvectors describe new directions, whereas accompanying eigenvalues tell us how much variance there is in the data in given direction.</li>
+<li>The eigenvector with the highest eigenvalue is called the first principal component. The second highest eigenvalue would correspond to a second principle component and etc.</li>
+<li>There exist a <span class="math inline">\(d\)</span> number of eigenvalues and eigenvectors; <span class="math inline">\(d\)</span> is also equal to the size of the data (number of dimensions).</li>
+<li>For the purpose of visualization we preselect the first <span class="math inline">\(q\)</span> components, where <span class="math inline">\(q &lt; d\)</span>.</li>
+</ul>
+</div>
+<div id="exercise-i-1" class="section level2">
+<h2><span class="header-section-number">3.3</span> Exercise I</h2>
+<p>There are many datasets built into <code>R</code>. Wed will look at the <code>mtcars</code> dataset. Type <code>?mtcars</code> to get a description of data. Then use <code>head()</code> function to have a look at the first few rows; and <code>dim()</code> to get the dimensions of the data.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="practical-principal-component-analysis.html#cb49-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb49-2"><a href="practical-principal-component-analysis.html#cb49-2"></a><span class="kw">head</span>(mtcars)</span></code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="practical-principal-component-analysis.html#cb51-1"></a><span class="kw">dim</span>(mtcars)</span></code></pre></div>
+<pre><code>## [1] 32 11</code></pre>
+<pre><code>## You will likely need to install these fonts on your system as well.
+## 
+## You can find them in [/Users/ranaaaa/Library/R/3.6/library/hrbrthemes/fonts/plex-sans]</code></pre>
+<p>In this case we have <span class="math inline">\(32\)</span> examples (cars in this case), and <span class="math inline">\(11\)</span> features.
+Now we can perform a principal component analysis, in <code>R</code> it is implemented as the <code>prcomp()</code> function. We can type <code>?prcomp</code> to see a description of the function and some help on possible arguments. Here we set <code>center</code> and <code>scale</code> arguments to <code>TRUE</code>, recall from the lecture why this is important. We can try to perform PCA without scaling and centering and compare.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="practical-principal-component-analysis.html#cb54-1"></a>cars_pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(mtcars, <span class="dt">center =</span> <span class="ot">TRUE</span>, <span class="dt">scale =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p>We can use the <code>summary()</code> function to summarise the results from PCA, it will return the standard deviation, the proportion of variance explained by each principal component, and the cumulative proportion.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="practical-principal-component-analysis.html#cb55-1"></a>pca_summary &lt;-<span class="st"> </span><span class="kw">summary</span>(cars_pca)</span>
+<span id="cb55-2"><a href="practical-principal-component-analysis.html#cb55-2"></a><span class="kw">print</span>(pca_summary)</span></code></pre></div>
+<pre><code>## Importance of components:
+##                           PC1    PC2     PC3     PC4     PC5     PC6
+## Standard deviation     2.5707 1.6280 0.79196 0.51923 0.47271 0.46000
+## Proportion of Variance 0.6008 0.2409 0.05702 0.02451 0.02031 0.01924
+## Cumulative Proportion  0.6008 0.8417 0.89873 0.92324 0.94356 0.96279
+##                           PC7     PC8    PC9    PC10   PC11
+## Standard deviation     0.3678 0.35057 0.2776 0.22811 0.1485
+## Proportion of Variance 0.0123 0.01117 0.0070 0.00473 0.0020
+## Cumulative Proportion  0.9751 0.98626 0.9933 0.99800 1.0000</code></pre>
+<p><em>Note,</em> <code>Proportion of Variance</code> will always add up to <span class="math inline">\(1\)</span>. Here the <code>PC1</code> explain <span class="math inline">\(60.08%\)</span> of the variance, and <code>PC2</code> explains <span class="math inline">\(24.09%\)</span>, which means together <code>PC1</code> and <code>PC2</code> account for <span class="math inline">\(84.17%\)</span> of the variance.</p>
+<p>Using the <code>str()</code> function we can see the full structure of an <code>R</code> object, or alternatively using <code>?prcomp</code> in the <em>Value</em> section. In this case the <code>cars_pca</code> variable is a list containing several variables, <code>x</code> is the data represented using the new principal components. We can now plot the data in the first two principal components:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="practical-principal-component-analysis.html#cb57-1"></a>pca_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(cars_pca<span class="op">$</span>x, <span class="dt">make =</span> stringr<span class="op">::</span><span class="kw">word</span>(<span class="kw">rownames</span>(mtcars), <span class="dv">1</span>))</span>
+<span id="cb57-2"><a href="practical-principal-component-analysis.html#cb57-2"></a></span>
+<span id="cb57-3"><a href="practical-principal-component-analysis.html#cb57-3"></a><span class="kw">ggplot</span>(pca_df, <span class="kw">aes</span>(<span class="dt">x =</span> PC1, <span class="dt">y =</span> PC2, <span class="dt">col =</span> make)) <span class="op">+</span></span>
+<span id="cb57-4"><a href="practical-principal-component-analysis.html#cb57-4"></a><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb57-5"><a href="practical-principal-component-analysis.html#cb57-5"></a><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;PC1 60.08%&quot;</span>,</span>
+<span id="cb57-6"><a href="practical-principal-component-analysis.html#cb57-6"></a>     <span class="dt">y =</span> <span class="st">&quot;PC2 24.09 %&quot;</span>,</span>
+<span id="cb57-7"><a href="practical-principal-component-analysis.html#cb57-7"></a>     <span class="dt">title =</span> <span class="st">&quot;Principal components for mtcars&quot;</span>) <span class="op">+</span></span>
+<span id="cb57-8"><a href="practical-principal-component-analysis.html#cb57-8"></a><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<p><img src="Practicals-module_1_files/figure-html/plot_2d-1.png" width="3000" /></p>
+<p>Here we added a color based on the make of each car. We can observe which samples (or cars) cluster together. Have a look at these variables and decide why certain cars or models would cluster together.</p>
+<p>We created this plot using the <code>ggplot2</code> package, it is also possible to do this using base plot if you prefer.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="practical-principal-component-analysis.html#cb58-1"></a><span class="kw">plot</span>(pca_df<span class="op">$</span>PC1, pca_df<span class="op">$</span>PC2)</span></code></pre></div>
+</div>
+<div id="exercise-ii-2" class="section level2">
+<h2><span class="header-section-number">3.4</span> Exercise II</h2>
+<p>Next we look at another representation of the data, the <em>biplot</em>. This is a combination of a PCA plot of the data and a <em>score plot</em>. We saw the PCA plot in the previous section in a <em>biplot</em> we add the original axis as arrows.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="practical-principal-component-analysis.html#cb59-1"></a><span class="kw">biplot</span>(cars_pca)</span></code></pre></div>
+<p><img src="Practicals-module_1_files/figure-html/biplot-1.png" width="3000" /></p>
+<p>We can see the original axis starting from the origin. Therefore we can make observations about the original variables (e.g. <code>cyl</code> and <code>mpg</code> contribute to PC1) and how the data points relates to these axes.</p>
+</div>
+<div id="exercise-iii" class="section level2">
+<h2><span class="header-section-number">3.5</span> Exercise III</h2>
+<p>Now try to perform a PCA on the <code>USArrests</code> data also build into <code>R</code>. Typing <code>?USArrests</code> will give you further information on the data. Perform the analysis on the subset <code>USArrests[, -3]</code> data.</p>
+</div>
+<div id="exercise-iv-single-cell-data" class="section level2">
+<h2><span class="header-section-number">3.6</span> Exercise IV: Single cell data</h2>
+<p>We can now try to apply what we learned above on a more realistic datasets. You can download the data either on <em>canvas</em> or using these links <a href="https://raw.github.com/anasrana/module1-practical_Bham/master/data/Pollen2014.txt"><code>Pollen2014.txt</code></a> and <a href="https://raw.github.com/anasrana/module1-practical_Bham/master/data/SupplementaryLabels.txt"><code>SupplementaryLabels.txt</code></a>. Her we will be dealing with single cell RNA-Seq (scRNA-Seq) data, which consist of <span class="math inline">\(300\)</span> single cells measured across <span class="math inline">\(8686\)</span> genes.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="practical-principal-component-analysis.html#cb60-1"></a>pollen_df &lt;-<span class="kw">read.table</span>(<span class="st">&quot;Pollen2014.txt&quot;</span>, <span class="dt">sep=</span><span class="st">&#39;,&#39;</span>, <span class="dt">header =</span> T,<span class="dt">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb60-2"><a href="practical-principal-component-analysis.html#cb60-2"></a></span>
+<span id="cb60-3"><a href="practical-principal-component-analysis.html#cb60-3"></a>label_df &lt;-<span class="kw">read.table</span>(<span class="st">&quot;SupplementaryLabels.txt&quot;</span>, <span class="dt">sep=</span><span class="st">&#39;,&#39;</span>, <span class="dt">header =</span> T)</span>
+<span id="cb60-4"><a href="practical-principal-component-analysis.html#cb60-4"></a></span>
+<span id="cb60-5"><a href="practical-principal-component-analysis.html#cb60-5"></a>pollen_df[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>]</span></code></pre></div>
+<pre><code>##          Cell_2338_1 Cell_2338_10 Cell_2338_11 Cell_2338_12 Cell_2338_13
+## MTND2P28          78          559          811          705          384
+## MTATP6P1        2053         1958         4922         4409         2610
+## NOC2L              1          125          126            0          487
+## ISG15           2953         4938          580          523         2609
+## CPSF3L             2           42           19            0           37
+## MXRA8              0            0            0            0            0
+## AURKAIP1         302          132           64          492           11
+## CCNL2              0          235            0           84           13
+## MRPL20           330          477          288          222           44
+## SSU72            604          869         2046          158          530
+##          Cell_2338_14
+## MTND2P28          447
+## MTATP6P1         3709
+## NOC2L              66
+## ISG15               1
+## CPSF3L             12
+## MXRA8               0
+## AURKAIP1          182
+## CCNL2              11
+## MRPL20            282
+## SSU72             272</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="practical-principal-component-analysis.html#cb62-1"></a><span class="kw">dim</span>(pollen_df)</span></code></pre></div>
+<pre><code>## [1] 8686  300</code></pre>
+<p>Measurements of scRNA-Seq data are integer counts, this data does not have good properties so we perform a transformation on the data. The most commonly used transformation on RNA-Seq count data is <span class="math inline">\(\log_2\)</span>. We will also transpose the data matrix to rows representing cells and columns representing genes. This is the data we can use to perform PCA.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="practical-principal-component-analysis.html#cb64-1"></a><span class="co"># scRNA-Seq data transformation</span></span>
+<span id="cb64-2"><a href="practical-principal-component-analysis.html#cb64-2"></a>pollen_mat &lt;-<span class="st"> </span><span class="kw">log2</span>(<span class="kw">as.matrix</span>(pollen_df) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</span>
+<span id="cb64-3"><a href="practical-principal-component-analysis.html#cb64-3"></a><span class="co"># transpose the data</span></span>
+<span id="cb64-4"><a href="practical-principal-component-analysis.html#cb64-4"></a>pollen_mat &lt;-<span class="st"> </span><span class="kw">t</span>(pollen_mat)</span></code></pre></div>
+<p>We will now use information that we read into the <code>label_df</code> variable to rename cells.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="practical-principal-component-analysis.html#cb65-1"></a><span class="co"># Check which columns we have available</span></span>
+<span id="cb65-2"><a href="practical-principal-component-analysis.html#cb65-2"></a><span class="kw">colnames</span>(label_df)</span></code></pre></div>
+<pre><code>## [1] &quot;Cell_Identifier&quot;        &quot;Population&quot;            
+## [3] &quot;Cell_names&quot;             &quot;TrueLabel_CellLevel&quot;   
+## [5] &quot;Tissue_name&quot;            &quot;TrueLabel_TissuelLevel&quot;</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="practical-principal-component-analysis.html#cb67-1"></a><span class="co"># rename rows</span></span>
+<span id="cb67-2"><a href="practical-principal-component-analysis.html#cb67-2"></a><span class="kw">rownames</span>(pollen_mat) &lt;-<span class="st"> </span>label_df<span class="op">$</span>Cell_names</span></code></pre></div>
+<p>Next we perform PCA on the data and extract the proportion of variance explained by each component.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="practical-principal-component-analysis.html#cb68-1"></a>sc_pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(pollen_mat)</span>
+<span id="cb68-2"><a href="practical-principal-component-analysis.html#cb68-2"></a></span>
+<span id="cb68-3"><a href="practical-principal-component-analysis.html#cb68-3"></a><span class="co"># variance is the square of the standard deviation</span></span>
+<span id="cb68-4"><a href="practical-principal-component-analysis.html#cb68-4"></a>pr_var &lt;-<span class="st"> </span>sc_pca<span class="op">$</span>sdev<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb68-5"><a href="practical-principal-component-analysis.html#cb68-5"></a></span>
+<span id="cb68-6"><a href="practical-principal-component-analysis.html#cb68-6"></a><span class="co"># compute the variance explained by each principal component</span></span>
+<span id="cb68-7"><a href="practical-principal-component-analysis.html#cb68-7"></a>prop_var_exp &lt;-<span class="st"> </span>pr_var <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(pr_var)</span></code></pre></div>
+<p>Think about the calculation and what exactly it means. We can visualise this</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="practical-principal-component-analysis.html#cb69-1"></a>var_exp &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">variance =</span> prop_var_exp, <span class="dt">pc =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(prop_var_exp))</span>
+<span id="cb69-2"><a href="practical-principal-component-analysis.html#cb69-2"></a></span>
+<span id="cb69-3"><a href="practical-principal-component-analysis.html#cb69-3"></a><span class="kw">ggplot</span>(var_exp[<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, ], <span class="kw">aes</span>(<span class="dt">x =</span> pc, <span class="dt">y =</span> variance)) <span class="op">+</span></span>
+<span id="cb69-4"><a href="practical-principal-component-analysis.html#cb69-4"></a><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span></span>
+<span id="cb69-5"><a href="practical-principal-component-analysis.html#cb69-5"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Principal Component&quot;</span>,</span>
+<span id="cb69-6"><a href="practical-principal-component-analysis.html#cb69-6"></a>         <span class="dt">y  =</span> <span class="st">&quot;Variance explained&quot;</span>)</span></code></pre></div>
+<p><img src="Practicals-module_1_files/figure-html/pca-scree-1.png" width="3000" /></p>
+<p>We see that the first few principal components explain significant variance, but after about the PC10, there is very limited contribution. Next we will plot the data using the first two Principal components as before.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="practical-principal-component-analysis.html#cb70-1"></a>sc_pca_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(sc_pca<span class="op">$</span>x, <span class="dt">cell =</span> <span class="kw">rownames</span>(sc_pca<span class="op">$</span>x),</span>
+<span id="cb70-2"><a href="practical-principal-component-analysis.html#cb70-2"></a>                        <span class="dt">var_exp =</span> prop_var_exp)</span>
+<span id="cb70-3"><a href="practical-principal-component-analysis.html#cb70-3"></a></span>
+<span id="cb70-4"><a href="practical-principal-component-analysis.html#cb70-4"></a><span class="kw">ggplot</span>(sc_pca_df, <span class="kw">aes</span>(<span class="dt">x =</span> PC1, <span class="dt">y =</span> PC2, <span class="dt">col =</span> cell)) <span class="op">+</span></span>
+<span id="cb70-5"><a href="practical-principal-component-analysis.html#cb70-5"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb70-6"><a href="practical-principal-component-analysis.html#cb70-6"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<p><img src="Practicals-module_1_files/figure-html/sc-pca_plot-1.png" width="3000" /></p>
+<p>Why is it not useful to create biplot for this example?</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="model-answers-linear-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="practical-multiple-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Practicals-module_1.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
