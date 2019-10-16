@@ -237,4 +237,4 @@ ggplot(sim_df, aes(x = x, y = y)) +
 
 ```
 
-Now compare these results to the ones obtained by fitting a linear model in R using the function `lm()`, how different are the results. Try to reproduce these plots with $\alpha = $ (0.02, 0.1, 0.5), and different number of iterations in the optimisation and compare the estimated $\hat{\beta_0}$, and $\hat{\beta_1}$ to the values you use during the simulation step. This will give you an idea how important the right choice of these two parameters is.
+Now compare these results to the ones obtained by fitting a linear model in R using the function `lm()`, how different are the results. Try to reproduce these plots with $\alpha = $ (0.02, 0.1, 0.5), and different number of iterations in the optimisation and compare the estimated $\hat{\beta}_0$, and $\hat{\beta}_1$ to the values you use during the simulation step. This will give you an idea how important the right choice of these two parameters is.
