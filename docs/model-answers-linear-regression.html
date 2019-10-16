@@ -2,62 +2,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Model answers: Linear regression | Essentials of Mathematics and Statistics</title>
-  <meta name="description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Model answers: Linear regression | Essentials of Mathematics and Statistics" />
+<meta property="og:type" content="book" />
+<meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
 
-  <meta property="og:title" content="Model answers: Linear regression | Essentials of Mathematics and Statistics" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
-  
-  <meta property="og:description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
-  <meta name="github-repo" content="anasrana/module1-practical_Bham" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Model answers: Linear regression | Essentials of Mathematics and Statistics" />
-  
-  <meta name="twitter:description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
-  
+<meta property="og:description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
+<meta name="github-repo" content="anasrana/module1-practical_Bham" />
 
 <meta name="author" content="Anas A Rana" />
 
-
 <meta name="date" content="2019-10-16" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="practical-linear-regression.html"/>
-<link rel="next" href="practical-principal-component-analysis.html"/>
-<script src="assets/jquery-2.2.3/jquery.min.js"></script>
-<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics).">
+
+<title>Model answers: Linear regression | Essentials of Mathematics and Statistics</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
 
 
-
-
-
-
-
-
-
-
-
+<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
 code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -116,308 +103,118 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
 </head>
 
 <body>
 
+<div class="container-fluid main-container">
 
 
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Essentials of Mathematics and Statistics</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#data-sets"><i class="fa fa-check"></i><b>1.2</b> Data sets</a></li>
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#introduction"><span class="toc-section-number">1</span> Introduction</a><ul>
+<li><a href="1-1-prerequisites.html#prerequisites"><span class="toc-section-number">1.1</span> Prerequisites</a></li>
+<li><a href="1-2-data-sets.html#data-sets"><span class="toc-section-number">1.2</span> Data sets</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Practical: Linear regression</a><ul>
-<li class="chapter" data-level="2.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#data"><i class="fa fa-check"></i><b>2.1</b> Data</a></li>
-<li class="chapter" data-level="2.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#simulating-data"><i class="fa fa-check"></i><b>2.2</b> Simulating data</a></li>
-<li class="chapter" data-level="2.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#fitting-simple-linear-regression-model"><i class="fa fa-check"></i><b>2.3</b> Fitting simple linear regression model</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#least-squared-estimation"><i class="fa fa-check"></i><b>2.3.1</b> Least squared estimation</a></li>
-<li class="chapter" data-level="2.3.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>2.3.2</b> Maximum likelihood estimation</a></li>
+<li class="has-sub"><a href="2-practical-linear-regression.html#practical-linear-regression"><span class="toc-section-number">2</span> Practical: Linear regression</a><ul>
+<li><a href="2-1-data.html#data"><span class="toc-section-number">2.1</span> Data</a></li>
+<li><a href="2-2-simulating-data.html#simulating-data"><span class="toc-section-number">2.2</span> Simulating data</a></li>
+<li class="has-sub"><a href="2-3-fitting-simple-linear-regression-model.html#fitting-simple-linear-regression-model"><span class="toc-section-number">2.3</span> Fitting simple linear regression model</a><ul>
+<li><a href="2-3-fitting-simple-linear-regression-model.html#least-squared-estimation"><span class="toc-section-number">2.3.1</span> Least squared estimation</a></li>
+<li><a href="2-3-fitting-simple-linear-regression-model.html#maximum-likelihood-estimation"><span class="toc-section-number">2.3.2</span> Maximum likelihood estimation</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#effect-of-variance"><i class="fa fa-check"></i><b>2.4</b> Effect of variance</a></li>
-<li class="chapter" data-level="2.5" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#exercise"><i class="fa fa-check"></i><b>2.5</b> Exercise</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-i"><i class="fa fa-check"></i><b>2.5.1</b> Part I</a></li>
-<li class="chapter" data-level="2.5.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-ii"><i class="fa fa-check"></i><b>2.5.2</b> Part II</a></li>
-<li class="chapter" data-level="2.5.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-iii"><i class="fa fa-check"></i><b>2.5.3</b> Part III</a></li>
+<li><a href="2-4-effect-of-variance.html#effect-of-variance"><span class="toc-section-number">2.4</span> Effect of variance</a></li>
+<li class="has-sub"><a href="2-5-exercise.html#exercise"><span class="toc-section-number">2.5</span> Exercise</a><ul>
+<li><a href="2-5-exercise.html#part-i"><span class="toc-section-number">2.5.1</span> Part I</a></li>
+<li><a href="2-5-exercise.html#part-ii"><span class="toc-section-number">2.5.2</span> Part II</a></li>
+<li><a href="2-5-exercise.html#part-iii"><span class="toc-section-number">2.5.3</span> Part III</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html"><i class="fa fa-check"></i>Model answers: Linear regression</a><ul>
-<li class="chapter" data-level="2.6" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-i"><i class="fa fa-check"></i><b>2.6</b> Exercise I</a></li>
-<li class="chapter" data-level="2.7" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii"><i class="fa fa-check"></i><b>2.7</b> Exercise II</a><ul>
-<li class="chapter" data-level="2.7.1" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#comparison-of-data"><i class="fa fa-check"></i><b>2.7.1</b> Comparison of data</a></li>
+<li class="has-sub"><a href="model-answers-linear-regression.html#model-answers-linear-regression">Model answers: Linear regression</a><ul>
+<li><a href="2-6-exercise-i.html#exercise-i"><span class="toc-section-number">2.6</span> Exercise I</a></li>
+<li class="has-sub"><a href="2-7-exercise-ii.html#exercise-ii"><span class="toc-section-number">2.7</span> Exercise II</a><ul>
+<li><a href="2-7-exercise-ii.html#comparison-of-data"><span class="toc-section-number">2.7.1</span> Comparison of data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii-1"><i class="fa fa-check"></i><b>2.8</b> Exercise II</a></li>
+<li><a href="2-8-exercise-ii-1.html#exercise-ii-1"><span class="toc-section-number">2.8</span> Exercise II</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html"><i class="fa fa-check"></i><b>3</b> Practical: Principal component analysis</a><ul>
-<li class="chapter" data-level="3.1" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#data-1"><i class="fa fa-check"></i><b>3.1</b> Data</a></li>
-<li class="chapter" data-level="3.2" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
-<li class="chapter" data-level="3.3" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-i-1"><i class="fa fa-check"></i><b>3.3</b> Exercise I</a></li>
-<li class="chapter" data-level="3.4" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-ii-2"><i class="fa fa-check"></i><b>3.4</b> Exercise II</a></li>
-<li class="chapter" data-level="3.5" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iii"><i class="fa fa-check"></i><b>3.5</b> Exercise III</a></li>
-<li class="chapter" data-level="3.6" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iv-single-cell-data"><i class="fa fa-check"></i><b>3.6</b> Exercise IV: Single cell data</a></li>
+<li class="has-sub"><a href="3-practical-principal-component-analysis.html#practical-principal-component-analysis"><span class="toc-section-number">3</span> Practical: Principal component analysis</a><ul>
+<li><a href="3-1-data-1.html#data-1"><span class="toc-section-number">3.1</span> Data</a></li>
+<li><a href="3-2-introduction-1.html#introduction-1"><span class="toc-section-number">3.2</span> Introduction</a></li>
+<li><a href="3-3-exercise-i-1.html#exercise-i-1"><span class="toc-section-number">3.3</span> Exercise I</a></li>
+<li><a href="3-4-exercise-ii-2.html#exercise-ii-2"><span class="toc-section-number">3.4</span> Exercise II</a></li>
+<li><a href="3-5-exercise-iii.html#exercise-iii"><span class="toc-section-number">3.5</span> Exercise III</a></li>
+<li><a href="3-6-exercise-iv-single-cell-data.html#exercise-iv-single-cell-data"><span class="toc-section-number">3.6</span> Exercise IV: Single cell data</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html"><i class="fa fa-check"></i><b>4</b> Practical: Multiple regression</a><ul>
-<li class="chapter" data-level="4.1" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#multiple-regression"><i class="fa fa-check"></i><b>4.1</b> Multiple regression</a></li>
-<li class="chapter" data-level="4.2" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#categorical-covariates"><i class="fa fa-check"></i><b>4.2</b> Categorical covariates</a></li>
-<li class="chapter" data-level="4.3" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#residuals"><i class="fa fa-check"></i><b>4.3</b> Residuals</a></li>
-<li class="chapter" data-level="4.4" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#gradient-descent-algorithm"><i class="fa fa-check"></i><b>4.4</b> Gradient descent algorithm (+)</a></li>
+<li class="has-sub"><a href="4-practical-multiple-regression.html#practical-multiple-regression"><span class="toc-section-number">4</span> Practical: Multiple regression</a><ul>
+<li><a href="4-1-multiple-regression.html#multiple-regression"><span class="toc-section-number">4.1</span> Multiple regression</a></li>
+<li><a href="4-2-categorical-covariates.html#categorical-covariates"><span class="toc-section-number">4.2</span> Categorical covariates</a></li>
+<li><a href="4-3-residuals.html#residuals"><span class="toc-section-number">4.3</span> Residuals</a></li>
+<li><a href="4-4-gradient-descent-algorithm.html#gradient-descent-algorithm"><span class="toc-section-number">4.4</span> Gradient descent algorithm (+)</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html"><i class="fa fa-check"></i><b>5</b> Practical: Generalised linear models</a><ul>
-<li class="chapter" data-level="5.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#data-2"><i class="fa fa-check"></i><b>5.1</b> Data</a></li>
-<li class="chapter" data-level="5.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#detecting-snp-associations"><i class="fa fa-check"></i><b>5.2</b> Detecting SNP associations</a></li>
-<li class="chapter" data-level="5.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#gwas-and-logistic-regression"><i class="fa fa-check"></i><b>5.3</b> GWAS and logistic regression</a></li>
-<li class="chapter" data-level="5.4" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-and-poisson-regression"><i class="fa fa-check"></i><b>5.4</b> Negative binomial and Poisson regression</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#count-based-glms"><i class="fa fa-check"></i><b>5.4.1</b> Count-based GLMs</a></li>
-<li class="chapter" data-level="5.4.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#fitting-a-glm"><i class="fa fa-check"></i><b>5.4.2</b> Fitting a GLM</a></li>
-<li class="chapter" data-level="5.4.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#comparing-nested-models"><i class="fa fa-check"></i><b>5.4.3</b> Comparing nested models</a></li>
+<li class="has-sub"><a href="5-practical-generalised-linear-models.html#practical-generalised-linear-models"><span class="toc-section-number">5</span> Practical: Generalised linear models</a><ul>
+<li><a href="5-1-data-2.html#data-2"><span class="toc-section-number">5.1</span> Data</a></li>
+<li><a href="5-2-detecting-snp-associations.html#detecting-snp-associations"><span class="toc-section-number">5.2</span> Detecting SNP associations</a></li>
+<li><a href="5-3-gwas-and-logistic-regression.html#gwas-and-logistic-regression"><span class="toc-section-number">5.3</span> GWAS and logistic regression</a></li>
+<li class="has-sub"><a href="5-4-negative-binomial-and-poisson-regression.html#negative-binomial-and-poisson-regression"><span class="toc-section-number">5.4</span> Negative binomial and Poisson regression</a><ul>
+<li><a href="5-4-negative-binomial-and-poisson-regression.html#count-based-glms"><span class="toc-section-number">5.4.1</span> Count-based GLMs</a></li>
+<li><a href="5-4-negative-binomial-and-poisson-regression.html#fitting-a-glm"><span class="toc-section-number">5.4.2</span> Fitting a GLM</a></li>
+<li><a href="5-4-negative-binomial-and-poisson-regression.html#comparing-nested-models"><span class="toc-section-number">5.4.3</span> Comparing nested models</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-vs-poisson-glms"><i class="fa fa-check"></i><b>5.5</b> Negative-Binomial vs Poisson GLMs</a></li>
-<li class="chapter" data-level="5.6" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#further-understanding-the-model-optional"><i class="fa fa-check"></i><b>5.6</b> Further understanding the model (<strong>OPTIONAL</strong>)</a></li>
+<li><a href="5-5-negative-binomial-vs-poisson-glms.html#negative-binomial-vs-poisson-glms"><span class="toc-section-number">5.5</span> Negative-Binomial vs Poisson GLMs</a></li>
+<li><a href="5-6-further-understanding-the-model-optional.html#further-understanding-the-model-optional"><span class="toc-section-number">5.6</span> Further understanding the model (<strong>OPTIONAL</strong>)</a></li>
 </ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
-
-      </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Essentials of Mathematics and Statistics</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
 <div id="model-answers-linear-regression" class="section level1 unnumbered">
-<h1>Model answers: Linear regression</h1>
-<div id="exercise-i" class="section level2">
-<h2><span class="header-section-number">2.6</span> Exercise I</h2>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="model-answers-linear-regression.html#cb28-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb28-2"><a href="model-answers-linear-regression.html#cb28-2"></a><span class="kw">library</span>(reshape2)</span></code></pre></div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="model-answers-linear-regression.html#cb29-1"></a>stork_dat &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;stork.txt&quot;</span>, <span class="dt">hedaer =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="model-answers-linear-regression.html#cb30-1"></a><span class="kw">ggplot</span>(stork_dat, <span class="kw">aes</span>(<span class="dt">x =</span> no_storks, <span class="dt">y =</span> people)) <span class="op">+</span></span>
-<span id="cb30-2"><a href="model-answers-linear-regression.html#cb30-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="Practicals-module_1_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<p>This is a plot of number of people in Oldenburg (Germany) against the number of storks. We can calculate the correlation in <code>R</code></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="model-answers-linear-regression.html#cb31-1"></a><span class="kw">cor</span>(stork_dat<span class="op">$</span>no_storks, stork_dat<span class="op">$</span>peopl)</span></code></pre></div>
-<pre><code>## [1] 0.9443965</code></pre>
-<p>This is a very high correlation, and obviously there is no causation. Think about why there would be a correlation between these two random variables.</p>
+<h1>Model answers: Linear regression</h1> 
 </div>
-<div id="exercise-ii" class="section level2">
-<h2><span class="header-section-number">2.7</span> Exercise II</h2>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="model-answers-linear-regression.html#cb33-1"></a><span class="co"># load first data set and create data.frame</span></span>
-<span id="cb33-2"><a href="model-answers-linear-regression.html#cb33-2"></a><span class="kw">load</span>(<span class="st">&quot;lr_data1.Rdata&quot;</span>)</span>
-<span id="cb33-3"><a href="model-answers-linear-regression.html#cb33-3"></a>sim_data1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)</span>
-<span id="cb33-4"><a href="model-answers-linear-regression.html#cb33-4"></a></span>
-<span id="cb33-5"><a href="model-answers-linear-regression.html#cb33-5"></a><span class="co"># load second data set and create data.frame</span></span>
-<span id="cb33-6"><a href="model-answers-linear-regression.html#cb33-6"></a><span class="kw">load</span>(<span class="st">&quot;lr_data2.Rdata&quot;</span>)</span>
-<span id="cb33-7"><a href="model-answers-linear-regression.html#cb33-7"></a>sim_data2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)</span>
-<span id="cb33-8"><a href="model-answers-linear-regression.html#cb33-8"></a></span>
-<span id="cb33-9"><a href="model-answers-linear-regression.html#cb33-9"></a>lr_fit1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> sim_data1)</span>
-<span id="cb33-10"><a href="model-answers-linear-regression.html#cb33-10"></a>lr_fit2 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> sim_data2)</span></code></pre></div>
-<div id="comparison-of-data" class="section level3">
-<h3><span class="header-section-number">2.7.1</span> Comparison of data</h3>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="model-answers-linear-regression.html#cb34-1"></a><span class="kw">ggplot</span>(sim_data1, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
-<span id="cb34-2"><a href="model-answers-linear-regression.html#cb34-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="fl">1.5</span>) <span class="op">+</span></span>
-<span id="cb34-3"><a href="model-answers-linear-regression.html#cb34-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> sim_data2, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">shape =</span> <span class="dv">18</span>)</span></code></pre></div>
-<p><img src="Practicals-module_1_files/figure-html/comp-scatter-1.png" width="672" /></p>
-<p>If we plot the data on top of each other, the first data set in black and the second one in red, we can see a small number of points are different between the two data sets.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="model-answers-linear-regression.html#cb35-1"></a><span class="kw">summary</span>(lr_fit1)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = y ~ x, data = sim_data1)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -2.8309 -0.6910  0.0296  0.7559  3.3703 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) -20.1876     0.1250 -161.46   &lt;2e-16 ***
-## x             2.8426     0.1138   24.98   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 1.229 on 98 degrees of freedom
-## Multiple R-squared:  0.8643, Adjusted R-squared:  0.8629 
-## F-statistic: 624.2 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="model-answers-linear-regression.html#cb37-1"></a><span class="kw">summary</span>(lr_fit2)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = y ~ x, data = sim_data2)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -11.386  -1.960  -1.084  -0.206  54.516 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) -18.9486     0.8006 -23.669  &lt; 2e-16 ***
-## x             2.1620     0.7285   2.968  0.00377 ** 
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 7.87 on 98 degrees of freedom
-## Multiple R-squared:  0.08245,    Adjusted R-squared:  0.07309 
-## F-statistic: 8.806 on 1 and 98 DF,  p-value: 0.003772</code></pre>
-<p>From the summary data we can see a discrepancy between the two estimates in the regression coefficients (<span class="math inline">\(\approx 1\)</span>), though the error in the estimate is quite large. The other thing to notice is that the summary of the residuals look quite different. If we investigate further and plot them we see:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="model-answers-linear-regression.html#cb39-1"></a><span class="kw">plot</span>(<span class="kw">residuals</span>(lr_fit1))</span></code></pre></div>
-<p><img src="Practicals-module_1_files/figure-html/resid-1.png" width="672" /></p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="model-answers-linear-regression.html#cb40-1"></a><span class="kw">plot</span>(<span class="kw">residuals</span>(lr_fit2))</span></code></pre></div>
-<p><img src="Practicals-module_1_files/figure-html/resid-2.png" width="672" /></p>
-<p>Here we can once again see the outliers in the second data set which affect the estimation. We now plot the histogram and boxplots for comparison:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="model-answers-linear-regression.html#cb41-1"></a><span class="kw">hist</span>(<span class="kw">residuals</span>(lr_fit1))</span></code></pre></div>
-<p><img src="Practicals-module_1_files/figure-html/hist-resid-1.png" width="672" /></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="model-answers-linear-regression.html#cb42-1"></a><span class="kw">hist</span>(<span class="kw">residuals</span>(lr_fit2))</span></code></pre></div>
-<p><img src="Practicals-module_1_files/figure-html/hist-resid-2.png" width="672" /></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="model-answers-linear-regression.html#cb43-1"></a><span class="kw">boxplot</span>(<span class="kw">residuals</span>(lr_fit2), <span class="kw">residuals</span>(lr_fit1))</span></code></pre></div>
-<p><img src="Practicals-module_1_files/figure-html/hist-resid-3.png" width="672" /></p>
-<p>Her we can see that the distribution of the residuals has significantly changed in data set 2.</p>
-<p>A change in only 4 data points was sufficient to change the regression coefficients.</p>
+<p style="text-align: center;">
+<a href="2-5-exercise.html"><button class="btn btn-default">Previous</button></a>
+<a href="2-6-exercise-i.html"><button class="btn btn-default">Next</button></a>
+</p>
 </div>
 </div>
-<div id="exercise-ii-1" class="section level2">
-<h2><span class="header-section-number">2.8</span> Exercise II</h2>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="model-answers-linear-regression.html#cb44-1"></a>b0 &lt;-<span class="st"> </span><span class="dv">10</span> <span class="co"># regression coefficient for intercept</span></span>
-<span id="cb44-2"><a href="model-answers-linear-regression.html#cb44-2"></a>b1 &lt;-<span class="st"> </span><span class="dv">-8</span> <span class="co"># regression coefficient for slope</span></span>
-<span id="cb44-3"><a href="model-answers-linear-regression.html#cb44-3"></a>sigma2 &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="co"># noise variance</span></span>
-<span id="cb44-4"><a href="model-answers-linear-regression.html#cb44-4"></a></span>
-<span id="cb44-5"><a href="model-answers-linear-regression.html#cb44-5"></a><span class="co"># number of simulations for each sample size</span></span>
-<span id="cb44-6"><a href="model-answers-linear-regression.html#cb44-6"></a>n_simulations &lt;-<span class="st"> </span><span class="dv">100</span></span>
-<span id="cb44-7"><a href="model-answers-linear-regression.html#cb44-7"></a></span>
-<span id="cb44-8"><a href="model-answers-linear-regression.html#cb44-8"></a><span class="co"># A vector of sample sizes to try</span></span>
-<span id="cb44-9"><a href="model-answers-linear-regression.html#cb44-9"></a>sample_size_v &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">80</span>, <span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">500</span>, <span class="dv">750</span>, <span class="dv">1000</span> )</span>
-<span id="cb44-10"><a href="model-answers-linear-regression.html#cb44-10"></a></span>
-<span id="cb44-11"><a href="model-answers-linear-regression.html#cb44-11"></a>n_sample_size &lt;-<span class="st"> </span><span class="kw">length</span>(sample_size_v)</span>
-<span id="cb44-12"><a href="model-answers-linear-regression.html#cb44-12"></a></span>
-<span id="cb44-13"><a href="model-answers-linear-regression.html#cb44-13"></a><span class="co"># Create a matrix to store results</span></span>
-<span id="cb44-14"><a href="model-answers-linear-regression.html#cb44-14"></a>mse_matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> n_simulations, <span class="dt">ncol =</span> n_sample_size)</span>
-<span id="cb44-15"><a href="model-answers-linear-regression.html#cb44-15"></a></span>
-<span id="cb44-16"><a href="model-answers-linear-regression.html#cb44-16"></a><span class="co"># name row and column</span></span>
-<span id="cb44-17"><a href="model-answers-linear-regression.html#cb44-17"></a><span class="kw">rownames</span>(mse_matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>n_simulations)</span>
-<span id="cb44-18"><a href="model-answers-linear-regression.html#cb44-18"></a><span class="kw">colnames</span>(mse_matrix) &lt;-<span class="st"> </span>sample_size_v</span></code></pre></div>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="model-answers-linear-regression.html#cb45-1"></a><span class="co"># loop over sample size</span></span>
-<span id="cb45-2"><a href="model-answers-linear-regression.html#cb45-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_sample_size) {</span>
-<span id="cb45-3"><a href="model-answers-linear-regression.html#cb45-3"></a>  N &lt;-<span class="st"> </span>sample_size_v[i]</span>
-<span id="cb45-4"><a href="model-answers-linear-regression.html#cb45-4"></a></span>
-<span id="cb45-5"><a href="model-answers-linear-regression.html#cb45-5"></a>  <span class="co"># for each simulation</span></span>
-<span id="cb45-6"><a href="model-answers-linear-regression.html#cb45-6"></a>  <span class="cf">for</span> (it <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_simulations) {</span>
-<span id="cb45-7"><a href="model-answers-linear-regression.html#cb45-7"></a></span>
-<span id="cb45-8"><a href="model-answers-linear-regression.html#cb45-8"></a>    x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb45-9"><a href="model-answers-linear-regression.html#cb45-9"></a>    e &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sigma2))</span>
-<span id="cb45-10"><a href="model-answers-linear-regression.html#cb45-10"></a>    y &lt;-<span class="st"> </span>b0 <span class="op">+</span><span class="st"> </span>b1 <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>e</span>
-<span id="cb45-11"><a href="model-answers-linear-regression.html#cb45-11"></a></span>
-<span id="cb45-12"><a href="model-answers-linear-regression.html#cb45-12"></a>    <span class="co"># set up a data frame and run lm()</span></span>
-<span id="cb45-13"><a href="model-answers-linear-regression.html#cb45-13"></a>    sim_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)</span>
-<span id="cb45-14"><a href="model-answers-linear-regression.html#cb45-14"></a>    lm_fit &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> sim_data)</span>
-<span id="cb45-15"><a href="model-answers-linear-regression.html#cb45-15"></a></span>
-<span id="cb45-16"><a href="model-answers-linear-regression.html#cb45-16"></a>    <span class="co"># compute the mean squared error between the fit and the actual y&#39;s</span></span>
-<span id="cb45-17"><a href="model-answers-linear-regression.html#cb45-17"></a>    y_hat &lt;-<span class="st"> </span><span class="kw">fitted</span>(lm_fit)</span>
-<span id="cb45-18"><a href="model-answers-linear-regression.html#cb45-18"></a>    mse_matrix[it, i] &lt;-<span class="st"> </span><span class="kw">mean</span>((y_hat <span class="op">-</span><span class="st"> </span>y)<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb45-19"><a href="model-answers-linear-regression.html#cb45-19"></a></span>
-<span id="cb45-20"><a href="model-answers-linear-regression.html#cb45-20"></a>  }</span>
-<span id="cb45-21"><a href="model-answers-linear-regression.html#cb45-21"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="model-answers-linear-regression.html#cb46-1"></a><span class="kw">library</span>(reshape2)</span>
-<span id="cb46-2"><a href="model-answers-linear-regression.html#cb46-2"></a></span>
-<span id="cb46-3"><a href="model-answers-linear-regression.html#cb46-3"></a>mse_df =<span class="st"> </span><span class="kw">melt</span>(mse_matrix) <span class="co"># convert the matrix into a data frame for ggplot</span></span>
-<span id="cb46-4"><a href="model-answers-linear-regression.html#cb46-4"></a><span class="kw">names</span>(mse_df) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Simulation&quot;</span>, <span class="st">&quot;Sample_Size&quot;</span>, <span class="st">&quot;MSE&quot;</span>) <span class="co"># rename the columns</span></span>
-<span id="cb46-5"><a href="model-answers-linear-regression.html#cb46-5"></a></span>
-<span id="cb46-6"><a href="model-answers-linear-regression.html#cb46-6"></a><span class="co"># now use a boxplot to look at the relationship between mean-squared prediction error and sample size</span></span>
-<span id="cb46-7"><a href="model-answers-linear-regression.html#cb46-7"></a>mse_plt =<span class="st"> </span><span class="kw">ggplot</span>(mse_df, <span class="kw">aes</span>(<span class="dt">x=</span>Sample_Size, <span class="dt">y=</span>MSE))</span>
-<span id="cb46-8"><a href="model-answers-linear-regression.html#cb46-8"></a>mse_plt =<span class="st"> </span>mse_plt <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>( <span class="kw">aes</span>(<span class="dt">group=</span>Sample_Size) )</span>
-<span id="cb46-9"><a href="model-answers-linear-regression.html#cb46-9"></a><span class="kw">print</span>(mse_plt)</span></code></pre></div>
-<p><img src="Practicals-module_1_files/figure-html/effect-plot-answ-1.png" width="1152" /></p>
-<p>You should see that the variance of the mean-squared error goes down as the sample size goes up and converges towards a limiting value. Larger sample sizes help reduce the variance in our estimators but do not make the estimates more accurate.</p>
-<p>Can you do something similar to work out the relationship between how accurate the regression coefficient estimates are as a function of sample size?</p>
+
 
 </div>
-</div>
-            </section>
 
-          </div>
-        </div>
-      </div>
-<a href="practical-linear-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="practical-principal-component-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
-<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
-<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
-<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"google": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"download": ["Practicals-module_1.pdf"],
-"toc": {
-"collapse": "subsection"
-},
-"toolbar": {
-"position": "static"
-}
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
-});
+
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
-
 </html>

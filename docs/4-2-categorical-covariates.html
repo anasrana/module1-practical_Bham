@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="4.2 Categorical covariates | Essentials of Mathematics and Statistics" />
+<meta property="og:type" content="book" />
+<meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
+
+<meta property="og:description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
+<meta name="github-repo" content="anasrana/module1-practical_Bham" />
+
+<meta name="author" content="Anas A Rana" />
+
+<meta name="date" content="2019-10-16" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics).">
+
+<title>4.2 Categorical covariates | Essentials of Mathematics and Statistics</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#introduction"><span class="toc-section-number">1</span> Introduction</a><ul>
+<li><a href="1-1-prerequisites.html#prerequisites"><span class="toc-section-number">1.1</span> Prerequisites</a></li>
+<li><a href="1-2-data-sets.html#data-sets"><span class="toc-section-number">1.2</span> Data sets</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-practical-linear-regression.html#practical-linear-regression"><span class="toc-section-number">2</span> Practical: Linear regression</a><ul>
+<li><a href="2-1-data.html#data"><span class="toc-section-number">2.1</span> Data</a></li>
+<li><a href="2-2-simulating-data.html#simulating-data"><span class="toc-section-number">2.2</span> Simulating data</a></li>
+<li class="has-sub"><a href="2-3-fitting-simple-linear-regression-model.html#fitting-simple-linear-regression-model"><span class="toc-section-number">2.3</span> Fitting simple linear regression model</a><ul>
+<li><a href="2-3-fitting-simple-linear-regression-model.html#least-squared-estimation"><span class="toc-section-number">2.3.1</span> Least squared estimation</a></li>
+<li><a href="2-3-fitting-simple-linear-regression-model.html#maximum-likelihood-estimation"><span class="toc-section-number">2.3.2</span> Maximum likelihood estimation</a></li>
+</ul></li>
+<li><a href="2-4-effect-of-variance.html#effect-of-variance"><span class="toc-section-number">2.4</span> Effect of variance</a></li>
+<li class="has-sub"><a href="2-5-exercise.html#exercise"><span class="toc-section-number">2.5</span> Exercise</a><ul>
+<li><a href="2-5-exercise.html#part-i"><span class="toc-section-number">2.5.1</span> Part I</a></li>
+<li><a href="2-5-exercise.html#part-ii"><span class="toc-section-number">2.5.2</span> Part II</a></li>
+<li><a href="2-5-exercise.html#part-iii"><span class="toc-section-number">2.5.3</span> Part III</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="model-answers-linear-regression.html#model-answers-linear-regression">Model answers: Linear regression</a><ul>
+<li><a href="2-6-exercise-i.html#exercise-i"><span class="toc-section-number">2.6</span> Exercise I</a></li>
+<li class="has-sub"><a href="2-7-exercise-ii.html#exercise-ii"><span class="toc-section-number">2.7</span> Exercise II</a><ul>
+<li><a href="2-7-exercise-ii.html#comparison-of-data"><span class="toc-section-number">2.7.1</span> Comparison of data</a></li>
+</ul></li>
+<li><a href="2-8-exercise-ii-1.html#exercise-ii-1"><span class="toc-section-number">2.8</span> Exercise II</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-practical-principal-component-analysis.html#practical-principal-component-analysis"><span class="toc-section-number">3</span> Practical: Principal component analysis</a><ul>
+<li><a href="3-1-data-1.html#data-1"><span class="toc-section-number">3.1</span> Data</a></li>
+<li><a href="3-2-introduction-1.html#introduction-1"><span class="toc-section-number">3.2</span> Introduction</a></li>
+<li><a href="3-3-exercise-i-1.html#exercise-i-1"><span class="toc-section-number">3.3</span> Exercise I</a></li>
+<li><a href="3-4-exercise-ii-2.html#exercise-ii-2"><span class="toc-section-number">3.4</span> Exercise II</a></li>
+<li><a href="3-5-exercise-iii.html#exercise-iii"><span class="toc-section-number">3.5</span> Exercise III</a></li>
+<li><a href="3-6-exercise-iv-single-cell-data.html#exercise-iv-single-cell-data"><span class="toc-section-number">3.6</span> Exercise IV: Single cell data</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-practical-multiple-regression.html#practical-multiple-regression"><span class="toc-section-number">4</span> Practical: Multiple regression</a><ul>
+<li><a href="4-1-multiple-regression.html#multiple-regression"><span class="toc-section-number">4.1</span> Multiple regression</a></li>
+<li><a href="4-2-categorical-covariates.html#categorical-covariates"><span class="toc-section-number">4.2</span> Categorical covariates</a></li>
+<li><a href="4-3-residuals.html#residuals"><span class="toc-section-number">4.3</span> Residuals</a></li>
+<li><a href="4-4-gradient-descent-algorithm.html#gradient-descent-algorithm"><span class="toc-section-number">4.4</span> Gradient descent algorithm (+)</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-practical-generalised-linear-models.html#practical-generalised-linear-models"><span class="toc-section-number">5</span> Practical: Generalised linear models</a><ul>
+<li><a href="5-1-data-2.html#data-2"><span class="toc-section-number">5.1</span> Data</a></li>
+<li><a href="5-2-detecting-snp-associations.html#detecting-snp-associations"><span class="toc-section-number">5.2</span> Detecting SNP associations</a></li>
+<li><a href="5-3-gwas-and-logistic-regression.html#gwas-and-logistic-regression"><span class="toc-section-number">5.3</span> GWAS and logistic regression</a></li>
+<li class="has-sub"><a href="5-4-negative-binomial-and-poisson-regression.html#negative-binomial-and-poisson-regression"><span class="toc-section-number">5.4</span> Negative binomial and Poisson regression</a><ul>
+<li><a href="5-4-negative-binomial-and-poisson-regression.html#count-based-glms"><span class="toc-section-number">5.4.1</span> Count-based GLMs</a></li>
+<li><a href="5-4-negative-binomial-and-poisson-regression.html#fitting-a-glm"><span class="toc-section-number">5.4.2</span> Fitting a GLM</a></li>
+<li><a href="5-4-negative-binomial-and-poisson-regression.html#comparing-nested-models"><span class="toc-section-number">5.4.3</span> Comparing nested models</a></li>
+</ul></li>
+<li><a href="5-5-negative-binomial-vs-poisson-glms.html#negative-binomial-vs-poisson-glms"><span class="toc-section-number">5.5</span> Negative-Binomial vs Poisson GLMs</a></li>
+<li><a href="5-6-further-understanding-the-model-optional.html#further-understanding-the-model-optional"><span class="toc-section-number">5.6</span> Further understanding the model (<strong>OPTIONAL</strong>)</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="categorical-covariates" class="section level2">
+<h2><span class="header-section-number">4.2</span> Categorical covariates</h2>
+<p>Recall from the lecture that covariates don’t need to be numerical but can also be <em>categorical</em>. We will now explore regression with a categorical variable. Load a new dataset which is included in the <code>MASS</code> package, you won’t be able to load this dataset if package isn’t installed. Load the dataset explore what the data looks like.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="4-2-categorical-covariates.html#cb78-1"></a><span class="kw">library</span>(MASS)</span>
+<span id="cb78-2"><a href="4-2-categorical-covariates.html#cb78-2"></a><span class="kw">data</span>(<span class="st">&quot;birthwt&quot;</span>)</span>
+<span id="cb78-3"><a href="4-2-categorical-covariates.html#cb78-3"></a></span>
+<span id="cb78-4"><a href="4-2-categorical-covariates.html#cb78-4"></a><span class="kw">head</span>(birthwt)</span></code></pre></div>
+<pre><code>##    low age lwt race smoke ptl ht ui ftv  bwt
+## 85   0  19 182    2     0   0  0  1   0 2523
+## 86   0  33 155    3     0   0  0  0   3 2551
+## 87   0  20 105    1     1   0  0  0   1 2557
+## 88   0  21 108    1     1   0  0  1   2 2594
+## 89   0  18 107    1     1   0  0  1   0 2600
+## 91   0  21 124    3     0   0  0  0   0 2622</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="4-2-categorical-covariates.html#cb80-1"></a><span class="kw">summary</span>(birthwt)</span></code></pre></div>
+<pre><code>##       low              age             lwt             race      
+##  Min.   :0.0000   Min.   :14.00   Min.   : 80.0   Min.   :1.000  
+##  1st Qu.:0.0000   1st Qu.:19.00   1st Qu.:110.0   1st Qu.:1.000  
+##  Median :0.0000   Median :23.00   Median :121.0   Median :1.000  
+##  Mean   :0.3122   Mean   :23.24   Mean   :129.8   Mean   :1.847  
+##  3rd Qu.:1.0000   3rd Qu.:26.00   3rd Qu.:140.0   3rd Qu.:3.000  
+##  Max.   :1.0000   Max.   :45.00   Max.   :250.0   Max.   :3.000  
+##      smoke             ptl               ht                ui        
+##  Min.   :0.0000   Min.   :0.0000   Min.   :0.00000   Min.   :0.0000  
+##  1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.00000   1st Qu.:0.0000  
+##  Median :0.0000   Median :0.0000   Median :0.00000   Median :0.0000  
+##  Mean   :0.3915   Mean   :0.1958   Mean   :0.06349   Mean   :0.1481  
+##  3rd Qu.:1.0000   3rd Qu.:0.0000   3rd Qu.:0.00000   3rd Qu.:0.0000  
+##  Max.   :1.0000   Max.   :3.0000   Max.   :1.00000   Max.   :1.0000  
+##       ftv              bwt      
+##  Min.   :0.0000   Min.   : 709  
+##  1st Qu.:0.0000   1st Qu.:2414  
+##  Median :0.0000   Median :2977  
+##  Mean   :0.7937   Mean   :2945  
+##  3rd Qu.:1.0000   3rd Qu.:3487  
+##  Max.   :6.0000   Max.   :4990</code></pre>
+<p>We will give the data more interpretable names and generally cleanup the data a little bit.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="4-2-categorical-covariates.html#cb82-1"></a><span class="co"># rename columns</span></span>
+<span id="cb82-2"><a href="4-2-categorical-covariates.html#cb82-2"></a><span class="kw">colnames</span>(birthwt) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;bwt_below_2500&quot;</span>, <span class="st">&quot;mother_age&quot;</span>, <span class="st">&quot;mother_weight&quot;</span>, <span class="st">&quot;race&quot;</span>,</span>
+<span id="cb82-3"><a href="4-2-categorical-covariates.html#cb82-3"></a>                       <span class="st">&quot;mother_smokes&quot;</span>, <span class="st">&quot;previous_prem_labor&quot;</span>, <span class="st">&quot;hypertension&quot;</span>,</span>
+<span id="cb82-4"><a href="4-2-categorical-covariates.html#cb82-4"></a>                       <span class="st">&quot;uterine_irr&quot;</span>, <span class="st">&quot;physician_visits&quot;</span>, <span class="st">&quot;bwt_grams&quot;</span>)</span>
+<span id="cb82-5"><a href="4-2-categorical-covariates.html#cb82-5"></a></span>
+<span id="cb82-6"><a href="4-2-categorical-covariates.html#cb82-6"></a>birthwt<span class="op">$</span>race &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;other&quot;</span>)[birthwt<span class="op">$</span>race])</span>
+<span id="cb82-7"><a href="4-2-categorical-covariates.html#cb82-7"></a>birthwt<span class="op">$</span>mother_smokes &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)[birthwt<span class="op">$</span>mother_smokes <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</span>
+<span id="cb82-8"><a href="4-2-categorical-covariates.html#cb82-8"></a>birthwt<span class="op">$</span>uterine_irr &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)[birthwt<span class="op">$</span>uterine_irr <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</span>
+<span id="cb82-9"><a href="4-2-categorical-covariates.html#cb82-9"></a>birthwt<span class="op">$</span>hypertension &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)[birthwt<span class="op">$</span>hypertension <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</span>
+<span id="cb82-10"><a href="4-2-categorical-covariates.html#cb82-10"></a></span>
+<span id="cb82-11"><a href="4-2-categorical-covariates.html#cb82-11"></a><span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> mother_smokes, <span class="dt">y =</span> bwt_grams)) <span class="op">+</span></span>
+<span id="cb82-12"><a href="4-2-categorical-covariates.html#cb82-12"></a><span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb82-13"><a href="4-2-categorical-covariates.html#cb82-13"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Data on baby births in Springfield (1986)&quot;</span>,</span>
+<span id="cb82-14"><a href="4-2-categorical-covariates.html#cb82-14"></a>         <span class="dt">x =</span> <span class="st">&quot;Does the mother smoke?&quot;</span>,</span>
+<span id="cb82-15"><a href="4-2-categorical-covariates.html#cb82-15"></a>         <span class="dt">y =</span> <span class="st">&quot;Birth-weight [grams]&quot;</span>)</span></code></pre></div>
+<p><img src="Practicals-module_1_files/figure-html/bplt-1.png" width="2400" /></p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="4-2-categorical-covariates.html#cb83-1"></a><span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> mother_age, <span class="dt">y =</span> bwt_grams, <span class="dt">col =</span> mother_smokes)) <span class="op">+</span></span>
+<span id="cb83-2"><a href="4-2-categorical-covariates.html#cb83-2"></a><span class="st">    </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="Practicals-module_1_files/figure-html/bwt_sct-1.png" width="3000" /></p>
+<p>Now we perform linear regression using the categorical variable, it is no different than performing linear regression on numeric data. The difference is in interpretation.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="4-2-categorical-covariates.html#cb84-1"></a>bwt_fit &lt;-<span class="st"> </span><span class="kw">lm</span>(bwt_grams <span class="op">~</span><span class="st"> </span>mother_smokes, <span class="dt">data =</span> birthwt)</span>
+<span id="cb84-2"><a href="4-2-categorical-covariates.html#cb84-2"></a></span>
+<span id="cb84-3"><a href="4-2-categorical-covariates.html#cb84-3"></a><span class="kw">summary</span>(bwt_fit)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = bwt_grams ~ mother_smokes, data = birthwt)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2062.9  -475.9    34.3   545.1  1934.3 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)       3055.70      66.93  45.653  &lt; 2e-16 ***
+## mother_smokesYes  -283.78     106.97  -2.653  0.00867 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 717.8 on 187 degrees of freedom
+## Multiple R-squared:  0.03627,    Adjusted R-squared:  0.03112 
+## F-statistic: 7.038 on 1 and 187 DF,  p-value: 0.008667</code></pre>
+<p>When you put a categorical variable in the formula for <code>lm</code> as in this case <code>bwt_grams ~ mother_smokes</code> where we have two levels in the categorical variable. If we consider this model as <span class="math inline">\(y = \beta_0 + \beta_1 x + \epsilon\)</span>
+The coefficients in the model can be interpreted as follows:</p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> is average birth weight where the mother was a non smoker</li>
+<li><span class="math inline">\(\beta_0 + \beta_1\)</span> is the average birth weight where the mother is a smoker</li>
+<li><span class="math inline">\(\beta_1\)</span> is the average difference in birth weight for babies between mother that were smokers and mothers that were non smokers.</li>
+</ul>
+<p>Categorical variables can also have more than two levels and in those cases each additional level can be interpreted in the same way.</p>
+</div>
+<p style="text-align: center;">
+<a href="4-1-multiple-regression.html"><button class="btn btn-default">Previous</button></a>
+<a href="4-3-residuals.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

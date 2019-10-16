@@ -9,16 +9,11 @@ documentcalss: book
 output:
     bookdown::gitbook:
         lib_dir: assets
-        self_contained: true
         split_by: chapter
-        config:
-            toolbar:
-                position: static
     bookdown::pdf_book:
         keep_tex: no
-        number_sections: no
 link-citations: yes
-site: bookdown::gitbook
+site: bookdown::bookdown_site
 subtitle: 'Practical: Module 1'
 biblio-style: apalike
 url: 'https\://anasrana.github.io/module1-practical_Bham/'

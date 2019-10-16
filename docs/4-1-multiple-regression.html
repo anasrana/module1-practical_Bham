@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="4.1 Multiple regression | Essentials of Mathematics and Statistics" />
+<meta property="og:type" content="book" />
+<meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
+
+<meta property="og:description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics)." />
+<meta name="github-repo" content="anasrana/module1-practical_Bham" />
+
+<meta name="author" content="Anas A Rana" />
+
+<meta name="date" content="2019-10-16" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="This contains practicals for the second week of module 1 (Essentials of Mathematics and Statistics).">
+
+<title>4.1 Multiple regression | Essentials of Mathematics and Statistics</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#introduction"><span class="toc-section-number">1</span> Introduction</a><ul>
+<li><a href="1-1-prerequisites.html#prerequisites"><span class="toc-section-number">1.1</span> Prerequisites</a></li>
+<li><a href="1-2-data-sets.html#data-sets"><span class="toc-section-number">1.2</span> Data sets</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-practical-linear-regression.html#practical-linear-regression"><span class="toc-section-number">2</span> Practical: Linear regression</a><ul>
+<li><a href="2-1-data.html#data"><span class="toc-section-number">2.1</span> Data</a></li>
+<li><a href="2-2-simulating-data.html#simulating-data"><span class="toc-section-number">2.2</span> Simulating data</a></li>
+<li class="has-sub"><a href="2-3-fitting-simple-linear-regression-model.html#fitting-simple-linear-regression-model"><span class="toc-section-number">2.3</span> Fitting simple linear regression model</a><ul>
+<li><a href="2-3-fitting-simple-linear-regression-model.html#least-squared-estimation"><span class="toc-section-number">2.3.1</span> Least squared estimation</a></li>
+<li><a href="2-3-fitting-simple-linear-regression-model.html#maximum-likelihood-estimation"><span class="toc-section-number">2.3.2</span> Maximum likelihood estimation</a></li>
+</ul></li>
+<li><a href="2-4-effect-of-variance.html#effect-of-variance"><span class="toc-section-number">2.4</span> Effect of variance</a></li>
+<li class="has-sub"><a href="2-5-exercise.html#exercise"><span class="toc-section-number">2.5</span> Exercise</a><ul>
+<li><a href="2-5-exercise.html#part-i"><span class="toc-section-number">2.5.1</span> Part I</a></li>
+<li><a href="2-5-exercise.html#part-ii"><span class="toc-section-number">2.5.2</span> Part II</a></li>
+<li><a href="2-5-exercise.html#part-iii"><span class="toc-section-number">2.5.3</span> Part III</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="model-answers-linear-regression.html#model-answers-linear-regression">Model answers: Linear regression</a><ul>
+<li><a href="2-6-exercise-i.html#exercise-i"><span class="toc-section-number">2.6</span> Exercise I</a></li>
+<li class="has-sub"><a href="2-7-exercise-ii.html#exercise-ii"><span class="toc-section-number">2.7</span> Exercise II</a><ul>
+<li><a href="2-7-exercise-ii.html#comparison-of-data"><span class="toc-section-number">2.7.1</span> Comparison of data</a></li>
+</ul></li>
+<li><a href="2-8-exercise-ii-1.html#exercise-ii-1"><span class="toc-section-number">2.8</span> Exercise II</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-practical-principal-component-analysis.html#practical-principal-component-analysis"><span class="toc-section-number">3</span> Practical: Principal component analysis</a><ul>
+<li><a href="3-1-data-1.html#data-1"><span class="toc-section-number">3.1</span> Data</a></li>
+<li><a href="3-2-introduction-1.html#introduction-1"><span class="toc-section-number">3.2</span> Introduction</a></li>
+<li><a href="3-3-exercise-i-1.html#exercise-i-1"><span class="toc-section-number">3.3</span> Exercise I</a></li>
+<li><a href="3-4-exercise-ii-2.html#exercise-ii-2"><span class="toc-section-number">3.4</span> Exercise II</a></li>
+<li><a href="3-5-exercise-iii.html#exercise-iii"><span class="toc-section-number">3.5</span> Exercise III</a></li>
+<li><a href="3-6-exercise-iv-single-cell-data.html#exercise-iv-single-cell-data"><span class="toc-section-number">3.6</span> Exercise IV: Single cell data</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-practical-multiple-regression.html#practical-multiple-regression"><span class="toc-section-number">4</span> Practical: Multiple regression</a><ul>
+<li><a href="4-1-multiple-regression.html#multiple-regression"><span class="toc-section-number">4.1</span> Multiple regression</a></li>
+<li><a href="4-2-categorical-covariates.html#categorical-covariates"><span class="toc-section-number">4.2</span> Categorical covariates</a></li>
+<li><a href="4-3-residuals.html#residuals"><span class="toc-section-number">4.3</span> Residuals</a></li>
+<li><a href="4-4-gradient-descent-algorithm.html#gradient-descent-algorithm"><span class="toc-section-number">4.4</span> Gradient descent algorithm (+)</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-practical-generalised-linear-models.html#practical-generalised-linear-models"><span class="toc-section-number">5</span> Practical: Generalised linear models</a><ul>
+<li><a href="5-1-data-2.html#data-2"><span class="toc-section-number">5.1</span> Data</a></li>
+<li><a href="5-2-detecting-snp-associations.html#detecting-snp-associations"><span class="toc-section-number">5.2</span> Detecting SNP associations</a></li>
+<li><a href="5-3-gwas-and-logistic-regression.html#gwas-and-logistic-regression"><span class="toc-section-number">5.3</span> GWAS and logistic regression</a></li>
+<li class="has-sub"><a href="5-4-negative-binomial-and-poisson-regression.html#negative-binomial-and-poisson-regression"><span class="toc-section-number">5.4</span> Negative binomial and Poisson regression</a><ul>
+<li><a href="5-4-negative-binomial-and-poisson-regression.html#count-based-glms"><span class="toc-section-number">5.4.1</span> Count-based GLMs</a></li>
+<li><a href="5-4-negative-binomial-and-poisson-regression.html#fitting-a-glm"><span class="toc-section-number">5.4.2</span> Fitting a GLM</a></li>
+<li><a href="5-4-negative-binomial-and-poisson-regression.html#comparing-nested-models"><span class="toc-section-number">5.4.3</span> Comparing nested models</a></li>
+</ul></li>
+<li><a href="5-5-negative-binomial-vs-poisson-glms.html#negative-binomial-vs-poisson-glms"><span class="toc-section-number">5.5</span> Negative-Binomial vs Poisson GLMs</a></li>
+<li><a href="5-6-further-understanding-the-model-optional.html#further-understanding-the-model-optional"><span class="toc-section-number">5.6</span> Further understanding the model (<strong>OPTIONAL</strong>)</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="multiple-regression" class="section level2">
+<h2><span class="header-section-number">4.1</span> Multiple regression</h2>
+<p>For this part we will use the inbuilt <code>trees</code> dataset containing <code>Volume</code>, <code>Girth</code> and <code>Height</code> data for 31 trees.</p>
+<p>First we revisit linear regression on this example, recall the function to fit a linear model <code>lm()</code>. Consider <code>Volume</code> to be the response variable and <code>Girth</code> to be the covariate.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="4-1-multiple-regression.html#cb72-1"></a>lr_fit &lt;-<span class="st"> </span><span class="kw">lm</span>(Volume <span class="op">~</span><span class="st"> </span>Girth, <span class="dt">data =</span> trees)</span>
+<span id="cb72-2"><a href="4-1-multiple-regression.html#cb72-2"></a><span class="kw">summary</span>(lr_fit)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Volume ~ Girth, data = trees)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -8.065 -3.107  0.152  3.495  9.587 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -36.9435     3.3651  -10.98 7.62e-12 ***
+## Girth         5.0659     0.2474   20.48  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.252 on 29 degrees of freedom
+## Multiple R-squared:  0.9353, Adjusted R-squared:  0.9331 
+## F-statistic: 419.4 on 1 and 29 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>We will now consider a linear regression example with multiple covariates, <code>Girth</code> as well as <code>Height</code>. In this case of course we know that they are related so we do expect both covariates to be significant.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="4-1-multiple-regression.html#cb74-1"></a>mr_fit &lt;-<span class="st"> </span><span class="kw">lm</span>(Volume <span class="op">~</span><span class="st"> </span>Girth <span class="op">+</span><span class="st"> </span>Height, <span class="dt">data =</span> trees)</span>
+<span id="cb74-2"><a href="4-1-multiple-regression.html#cb74-2"></a></span>
+<span id="cb74-3"><a href="4-1-multiple-regression.html#cb74-3"></a></span>
+<span id="cb74-4"><a href="4-1-multiple-regression.html#cb74-4"></a><span class="kw">summary</span>(mr_fit)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Volume ~ Girth + Height, data = trees)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -6.4065 -2.6493 -0.2876  2.2003  8.4847 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -57.9877     8.6382  -6.713 2.75e-07 ***
+## Girth         4.7082     0.2643  17.816  &lt; 2e-16 ***
+## Height        0.3393     0.1302   2.607   0.0145 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.882 on 28 degrees of freedom
+## Multiple R-squared:  0.948,  Adjusted R-squared:  0.9442 
+## F-statistic:   255 on 2 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p><em>Note</em>, in the formula you only enter the covariates and not the regression coefficients or any information regarding the noise.</p>
+<p>Let us now look at RSS values, we can calculate the RSS for the <code>lf_fit</code> object by using <code>sum(residuals(lr_fit)^2)</code>. We see that the RSS for LR = 524.3 and the RSS for MR = 421.92. Therefore the fit has improved but the regression coefficient for <code>Height</code> is very small and not significant.</p>
+<p>One reason for this is that the in the relationship between <code>Volume</code>, <code>Girth</code>, and <code>Height</code> is not additive but rather <code>Girth</code> and <code>Height</code> are multiplied. Using the fact that <span class="math inline">\(\log(a*b) = \log(a) + \log(b)\)</span> we can consider the log-transformed data in a linear model.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="4-1-multiple-regression.html#cb76-1"></a>mrl_fit &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(Volume) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(Girth) <span class="op">+</span><span class="st"> </span><span class="kw">log</span>(Height), <span class="dt">data =</span> trees)</span>
+<span id="cb76-2"><a href="4-1-multiple-regression.html#cb76-2"></a></span>
+<span id="cb76-3"><a href="4-1-multiple-regression.html#cb76-3"></a><span class="kw">summary</span>(mrl_fit)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log(Volume) ~ log(Girth) + log(Height), data = trees)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.168561 -0.048488  0.002431  0.063637  0.129223 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -6.63162    0.79979  -8.292 5.06e-09 ***
+## log(Girth)   1.98265    0.07501  26.432  &lt; 2e-16 ***
+## log(Height)  1.11712    0.20444   5.464 7.81e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.08139 on 28 degrees of freedom
+## Multiple R-squared:  0.9777, Adjusted R-squared:  0.9761 
+## F-statistic: 613.2 on 2 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Now we see that the regression coefficient is large and both covariates are significant. This shows that we need to ensure we understand the relationship between covariates before we construct our model.</p>
+</div>
+<p style="text-align: center;">
+<a href="4-practical-multiple-regression.html"><button class="btn btn-default">Previous</button></a>
+<a href="4-2-categorical-covariates.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

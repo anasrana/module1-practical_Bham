@@ -28,6 +28,13 @@ theme_anas <- theme_update(
   axis.title.x = element_text(size = rel(1.7)),
   axis.title.y = element_text(size = rel(1.7))
 )
+
+import_plex_sans()
+extrafont::loadfonts(device = "postscript", quiet = TRUE)
+
+knitr::opts_chunk$set(dev = 'png',
+                      dpi = 300,
+                      dev.args = list(bg = 'transparent'))
 ```
 
 ## Data

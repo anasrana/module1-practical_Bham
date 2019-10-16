@@ -45,6 +45,8 @@ theme_anas <- theme_update(
   axis.title.x = element_text(size = rel(1.7)),
   axis.title.y = element_text(size = rel(1.7))
 )
+extrafont::loadfonts(quiet=TRUE)
+import_plex_sans()
 ```
 
 In this case we have $32$ examples (cars in this case), and $11$ features.
