@@ -16,6 +16,7 @@ For this practical we will use two files you can use these links to download the
 
 - `gwas-cc-ex1.Rdata` ([download](https://raw.github.com/anasrana/module1-practical_Bham/master/data/gwas-cc-ex1.Rdata))
 - `gwas-cc-ex2.Rdata` ([download](https://raw.github.com/anasrana/module1-practical_Bham/master/data/gwas-cc-ex2.Rdata))
+- `nb_data.Rdata` ([download](https://raw.github.com/anasrana/module1-practical_Bham/master/data/nb_data.Rdata))
 
 ## Detecting SNP associations
 
