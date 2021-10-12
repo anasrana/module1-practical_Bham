@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Model Answers: Computational Testing | Essentials of Mathematics and Statistics</title>
+  <meta name="description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Model Answers: Computational Testing | Essentials of Mathematics and Statistics" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
+  
+  <meta property="og:description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
+  <meta name="github-repo" content="anasrana/module1-practical_Bham" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Model Answers: Computational Testing | Essentials of Mathematics and Statistics" />
+  
+  <meta name="twitter:description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
+  
+
+<meta name="author" content="Anas A Rana" />
+
+
+<meta name="date" content="2021-10-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="computational-testing-techniques.html"/>
+<link rel="next" href="practical-linear-regression.html"/>
+<script src="assets/header-attrs-2.11/header-attrs.js"></script>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Essentials of Mathematics and Statistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-use-these-resources"><i class="fa fa-check"></i><b>1.1</b> How to use these resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="getting-started-in-r-and-rstudio.html"><a href="getting-started-in-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Getting started in R and Rstudio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="getting-started-in-r-and-rstudio.html"><a href="getting-started-in-r-and-rstudio.html#r-scripts"><i class="fa fa-check"></i><b>2.1</b> R scripts</a></li>
+<li class="chapter" data-level="2.2" data-path="getting-started-in-r-and-rstudio.html"><a href="getting-started-in-r-and-rstudio.html#creating-an-r-script"><i class="fa fa-check"></i><b>2.2</b> Creating an R script</a></li>
+<li class="chapter" data-level="2.3" data-path="getting-started-in-r-and-rstudio.html"><a href="getting-started-in-r-and-rstudio.html#saving-an-r-script"><i class="fa fa-check"></i><b>2.3</b> Saving an R script</a></li>
+<li class="chapter" data-level="2.4" data-path="getting-started-in-r-and-rstudio.html"><a href="getting-started-in-r-and-rstudio.html#executing-code-in-an-r-script"><i class="fa fa-check"></i><b>2.4</b> Executing code in an R script</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="getting-started-in-r-and-rstudio.html"><a href="getting-started-in-r-and-rstudio.html#comments-in-an-r-script-documenting-your-code"><i class="fa fa-check"></i><b>2.4.1</b> Comments in an R script (documenting your code)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>3</b> Data sets</a></li>
+<li class="chapter" data-level="4" data-path="simulating-random-numbers.html"><a href="simulating-random-numbers.html"><i class="fa fa-check"></i><b>4</b> Simulating random numbers</a></li>
+<li class="chapter" data-level="5" data-path="markov-chains.html"><a href="markov-chains.html"><i class="fa fa-check"></i><b>5</b> Markov Chains</a></li>
+<li class="chapter" data-level="" data-path="model-answers-3-state-markov-chain.html"><a href="model-answers-3-state-markov-chain.html"><i class="fa fa-check"></i>Model answers 3 state Markov Chain</a></li>
+<li class="chapter" data-level="6" data-path="a-monopoly-simulation.html"><a href="a-monopoly-simulation.html"><i class="fa fa-check"></i><b>6</b> A Monopoly simulation</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="a-monopoly-simulation.html"><a href="a-monopoly-simulation.html#moving-around-the-board"><i class="fa fa-check"></i><b>6.1</b> Moving around the board</a></li>
+<li class="chapter" data-level="6.2" data-path="a-monopoly-simulation.html"><a href="a-monopoly-simulation.html#going-to-jail"><i class="fa fa-check"></i><b>6.2</b> Going to Jail</a></li>
+<li class="chapter" data-level="6.3" data-path="a-monopoly-simulation.html"><a href="a-monopoly-simulation.html#further-exercises"><i class="fa fa-check"></i><b>6.3</b> Further Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html"><i class="fa fa-check"></i><b>7</b> Monte Carlo Methods</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#integration"><i class="fa fa-check"></i><b>7.1</b> Integration</a></li>
+<li class="chapter" data-level="7.2" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#problem-mc-accuracy"><i class="fa fa-check"></i><b>7.2</b> Problem: MC accuracy</a></li>
+<li class="chapter" data-level="7.3" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#approximating-the-binomial-distribution"><i class="fa fa-check"></i><b>7.3</b> Approximating the Binomial Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#problem-mc-binomial"><i class="fa fa-check"></i><b>7.4</b> Problem: MC Binomial</a></li>
+<li class="chapter" data-level="7.5" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#monte-carlo-expectations"><i class="fa fa-check"></i><b>7.5</b> Monte Carlo Expectations</a></li>
+<li class="chapter" data-level="7.6" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#using-functions"><i class="fa fa-check"></i><b>7.6</b> Using Functions</a></li>
+<li class="chapter" data-level="7.7" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#simulating-from-function"><i class="fa fa-check"></i><b>7.7</b> Simulating from function</a></li>
+<li class="chapter" data-level="7.8" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#problem-mc-expectation"><i class="fa fa-check"></i><b>7.8</b> Problem: MC Expectation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="model-answers-monte-carlo.html"><a href="model-answers-monte-carlo.html"><i class="fa fa-check"></i>Model Answers: Monte Carlo</a>
+<ul>
+<li class="chapter" data-level="7.9" data-path="model-answers-monte-carlo.html"><a href="model-answers-monte-carlo.html#problem-mc-accuracy-1"><i class="fa fa-check"></i><b>7.9</b> Problem: MC accuracy</a></li>
+<li class="chapter" data-level="7.10" data-path="model-answers-monte-carlo.html"><a href="model-answers-monte-carlo.html#problem-mc-expectation-1"><i class="fa fa-check"></i><b>7.10</b> Problem: MC Expectation</a>
+<ul>
+<li class="chapter" data-level="7.10.1" data-path="model-answers-monte-carlo.html"><a href="model-answers-monte-carlo.html#problem-1"><i class="fa fa-check"></i><b>7.10.1</b> Problem 1</a></li>
+<li class="chapter" data-level="7.10.2" data-path="model-answers-monte-carlo.html"><a href="model-answers-monte-carlo.html#problem-2"><i class="fa fa-check"></i><b>7.10.2</b> Problem 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="maximum-likelihood.html"><a href="maximum-likelihood.html"><i class="fa fa-check"></i><b>8</b> Maximum Likelihood</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="maximum-likelihood.html"><a href="maximum-likelihood.html#the-likelihood-function"><i class="fa fa-check"></i><b>8.1</b> The likelihood function</a></li>
+<li class="chapter" data-level="8.2" data-path="maximum-likelihood.html"><a href="maximum-likelihood.html#optimisation"><i class="fa fa-check"></i><b>8.2</b> Optimisation</a></li>
+<li class="chapter" data-level="8.3" data-path="maximum-likelihood.html"><a href="maximum-likelihood.html#two-parameter-estimation"><i class="fa fa-check"></i><b>8.3</b> Two-parameter estimation</a></li>
+<li class="chapter" data-level="8.4" data-path="maximum-likelihood.html"><a href="maximum-likelihood.html#problem-mle"><i class="fa fa-check"></i><b>8.4</b> Problem: MLE</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="model-answers-mle.html"><a href="model-answers-mle.html"><i class="fa fa-check"></i>Model Answers: MLE</a></li>
+<li class="chapter" data-level="9" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>9</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#setup"><i class="fa fa-check"></i><b>9.1</b> Setup</a></li>
+<li class="chapter" data-level="9.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#simulating-data"><i class="fa fa-check"></i><b>9.2</b> Simulating data</a></li>
+<li class="chapter" data-level="9.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#constructing-the-confidence-interval"><i class="fa fa-check"></i><b>9.3</b> Constructing the confidence interval</a></li>
+<li class="chapter" data-level="9.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#experiment"><i class="fa fa-check"></i><b>9.4</b> Experiment</a></li>
+<li class="chapter" data-level="9.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#problem-confidence-interval"><i class="fa fa-check"></i><b>9.5</b> Problem: Confidence Interval</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="model-answer-confidence-interval.html"><a href="model-answer-confidence-interval.html"><i class="fa fa-check"></i>Model Answer: Confidence Interval</a></li>
+<li class="chapter" data-level="10" data-path="computational-testing-techniques.html"><a href="computational-testing-techniques.html"><i class="fa fa-check"></i><b>10</b> Computational Testing Techniques</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="computational-testing-techniques.html"><a href="computational-testing-techniques.html#problem-1-1"><i class="fa fa-check"></i><b>10.1</b> Problem 1</a></li>
+<li class="chapter" data-level="10.2" data-path="computational-testing-techniques.html"><a href="computational-testing-techniques.html#problem-2-1"><i class="fa fa-check"></i><b>10.2</b> Problem 2</a></li>
+<li class="chapter" data-level="10.3" data-path="computational-testing-techniques.html"><a href="computational-testing-techniques.html#problem-3"><i class="fa fa-check"></i><b>10.3</b> Problem 3</a></li>
+<li class="chapter" data-level="10.4" data-path="computational-testing-techniques.html"><a href="computational-testing-techniques.html#problem-4"><i class="fa fa-check"></i><b>10.4</b> Problem 4</a></li>
+<li class="chapter" data-level="10.5" data-path="computational-testing-techniques.html"><a href="computational-testing-techniques.html#problem-5"><i class="fa fa-check"></i><b>10.5</b> Problem 5</a></li>
+<li class="chapter" data-level="10.6" data-path="computational-testing-techniques.html"><a href="computational-testing-techniques.html#problem-7"><i class="fa fa-check"></i><b>10.6</b> Problem 7</a></li>
+<li class="chapter" data-level="10.7" data-path="computational-testing-techniques.html"><a href="computational-testing-techniques.html#problem-8"><i class="fa fa-check"></i><b>10.7</b> Problem 8</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="model-answers-computational-testing.html"><a href="model-answers-computational-testing.html"><i class="fa fa-check"></i>Model Answers: Computational Testing</a>
+<ul>
+<li class="chapter" data-level="10.8" data-path="model-answers-computational-testing.html"><a href="model-answers-computational-testing.html#problem-1-2"><i class="fa fa-check"></i><b>10.8</b> Problem 1</a></li>
+<li class="chapter" data-level="10.9" data-path="model-answers-computational-testing.html"><a href="model-answers-computational-testing.html#problem-2-2"><i class="fa fa-check"></i><b>10.9</b> Problem 2</a></li>
+<li class="chapter" data-level="10.10" data-path="model-answers-computational-testing.html"><a href="model-answers-computational-testing.html#problem-3-1"><i class="fa fa-check"></i><b>10.10</b> Problem 3</a></li>
+<li class="chapter" data-level="10.11" data-path="model-answers-computational-testing.html"><a href="model-answers-computational-testing.html#problem-4-1"><i class="fa fa-check"></i><b>10.11</b> Problem 4</a></li>
+<li class="chapter" data-level="10.12" data-path="model-answers-computational-testing.html"><a href="model-answers-computational-testing.html#problem-5-1"><i class="fa fa-check"></i><b>10.12</b> Problem 5</a></li>
+<li class="chapter" data-level="10.13" data-path="model-answers-computational-testing.html"><a href="model-answers-computational-testing.html#problem-6"><i class="fa fa-check"></i><b>10.13</b> Problem 6</a></li>
+<li class="chapter" data-level="10.14" data-path="model-answers-computational-testing.html"><a href="model-answers-computational-testing.html#problem-7-1"><i class="fa fa-check"></i><b>10.14</b> Problem 7</a></li>
+<li class="chapter" data-level="10.15" data-path="model-answers-computational-testing.html"><a href="model-answers-computational-testing.html#problem-8-1"><i class="fa fa-check"></i><b>10.15</b> Problem 8</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html"><i class="fa fa-check"></i><b>11</b> Practical: Linear regression</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#data"><i class="fa fa-check"></i><b>11.1</b> Data</a></li>
+<li class="chapter" data-level="11.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#simulating-data-1"><i class="fa fa-check"></i><b>11.2</b> Simulating data</a></li>
+<li class="chapter" data-level="11.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#fitting-simple-linear-regression-model"><i class="fa fa-check"></i><b>11.3</b> Fitting simple linear regression model</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#least-squared-estimation"><i class="fa fa-check"></i><b>11.3.1</b> Least squared estimation</a></li>
+<li class="chapter" data-level="11.3.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>11.3.2</b> Maximum likelihood estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#effect-of-variance"><i class="fa fa-check"></i><b>11.4</b> Effect of variance</a></li>
+<li class="chapter" data-level="11.5" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#exercise"><i class="fa fa-check"></i><b>11.5</b> Exercise</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-i"><i class="fa fa-check"></i><b>11.5.1</b> Part I</a></li>
+<li class="chapter" data-level="11.5.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-ii"><i class="fa fa-check"></i><b>11.5.2</b> Part II</a></li>
+<li class="chapter" data-level="11.5.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-iii"><i class="fa fa-check"></i><b>11.5.3</b> Part III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html"><i class="fa fa-check"></i>Model answers: Linear regression</a>
+<ul>
+<li class="chapter" data-level="11.6" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-i"><i class="fa fa-check"></i><b>11.6</b> Exercise I</a></li>
+<li class="chapter" data-level="11.7" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii"><i class="fa fa-check"></i><b>11.7</b> Exercise II</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#comparison-of-data"><i class="fa fa-check"></i><b>11.7.1</b> Comparison of data</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii-1"><i class="fa fa-check"></i><b>11.8</b> Exercise II</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html"><i class="fa fa-check"></i><b>12</b> Practical: Principal component analysis</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#data-1"><i class="fa fa-check"></i><b>12.1</b> Data</a></li>
+<li class="chapter" data-level="12.2" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#introduction-1"><i class="fa fa-check"></i><b>12.2</b> Introduction</a></li>
+<li class="chapter" data-level="12.3" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-i-1"><i class="fa fa-check"></i><b>12.3</b> Exercise I</a></li>
+<li class="chapter" data-level="12.4" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-ii-2"><i class="fa fa-check"></i><b>12.4</b> Exercise II</a></li>
+<li class="chapter" data-level="12.5" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iii"><i class="fa fa-check"></i><b>12.5</b> Exercise III</a></li>
+<li class="chapter" data-level="12.6" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iv-single-cell-data"><i class="fa fa-check"></i><b>12.6</b> Exercise IV: Single cell data</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html"><i class="fa fa-check"></i><b>13</b> Practical: Multiple regression</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#multiple-regression"><i class="fa fa-check"></i><b>13.1</b> Multiple regression</a></li>
+<li class="chapter" data-level="13.2" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#categorical-covariates"><i class="fa fa-check"></i><b>13.2</b> Categorical covariates</a></li>
+<li class="chapter" data-level="13.3" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#residuals"><i class="fa fa-check"></i><b>13.3</b> Residuals</a></li>
+<li class="chapter" data-level="13.4" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#gradient-descent-algorithm"><i class="fa fa-check"></i><b>13.4</b> Gradient descent algorithm (+)</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html"><i class="fa fa-check"></i><b>14</b> Practical: Generalised linear models</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#data-2"><i class="fa fa-check"></i><b>14.1</b> Data</a></li>
+<li class="chapter" data-level="14.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#detecting-snp-associations"><i class="fa fa-check"></i><b>14.2</b> Detecting SNP associations</a></li>
+<li class="chapter" data-level="14.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#gwas-and-logistic-regression"><i class="fa fa-check"></i><b>14.3</b> GWAS and logistic regression</a></li>
+<li class="chapter" data-level="14.4" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-and-poisson-regression"><i class="fa fa-check"></i><b>14.4</b> Negative binomial and Poisson regression</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#count-based-glms"><i class="fa fa-check"></i><b>14.4.1</b> Count-based GLMs</a></li>
+<li class="chapter" data-level="14.4.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#fitting-a-glm"><i class="fa fa-check"></i><b>14.4.2</b> Fitting a GLM</a></li>
+<li class="chapter" data-level="14.4.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#comparing-nested-models"><i class="fa fa-check"></i><b>14.4.3</b> Comparing nested models</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-vs-poisson-glms"><i class="fa fa-check"></i><b>14.5</b> Negative-Binomial vs Poisson GLMs</a></li>
+<li class="chapter" data-level="14.6" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#further-understanding-the-model-optional"><i class="fa fa-check"></i><b>14.6</b> Further understanding the model (<strong>OPTIONAL</strong>)</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Essentials of Mathematics and Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="model-answers-computational-testing" class="section level1 unnumbered">
+<h1>Model Answers: Computational Testing</h1>
+<div id="problem-1-2" class="section level2" number="10.8">
+<h2><span class="header-section-number">10.8</span> Problem 1</h2>
+<p>The data is:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="model-answers-computational-testing.html#cb103-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">263.9</span>, <span class="fl">266.2</span>, <span class="fl">266.3</span>, <span class="fl">266.8</span>, <span class="fl">265.0</span>)</span></code></pre></div>
+<p>Now construct some summary statistics and define some given parameters:</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="model-answers-computational-testing.html#cb104-1" aria-hidden="true" tabindex="-1"></a>x_bar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x) <span class="co"># compute sample mean</span></span>
+<span id="cb104-2"><a href="model-answers-computational-testing.html#cb104-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">1.65</span> <span class="co"># population standard deviation is given</span></span>
+<span id="cb104-3"><a href="model-answers-computational-testing.html#cb104-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">260</span> <span class="co"># population mean to be tested against</span></span>
+<span id="cb104-4"><a href="model-answers-computational-testing.html#cb104-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x) <span class="co"># number of samples</span></span></code></pre></div>
+<p>Construct the z-statistic:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="model-answers-computational-testing.html#cb105-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x_bar <span class="sc">-</span> mu) <span class="sc">/</span> (sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb105-2"><a href="model-answers-computational-testing.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span></code></pre></div>
+<pre><code>## [1] 7.643287</code></pre>
+<p>Check if the z-statistic is in the critical range. First, work out what the z-value at the edge of the critical region is:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="model-answers-computational-testing.html#cb107-1" aria-hidden="true" tabindex="-1"></a>z_threshold <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.01</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb107-2"><a href="model-answers-computational-testing.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z_threshold)</span></code></pre></div>
+<pre><code>## [1] 2.326348</code></pre>
+<p>Thus, the z-statistic is much greater than the threshold and there is evidence to suggest the cartons are overfilled.</p>
+</div>
+<div id="problem-2-2" class="section level2" number="10.9">
+<h2><span class="header-section-number">10.9</span> Problem 2</h2>
+<p>Parameters given by the problem:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="model-answers-computational-testing.html#cb109-1" aria-hidden="true" tabindex="-1"></a>x_bar <span class="ot">&lt;-</span> <span class="fl">103.11</span></span>
+<span id="cb109-2"><a href="model-answers-computational-testing.html#cb109-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fl">53.5</span></span>
+<span id="cb109-3"><a href="model-answers-computational-testing.html#cb109-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb109-4"><a href="model-answers-computational-testing.html#cb109-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">45</span></span></code></pre></div>
+<p>Compute the z-statistic assuming large sample assumptions apply:</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="model-answers-computational-testing.html#cb110-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> ( x_bar <span class="sc">-</span> mu )<span class="sc">/</span>(s<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb110-2"><a href="model-answers-computational-testing.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span></code></pre></div>
+<pre><code>## [1] 0.3899535</code></pre>
+<p>Now, work out the thresholds of the critical regions:</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="model-answers-computational-testing.html#cb112-1" aria-hidden="true" tabindex="-1"></a>z_upper <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.025</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb112-2"><a href="model-answers-computational-testing.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z_upper)</span></code></pre></div>
+<pre><code>## [1] 1.959964</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="model-answers-computational-testing.html#cb114-1" aria-hidden="true" tabindex="-1"></a>z_lower <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb114-2"><a href="model-answers-computational-testing.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z_lower)</span></code></pre></div>
+<pre><code>## [1] -1.959964</code></pre>
+<p>The z-statistic is outside the critical regions and therefore we do not reject the null hypothesis.</p>
+</div>
+<div id="problem-3-1" class="section level2" number="10.10">
+<h2><span class="header-section-number">10.10</span> Problem 3</h2>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="model-answers-computational-testing.html#cb116-1" aria-hidden="true" tabindex="-1"></a>z_test <span class="ot">&lt;-</span> <span class="cf">function</span>(x, mu, popvar){</span>
+<span id="cb116-2"><a href="model-answers-computational-testing.html#cb116-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-3"><a href="model-answers-computational-testing.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  one_tail_p <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb116-4"><a href="model-answers-computational-testing.html#cb116-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-5"><a href="model-answers-computational-testing.html#cb116-5" aria-hidden="true" tabindex="-1"></a>  z_score <span class="ot">&lt;-</span> <span class="fu">round</span>((<span class="fu">mean</span>(x) <span class="sc">-</span> mu) <span class="sc">/</span> (popvar <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(x))), <span class="dv">3</span>)</span>
+<span id="cb116-6"><a href="model-answers-computational-testing.html#cb116-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-7"><a href="model-answers-computational-testing.html#cb116-7" aria-hidden="true" tabindex="-1"></a>  one_tail_p <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">pnorm</span>(<span class="fu">abs</span>(z_score),<span class="at">lower.tail =</span> <span class="cn">FALSE</span>), <span class="dv">3</span>)</span>
+<span id="cb116-8"><a href="model-answers-computational-testing.html#cb116-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-9"><a href="model-answers-computational-testing.html#cb116-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot; z =&quot;</span>, z_score, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb116-10"><a href="model-answers-computational-testing.html#cb116-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;one-tailed probability =&quot;</span>, one_tail_p, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb116-11"><a href="model-answers-computational-testing.html#cb116-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;two-tailed probability =&quot;</span>, <span class="dv">2</span> <span class="sc">*</span> one_tail_p)</span>
+<span id="cb116-12"><a href="model-answers-computational-testing.html#cb116-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-13"><a href="model-answers-computational-testing.html#cb116-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">z =</span> z_score, <span class="at">one_p =</span> one_tail_p, <span class="at">two_p =</span> <span class="dv">2</span> <span class="sc">*</span> one_tail_p))</span>
+<span id="cb116-14"><a href="model-answers-computational-testing.html#cb116-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb116-15"><a href="model-answers-computational-testing.html#cb116-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-16"><a href="model-answers-computational-testing.html#cb116-16" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co"># generate some artificial data from a N(0, 1)</span></span>
+<span id="cb116-17"><a href="model-answers-computational-testing.html#cb116-17" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">z_test</span>(x, <span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># null should not be rejected!</span></span></code></pre></div>
+<pre><code>##  z = 0.387 
+##  one-tailed probability = 0.349 
+##  two-tailed probability = 0.698</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="model-answers-computational-testing.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(out)</span></code></pre></div>
+<pre><code>## $z
+## [1] 0.387
+## 
+## $one_p
+## [1] 0.349
+## 
+## $two_p
+## [1] 0.698</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="model-answers-computational-testing.html#cb120-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co"># generate some artificial data from a N(1, 1)</span></span>
+<span id="cb120-2"><a href="model-answers-computational-testing.html#cb120-2" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">z_test</span>(x, <span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># null should be rejected!</span></span></code></pre></div>
+<pre><code>##  z = 2.836 
+##  one-tailed probability = 0.002 
+##  two-tailed probability = 0.004</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="model-answers-computational-testing.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(out)</span></code></pre></div>
+<pre><code>## $z
+## [1] 2.836
+## 
+## $one_p
+## [1] 0.002
+## 
+## $two_p
+## [1] 0.004</code></pre>
+</div>
+<div id="problem-4-1" class="section level2" number="10.11">
+<h2><span class="header-section-number">10.11</span> Problem 4</h2>
+<p>Define some parameters</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="model-answers-computational-testing.html#cb124-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">5.4</span></span>
+<span id="cb124-2"><a href="model-answers-computational-testing.html#cb124-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb124-3"><a href="model-answers-computational-testing.html#cb124-3" aria-hidden="true" tabindex="-1"></a>x_bar <span class="ot">&lt;-</span> <span class="fl">5.64</span></span>
+<span id="cb124-4"><a href="model-answers-computational-testing.html#cb124-4" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fl">0.05</span></span></code></pre></div>
+<p>Compute the t-statistic:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="model-answers-computational-testing.html#cb125-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> (x_bar <span class="sc">-</span> mu) <span class="sc">/</span> <span class="fu">sqrt</span>(s2 <span class="sc">/</span> n)</span>
+<span id="cb125-2"><a href="model-answers-computational-testing.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(t)</span></code></pre></div>
+<pre><code>## [1] 2.4</code></pre>
+<p>Work out the thresholds of the critical regions:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="model-answers-computational-testing.html#cb127-1" aria-hidden="true" tabindex="-1"></a>t_upper <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.025</span>, <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb127-2"><a href="model-answers-computational-testing.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(t_upper)</span></code></pre></div>
+<pre><code>## [1] 2.776445</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="model-answers-computational-testing.html#cb129-1" aria-hidden="true" tabindex="-1"></a>t_lower <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb129-2"><a href="model-answers-computational-testing.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(t_lower)</span></code></pre></div>
+<pre><code>## [1] -2.776445</code></pre>
+<p>The t-statistic is outside of the critical regions so we do not reject the null hypothesis.</p>
+</div>
+<div id="problem-5-1" class="section level2" number="10.12">
+<h2><span class="header-section-number">10.12</span> Problem 5</h2>
+<p>Define the parameters:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="model-answers-computational-testing.html#cb131-1" aria-hidden="true" tabindex="-1"></a>x_bar_a <span class="ot">&lt;-</span> <span class="dv">88</span></span>
+<span id="cb131-2"><a href="model-answers-computational-testing.html#cb131-2" aria-hidden="true" tabindex="-1"></a>s2_a <span class="ot">&lt;-</span> <span class="fl">4.5</span></span>
+<span id="cb131-3"><a href="model-answers-computational-testing.html#cb131-3" aria-hidden="true" tabindex="-1"></a>n_a <span class="ot">&lt;-</span> <span class="dv">72</span></span>
+<span id="cb131-4"><a href="model-answers-computational-testing.html#cb131-4" aria-hidden="true" tabindex="-1"></a>x_bar_b <span class="ot">&lt;-</span> <span class="dv">79</span></span>
+<span id="cb131-5"><a href="model-answers-computational-testing.html#cb131-5" aria-hidden="true" tabindex="-1"></a>s2_b <span class="ot">&lt;-</span> <span class="fl">4.2</span></span>
+<span id="cb131-6"><a href="model-answers-computational-testing.html#cb131-6" aria-hidden="true" tabindex="-1"></a>n_b <span class="ot">&lt;-</span> <span class="dv">48</span></span>
+<span id="cb131-7"><a href="model-answers-computational-testing.html#cb131-7" aria-hidden="true" tabindex="-1"></a>mu_a <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb131-8"><a href="model-answers-computational-testing.html#cb131-8" aria-hidden="true" tabindex="-1"></a>mu_b <span class="ot">&lt;-</span> <span class="dv">0</span></span></code></pre></div>
+<p>Compute the z-statistic:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="model-answers-computational-testing.html#cb132-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> ((x_bar_a <span class="sc">-</span> x_bar_b) <span class="sc">-</span> (mu_a <span class="sc">-</span> mu_b)) <span class="sc">/</span> <span class="fu">sqrt</span>(s2_a <span class="sc">/</span> n_a <span class="sc">+</span> s2_b <span class="sc">/</span> n_b)</span>
+<span id="cb132-2"><a href="model-answers-computational-testing.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span></code></pre></div>
+<pre><code>## [1] 23.2379</code></pre>
+<p>Work out for the 5% significance level, the critical values:</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="model-answers-computational-testing.html#cb134-1" aria-hidden="true" tabindex="-1"></a>z_upper <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb134-2"><a href="model-answers-computational-testing.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z_upper)</span></code></pre></div>
+<pre><code>## [1] 1.644854</code></pre>
+<p>There is evidence to support the claim that process <span class="math inline">\(A\)</span> yields higher pressurisation.</p>
+</div>
+<div id="problem-6" class="section level2" number="10.13">
+<h2><span class="header-section-number">10.13</span> Problem 6</h2>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="model-answers-computational-testing.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data vectors</span></span>
+<span id="cb136-2"><a href="model-answers-computational-testing.html#cb136-2" aria-hidden="true" tabindex="-1"></a>x_A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">91.50</span>, <span class="fl">94.18</span>, <span class="fl">92.18</span>, <span class="fl">95.39</span>, <span class="fl">91.79</span>, <span class="fl">89.07</span>, <span class="fl">94.72</span>, <span class="fl">89.21</span>)</span>
+<span id="cb136-3"><a href="model-answers-computational-testing.html#cb136-3" aria-hidden="true" tabindex="-1"></a>x_B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">89.19</span>, <span class="fl">90.95</span>, <span class="fl">90.46</span>, <span class="fl">93.21</span>, <span class="fl">97.19</span>, <span class="fl">97.04</span>, <span class="fl">91.07</span>, <span class="fl">92.75</span>)</span>
+<span id="cb136-4"><a href="model-answers-computational-testing.html#cb136-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-5"><a href="model-answers-computational-testing.html#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters based on data</span></span>
+<span id="cb136-6"><a href="model-answers-computational-testing.html#cb136-6" aria-hidden="true" tabindex="-1"></a>x_bar_A <span class="ot">&lt;-</span> <span class="fu">mean</span>(x_A)</span>
+<span id="cb136-7"><a href="model-answers-computational-testing.html#cb136-7" aria-hidden="true" tabindex="-1"></a>s2_A <span class="ot">&lt;-</span> <span class="fu">var</span>(x_A)</span>
+<span id="cb136-8"><a href="model-answers-computational-testing.html#cb136-8" aria-hidden="true" tabindex="-1"></a>n_A <span class="ot">&lt;-</span> <span class="fu">length</span>(x_A)</span>
+<span id="cb136-9"><a href="model-answers-computational-testing.html#cb136-9" aria-hidden="true" tabindex="-1"></a>x_bar_B <span class="ot">&lt;-</span> <span class="fu">mean</span>(x_B)</span>
+<span id="cb136-10"><a href="model-answers-computational-testing.html#cb136-10" aria-hidden="true" tabindex="-1"></a>s2_B <span class="ot">&lt;-</span> <span class="fu">var</span>(x_B)</span>
+<span id="cb136-11"><a href="model-answers-computational-testing.html#cb136-11" aria-hidden="true" tabindex="-1"></a>n_B <span class="ot">&lt;-</span> <span class="fu">length</span>(x_B)</span></code></pre></div>
+<p>Compute the pooled variance estimator:</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="model-answers-computational-testing.html#cb137-1" aria-hidden="true" tabindex="-1"></a>s2_p <span class="ot">&lt;-</span> ((n_A <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> s2_A <span class="sc">+</span> (n_B <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> s2_B) <span class="sc">/</span> (n_A <span class="sc">+</span> n_B <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb137-2"><a href="model-answers-computational-testing.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(s2_p)</span></code></pre></div>
+<pre><code>## [1] 7.294654</code></pre>
+<p>Compute the t-statistic:</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="model-answers-computational-testing.html#cb139-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">=</span> ( x_bar_A <span class="sc">-</span> x_bar_B ) <span class="sc">/</span> <span class="fu">sqrt</span>( s2_p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>n_A <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n_B) )</span>
+<span id="cb139-2"><a href="model-answers-computational-testing.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(t)</span></code></pre></div>
+<pre><code>## [1] -0.3535909</code></pre>
+<p>Work out the critical values:</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="model-answers-computational-testing.html#cb141-1" aria-hidden="true" tabindex="-1"></a>t_upper <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.025</span>, <span class="at">df =</span> n_A <span class="sc">+</span> n_B <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb141-2"><a href="model-answers-computational-testing.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(t_upper)</span></code></pre></div>
+<pre><code>## [1] 2.144787</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="model-answers-computational-testing.html#cb143-1" aria-hidden="true" tabindex="-1"></a>t_lower <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="at">df =</span> n_A <span class="sc">+</span> n_B <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb143-2"><a href="model-answers-computational-testing.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(t_lower)</span></code></pre></div>
+<pre><code>## [1] -2.144787</code></pre>
+<p>Since <span class="math inline">\(|t|&lt;2.14\)</span> we have no evidence to reject the null hypothesis that the mean yields are equal.</p>
+<p>Now, let us use the built-in <code>t.test</code> command:</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="model-answers-computational-testing.html#cb145-1" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x =</span> x_A, <span class="at">y =</span> x_B, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb145-2"><a href="model-answers-computational-testing.html#cb145-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span>
+<span id="cb145-3"><a href="model-answers-computational-testing.html#cb145-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(out)</span></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  x_A and x_B
+## t = -0.35359, df = 14, p-value = 0.7289
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.373886  2.418886
+## sample estimates:
+## mean of x mean of y 
+##   92.2550   92.7325</code></pre>
+<p>The options <code>paired=FALSE</code> means this is an unpaired t-test, <code>var.equal=TRUE</code> forces the estimated variances to be the same (i.e. we are using a pooled variance estimator) and we are testing at 95% confidence level with an alternative hypothesis that the true difference in means is non-zero.</p>
+<p>The p-value for the t-test is between 0 and 1. In this case, the value is around 0.72 which means the hypothesis should not be reject.</p>
+</div>
+<div id="problem-7-1" class="section level2" number="10.14">
+<h2><span class="header-section-number">10.14</span> Problem 7</h2>
+<p>Define parameters:</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="model-answers-computational-testing.html#cb147-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">36</span>, <span class="dv">31</span>)</span>
+<span id="cb147-2"><a href="model-answers-computational-testing.html#cb147-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>)</span>
+<span id="cb147-3"><a href="model-answers-computational-testing.html#cb147-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
+<span id="cb147-4"><a href="model-answers-computational-testing.html#cb147-4" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span></code></pre></div>
+<p>Compute the expected counts:</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="model-answers-computational-testing.html#cb148-1" aria-hidden="true" tabindex="-1"></a>Ex <span class="ot">=</span> p<span class="sc">*</span>n</span></code></pre></div>
+<p>Compute the chi-squared statistic:</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="model-answers-computational-testing.html#cb149-1" aria-hidden="true" tabindex="-1"></a>chi2 <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> Ex)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> Ex)</span>
+<span id="cb149-2"><a href="model-answers-computational-testing.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chi2)</span></code></pre></div>
+<pre><code>## [1] 2.866667</code></pre>
+<p>Compute the critical value form the chi-squared distribution:</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="model-answers-computational-testing.html#cb151-1" aria-hidden="true" tabindex="-1"></a>chi_upper <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span>, <span class="at">df =</span> K<span class="dv">-1</span>)</span>
+<span id="cb151-2"><a href="model-answers-computational-testing.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chi_upper)</span></code></pre></div>
+<pre><code>## [1] 5.991465</code></pre>
+<p>Thus there is no evidence to reject the null hypothesis. The data provides no reason to suggest a preference for a particular door.</p>
+<p>Now, we could have done this in <code>R</code>:</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="model-answers-computational-testing.html#cb153-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(x, <span class="at">p =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>))</span>
+<span id="cb153-2"><a href="model-answers-computational-testing.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(out)</span></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  x
+## X-squared = 2.8667, df = 2, p-value = 0.2385</code></pre>
+</div>
+<div id="problem-8-1" class="section level2" number="10.15">
+<h2><span class="header-section-number">10.15</span> Problem 8</h2>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="model-answers-computational-testing.html#cb155-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span> )</span>
+<span id="cb155-2"><a href="model-answers-computational-testing.html#cb155-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="dv">32</span>, <span class="dv">12</span>, <span class="dv">6</span> )</span></code></pre></div>
+<p>You will need the <code>vcdExtra</code> package to use the <code>expand.dft</code> command:</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="model-answers-computational-testing.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;vcdExtra&quot;</span>)</span></code></pre></div>
+<p>The <code>expand.dft</code> command allows one to convert the frequency table into a vector of samples:</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="model-answers-computational-testing.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcdExtra)</span>
+<span id="cb157-2"><a href="model-answers-computational-testing.html#cb157-2" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">expand.dft</span>(<span class="fu">data.frame</span>(y,<span class="at">Frequency =</span> x), <span class="at">freq =</span> <span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in type.convert.default(as.character(DF[[i]]), ...): &#39;as.is&#39; should be specified by the caller; using TRUE</code></pre>
+<p>Now we can use the <code>fitdistr</code> function in the <code>MASS</code> package to estimate the MLE of the Poisson distribution</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="model-answers-computational-testing.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading the MASS package</span></span>
+<span id="cb159-2"><a href="model-answers-computational-testing.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb159-3"><a href="model-answers-computational-testing.html#cb159-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb159-4"><a href="model-answers-computational-testing.html#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fitting a Poisson distribution using maximum-likelihood</span></span>
+<span id="cb159-5"><a href="model-answers-computational-testing.html#cb159-5" aria-hidden="true" tabindex="-1"></a>lambda_hat <span class="ot">&lt;-</span> <span class="fu">fitdistr</span>(samples<span class="sc">$</span>y, <span class="at">densfun =</span> <span class="st">&#39;Poisson&#39;</span>)</span></code></pre></div>
+<p>Let just solve this directly using R built in function. First compute the expected probabilities under the Poisson distribution using <code>dpois</code> to compute the Poisson pdf:</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="model-answers-computational-testing.html#cb160-1" aria-hidden="true" tabindex="-1"></a>pr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb160-2"><a href="model-answers-computational-testing.html#cb160-2" aria-hidden="true" tabindex="-1"></a>pr[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="dv">0</span>, <span class="at">lambda =</span> lambda_hat<span class="sc">$</span>estimate)</span>
+<span id="cb160-3"><a href="model-answers-computational-testing.html#cb160-3" aria-hidden="true" tabindex="-1"></a>pr[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="dv">1</span>, <span class="at">lambda =</span> lambda_hat<span class="sc">$</span>estimate)</span>
+<span id="cb160-4"><a href="model-answers-computational-testing.html#cb160-4" aria-hidden="true" tabindex="-1"></a>pr[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">sum</span>(pr[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span></code></pre></div>
+<p>Then apply <code>chisq.test</code>:</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="model-answers-computational-testing.html#cb161-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(x, <span class="at">p =</span> pr)</span></code></pre></div>
+<pre><code>## Warning in chisq.test(x, p = pr): Chi-squared approximation may be incorrect</code></pre>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="model-answers-computational-testing.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(out)</span></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  x
+## X-squared = 1.3447, df = 2, p-value = 0.5105</code></pre>
+<p>Actually, in this case the answer is wrong(!), we need to apply an additional loss of degree of freedom to account for the use of the MLE. However, we can re-use values already computed by <code>chisq.test</code>:</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="model-answers-computational-testing.html#cb165-1" aria-hidden="true" tabindex="-1"></a>chi2 <span class="ot">&lt;-</span> out<span class="sc">$</span>statistic</span>
+<span id="cb165-2"><a href="model-answers-computational-testing.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chi2)</span></code></pre></div>
+<pre><code>## X-squared 
+##   1.34466</code></pre>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="model-answers-computational-testing.html#cb167-1" aria-hidden="true" tabindex="-1"></a>chi2_lower <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.01</span>, <span class="at">df =</span> <span class="dv">1</span>)</span>
+<span id="cb167-2"><a href="model-answers-computational-testing.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chi2_lower)</span></code></pre></div>
+<pre><code>## [1] 6.634897</code></pre>
+<p>Hence, there is no evidence to reject the null hypothesis. There is no reason to suppose that the Poisson distribution is not a plausible model for the number of accidents per week at this junction.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="computational-testing-techniques.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="practical-linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Practicals-module_1.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

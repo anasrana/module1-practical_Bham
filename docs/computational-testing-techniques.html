@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Essentials of Mathematics and Statistics</title>
+  <title>10 Computational Testing Techniques | Essentials of Mathematics and Statistics</title>
   <meta name="description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Essentials of Mathematics and Statistics" />
+  <meta property="og:title" content="10 Computational Testing Techniques | Essentials of Mathematics and Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="anasrana/module1-practical_Bham" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Essentials of Mathematics and Statistics" />
+  <meta name="twitter:title" content="10 Computational Testing Techniques | Essentials of Mathematics and Statistics" />
   
   <meta name="twitter:description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="model-answer-confidence-interval.html"/>
+<link rel="next" href="model-answers-computational-testing.html"/>
 <script src="assets/header-attrs-2.11/header-attrs.js"></script>
 <script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -295,19 +295,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="computational-testing-techniques" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Computational Testing Techniques</h1>
+<p>In this practical we will look at various hypothesis testing problems that explores how we can perform hypothesis testing in R. Please make an attempt before looking at the models answers.</p>
+<div id="problem-1-1" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Problem 1</h2>
+<p>A process for filling milk cartons is claimed to fill each carton with an average of 260g.</p>
+<p>The population fill weight is known to be normal, with a standard deviation of 1.65g.</p>
+<p>A random sample of five cartons was collected, and the content weighed, yielding the following (in g.)</p>
+<pre><code>263.9, 266.2, 266.3, 266.8, 265.0</code></pre>
+<p>Construct a suitable hypothesis test, at the 1% significance level, to determine whether cartons are being over-filled.</p>
+</div>
+<div id="problem-2-1" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Problem 2</h2>
+<p>The mean length of a certain type of component is assumed to be 100mm. Concerns are raised that the mean length is not 100mm.</p>
+<p>A random sample of size 45 was obtained, yielding <span class="math inline">\(\bar{x}=103.11\)</span> and <span class="math inline">\(s=53.5\)</span>.</p>
+<p>Perform a hypothesis test, at the 5% level, to determine whether these concerns are justified.</p>
+</div>
+<div id="problem-3" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> Problem 3</h2>
+<p>Can you write your own <code>z_test</code> function to perform one-sided or two-sided location (z) tests?</p>
+</div>
+<div id="problem-4" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> Problem 4</h2>
+<p>A manufacturing process yields a product that has a quality control specification of <span class="math inline">\(\mu_0=5.4\)</span>.</p>
+<p>A random sample of size <span class="math inline">\(n=5\)</span> had a sample mean of <span class="math inline">\(5.64\)</span> and sample variance of <span class="math inline">\(0.05\)</span>.</p>
+<p>Conduct a hypothesis test, at the <span class="math inline">\(5%\)</span> significance level, to assess whether the process is meeting specification.</p>
+</div>
+<div id="problem-5" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> Problem 5</h2>
+<p>Two methods of filling standard gas cylinders are claimed to be different.</p>
+<p>In particular, process <span class="math inline">\(A\)</span> is claimed to yield a higher pressure that process <span class="math inline">\(B\)</span>.</p>
+<blockquote>
+<p>A random sample of 72 cylinders were filled using process <span class="math inline">\(A\)</span>, yielding <span class="math inline">\(\bar{x}_A = 88\)</span> and <span class="math inline">\(s_A^2 = 4.5\)</span>.</p>
+</blockquote>
+<blockquote>
+<p>A random sample of 48 cylinders were filled with process <span class="math inline">\(B\)</span>, yielding <span class="math inline">\(\bar{x}_B = 79\)</span> and <span class="math inline">\(s_B^2 = 4.2\)</span>.</p>
+</blockquote>
+<p>Conduct a hypothesis test, at the 5% significance level, to investigate this claim.
+## Problem 6</p>
+<p>Two catalysts are available for a chemical process. Catalyst B is cheaper than catalyst A.</p>
+<p>Provided catalyst B produces the same mean yields, it should be preferred.</p>
+<p>To compare methods an experiment was conducted yielding the following data:</p>
+<blockquote>
+<p><span class="math inline">\(A\)</span>: 91.50 94.18 92.18 95.39 91.79 89.07 94.72 89.21</p>
+</blockquote>
+<blockquote>
+<p><span class="math inline">\(B\)</span>: 89.19 90.95 90.46 93.21 97.19 97.04 91.07 92.75</p>
+</blockquote>
+<p>Is there evidence to say the two catalysts produce different mean yields? Test at the 5% significance level</p>
+</div>
+<div id="problem-7" class="section level2" number="10.6">
+<h2><span class="header-section-number">10.6</span> Problem 7</h2>
+<p>In an animal behaviour experiment a group of 90 rats proceed down a ramp to one of three doors.</p>
+<p>The observed counts for each door were:</p>
+<blockquote>
+<p>Door: 1, 2, 3</p>
+</blockquote>
+<blockquote>
+<p>Rats: 23, 36, 31</p>
+</blockquote>
+<p>Is there evidence to suggest a preference for a specific door? Test at the 5% significance level.</p>
+</div>
+<div id="problem-8" class="section level2" number="10.7">
+<h2><span class="header-section-number">10.7</span> Problem 8</h2>
+<p>The number of accidents at a junction per week, <span class="math inline">\(Y\)</span>, was observed over a 50 week period, yielding:</p>
+<blockquote>
+<p><span class="math inline">\(y\)</span>: <span class="math inline">\(0, 1, 2, \geq 3\)</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math inline">\(O\)</span>: <span class="math inline">\(32, 12, 6, 0\)</span></p>
+</blockquote>
+<p>Test the hypothesis, at the 1% level, that <span class="math inline">\(Y \sim \operatorname{Poisson} (\lambda)\)</span></p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="model-answer-confidence-interval.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="model-answers-computational-testing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
