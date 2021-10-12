@@ -12,6 +12,7 @@ output:
         split_by: chapter
     bookdown::pdf_book:
         keep_tex: no
+        latex_engine: xelatex
 link-citations: yes
 site: bookdown::bookdown_site
 subtitle: 'Practical: Module 1'
