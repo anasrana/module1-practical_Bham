@@ -1,9 +1,17 @@
 \documentclass{article}
 \include{preview}
 \usepackage[pdftex,active,tightpage]{preview}
+\usepackage{pgfplots}
 % \usepackage{amsmath}
 \usepackage{tikz}
-\usetikzlibrary{arrows,automata}
+\usepackage{pgf-pie}
+
+
+
+\pgfmathdeclarefunction{gauss}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+\usetikzlibrary{arrows,automata, calc}
 \tikzset{node distance=4.5cm, % Minimum distance between two nodes. Change if necessary.
          every state/.style={ % Sets the properties for each state
            semithick,
@@ -16,6 +24,13 @@
            auto,
            semithick}}
 % \usetikzlibrary{matrix}
+
+% fractions
+\def\myfrac#1{\expandafter\expandafter\expandafter\expandafter\expandafter%
+           \expandafter\expandafter\myfracaux\expandafter\expandafter\expandafter#1}
+\def\myfracaux#1/#2\relax{{\Huge\color{white}$\piestyle\frac{#1}{#2}$}}
+\def\piestyle{\textstyle}
+
 %% INSERT YOUR OWN CODE HERE
 \begin{document}
 \begin{preview}

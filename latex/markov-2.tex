@@ -3,7 +3,8 @@
 \usepackage[pdftex,active,tightpage]{preview}
 % \usepackage{amsmath}
 \usepackage{tikz}
-\usetikzlibrary{arrows,automata}
+\usepackage{pgf-pie}
+\usetikzlibrary{arrows,automata, calc}
 \tikzset{node distance=4.5cm, % Minimum distance between two nodes. Change if necessary.
          every state/.style={ % Sets the properties for each state
            semithick,
@@ -15,24 +16,19 @@
            ->,>=stealth',     % Makes edges directed with bold arrowheads
            auto,
            semithick}}
+
+           \def\myfrac#1{\expandafter\expandafter\expandafter\expandafter\expandafter%
+           \expandafter\expandafter\myfracaux\expandafter\expandafter\expandafter#1}
+         \def\myfracaux#1/#2\relax{{\Huge\color{white}$\piestyle\frac{#1}{#2}$}}
+         \def\piestyle{\textstyle}
 % \usetikzlibrary{matrix}
 %% INSERT YOUR OWN CODE HERE
 \begin{document}
 \begin{preview}
-  \begin{tikzpicture}[node distance=4cm,->,>=latex,auto,
-    every edge/.append style={thick}]
+  \begin{tikzpicture}
+    \pie[color={yellow!50,blue!70,red!70}, sum=auto, before number=\myfrac, after number=\relax,text=white, font=\bfseries]
+{{1/2}/,{1/4}/,{1/4}/}
 
-    \node[state] (1) {Cloudy};
-     \node[state] (2) [below left of =1] {Sunny};
-    \node[state] (3) [below right of=1] {Rainy};
-
-
-    \path (1) edge[loop above]  node{$?$} (1)
-              edge[bend left]  node{$0.6$}   (2)
-              edge[bend left] node{$ 0.2$} (3)
-          (2) edge[loop below] node{$?$}  (2)
-              edge[bend right] node{$0.1$}     (1)
-              edge[bend left] node ($0.2$) (3);
-  \end{tikzpicture}
+   \end{tikzpicture}
 \end{preview}
 \end{document}

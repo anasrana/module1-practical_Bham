@@ -72,3 +72,6 @@ vignettes/*.pdf
 
 /*.Rdata
 /*.txt
+
+/*.vscode
+*.log

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.9.29)  12 OCT 2021 10:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.9.29)  12 OCT 2021 13:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -248,11 +248,18 @@ File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \tikz@expandcount=\count277
  (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-))) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
+))) (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf-pie/pgf-pie.sty
+Package: pgf-pie 2021/07/30 v0.6 Some LaTeX macros for pie chart by using PGF/Tikz package.
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf-pie/tikzlibrarypie.code.tex (/usr/local/texlive/2021/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+\pgfpie@angleEnd=\dimen192
+\pgfpie@explodeLength=\count278
+\pgfpie@colorLength=\count279
+\pgfpie@sliceLength=\count280
+)) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
  (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\arrowsize=\dimen192
+\arrowsize=\dimen193
 )) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryautomata.code.tex
 File: tikzlibraryautomata.code.tex 2021/05/15 v3.1.9a (3.1.9a)
  (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
@@ -279,42 +286,44 @@ File: pgflibraryshapes.multipart.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfnodepartsevenbox=\box79
 \pgfnodepartsixbox=\box80
 \pgfnodepartfivebox=\box81
-))) (/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+))) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-08-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count278
+\l__color_backend_stack_int=\count281
 \l__pdf_internal_box=\box82
 ) (./markov-2.aux)
 \openout1 = `markov-2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
 
 Preview: Fontsize 10pt
 Preview: PDFoutput 1
 (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count279
-\scratchdimen=\dimen193
+\scratchcounter=\count282
+\scratchdimen=\dimen194
 \scratchbox=\box83
-\nofMPsegments=\count280
-\nofMParguments=\count281
+\nofMPsegments=\count283
+\nofMParguments=\count284
 \everyMPshowfont=\toks30
-\MPscratchCnt=\count282
-\MPscratchDim=\dimen194
-\MPnumerator=\count283
-\makeMPintoPDFobject=\count284
+\MPscratchCnt=\count285
+\MPscratchDim=\dimen195
+\MPnumerator=\count286
+\makeMPintoPDFobject=\count287
 \everyMPtoPDFconversion=\toks31
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -323,61 +332,27 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 30.
+(Font)              <24.88> on input line 30.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 30.
-
-
-/Users/arana/Dropbox/lecturing/Module-1/02_M1-Comp_practical/latex/markov-2.tex:35: Package tikz Error: (, +, coordinate, pic, or node expected.
-
-See the tikz package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...         edge[bend left] node ($0.2$) (3);
-                                                  
-This error message was generated by an \errmessage
-command, so I can't give any explicit help.
-Pretend that you're Hercule Poirot: Examine all clues,
-and deduce the truth by order and method.
-
-
-/Users/arana/Dropbox/lecturing/Module-1/02_M1-Comp_practical/latex/markov-2.tex:35: Package pgf Error: No shape named `' is known.
-
-See the pgf package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...         edge[bend left] node ($0.2$) (3);
-                                                  
-(That was another \errmessage.)
-
-
-/Users/arana/Dropbox/lecturing/Module-1/02_M1-Comp_practical/latex/markov-2.tex:35: Package tikz Error: A node must have a (possibly empty) label text.
-
-See the tikz package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...         edge[bend left] node ($0.2$) (3);
-                                                  
-(That was another \errmessage.)
+(Font)              <20.74> on input line 30.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 30.
 
 Preview: Tightpage -32891 -32891 32891 32891
 [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./markov-2.aux) ) 
 Here is how much of TeX's memory you used:
- 12918 strings out of 478599
- 280516 string characters out of 5854086
- 549733 words of memory out of 5000000
- 30606 multiletter control sequences out of 15000+600000
- 403430 words of font info for 27 fonts, out of 8000000 for 9000
+ 13244 strings out of 478599
+ 287521 string characters out of 5854086
+ 555685 words of memory out of 5000000
+ 30914 multiletter control sequences out of 15000+600000
+ 406787 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,9n,108p,488b,965s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on markov-2.pdf (1 page, 23241 bytes).
+ 102i,7n,108p,476b,786s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on markov-2.pdf (1 page, 9846 bytes).
 PDF statistics:
- 21 PDF objects out of 1000 (max. 8388607)
- 13 compressed objects within 1 object stream
+ 16 PDF objects out of 1000 (max. 8388607)
+ 10 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

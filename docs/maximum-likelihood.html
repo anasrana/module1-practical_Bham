@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Maximum Likelihood | Essentials of Mathematics and Statistics</title>
+  <meta name="description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 Maximum Likelihood | Essentials of Mathematics and Statistics" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
+  
+  <meta property="og:description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
+  <meta name="github-repo" content="anasrana/module1-practical_Bham" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 Maximum Likelihood | Essentials of Mathematics and Statistics" />
+  
+  <meta name="twitter:description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
+  
+
+<meta name="author" content="Anas A Rana" />
+
+
+<meta name="date" content="2021-10-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="model-answers-monte-carlo.html"/>
+<link rel="next" href="model-answers-mle.html"/>
+<script src="assets/header-attrs-2.11/header-attrs.js"></script>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Essentials of Mathematics and Statistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-use-these-resources"><i class="fa fa-check"></i><b>1.1</b> How to use these resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="getting-started-in-r-and-rstudio.html"><a href="getting-started-in-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Getting started in R and Rstudio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="getting-started-in-r-and-rstudio.html"><a href="getting-started-in-r-and-rstudio.html#r-scripts"><i class="fa fa-check"></i><b>2.1</b> R scripts</a></li>
+<li class="chapter" data-level="2.2" data-path="getting-started-in-r-and-rstudio.html"><a href="getting-started-in-r-and-rstudio.html#creating-an-r-script"><i class="fa fa-check"></i><b>2.2</b> Creating an R script</a></li>
+<li class="chapter" data-level="2.3" data-path="getting-started-in-r-and-rstudio.html"><a href="getting-started-in-r-and-rstudio.html#saving-an-r-script"><i class="fa fa-check"></i><b>2.3</b> Saving an R script</a></li>
+<li class="chapter" data-level="2.4" data-path="getting-started-in-r-and-rstudio.html"><a href="getting-started-in-r-and-rstudio.html#executing-code-in-an-r-script"><i class="fa fa-check"></i><b>2.4</b> Executing code in an R script</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="getting-started-in-r-and-rstudio.html"><a href="getting-started-in-r-and-rstudio.html#comments-in-an-r-script-documenting-your-code"><i class="fa fa-check"></i><b>2.4.1</b> Comments in an R script (documenting your code)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-sets.html"><a href="data-sets.html"><i class="fa fa-check"></i><b>3</b> Data sets</a></li>
+<li class="chapter" data-level="4" data-path="simulating-random-numbers.html"><a href="simulating-random-numbers.html"><i class="fa fa-check"></i><b>4</b> Simulating random numbers</a></li>
+<li class="chapter" data-level="5" data-path="markov-chains.html"><a href="markov-chains.html"><i class="fa fa-check"></i><b>5</b> Markov Chains</a></li>
+<li class="chapter" data-level="" data-path="model-answers-3-state-markov-chain.html"><a href="model-answers-3-state-markov-chain.html"><i class="fa fa-check"></i>Model answers 3 state Markov Chain</a></li>
+<li class="chapter" data-level="6" data-path="a-monopoly-simulation.html"><a href="a-monopoly-simulation.html"><i class="fa fa-check"></i><b>6</b> A Monopoly simulation</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="a-monopoly-simulation.html"><a href="a-monopoly-simulation.html#moving-around-the-board"><i class="fa fa-check"></i><b>6.1</b> Moving around the board</a></li>
+<li class="chapter" data-level="6.2" data-path="a-monopoly-simulation.html"><a href="a-monopoly-simulation.html#going-to-jail"><i class="fa fa-check"></i><b>6.2</b> Going to Jail</a></li>
+<li class="chapter" data-level="6.3" data-path="a-monopoly-simulation.html"><a href="a-monopoly-simulation.html#further-exercises"><i class="fa fa-check"></i><b>6.3</b> Further Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html"><i class="fa fa-check"></i><b>7</b> Monte Carlo Methods</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#integration"><i class="fa fa-check"></i><b>7.1</b> Integration</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#problem-mc-accuracy"><i class="fa fa-check"></i><b>7.1.1</b> Problem: MC accuracy</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#approximating-the-binomial-distribution"><i class="fa fa-check"></i><b>7.2</b> Approximating the Binomial Distribution</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#problem-mc-binomial"><i class="fa fa-check"></i><b>7.2.1</b> Problem: MC Binomial</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#monte-carlo-expectations"><i class="fa fa-check"></i><b>7.3</b> Monte Carlo Expectations</a></li>
+<li class="chapter" data-level="7.4" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#using-functions"><i class="fa fa-check"></i><b>7.4</b> Using Functions</a></li>
+<li class="chapter" data-level="7.5" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#simulating-from-function"><i class="fa fa-check"></i><b>7.5</b> Simulating from function</a></li>
+<li class="chapter" data-level="7.6" data-path="monte-carlo-methods.html"><a href="monte-carlo-methods.html#problem-mc-expectation"><i class="fa fa-check"></i><b>7.6</b> Problem: MC Expectation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="model-answers-monte-carlo.html"><a href="model-answers-monte-carlo.html"><i class="fa fa-check"></i>Model Answers: Monte Carlo</a>
+<ul>
+<li class="chapter" data-level="7.7" data-path="model-answers-monte-carlo.html"><a href="model-answers-monte-carlo.html#problem-mc-accuracy-1"><i class="fa fa-check"></i><b>7.7</b> Problem: MC accuracy</a></li>
+<li class="chapter" data-level="7.8" data-path="model-answers-monte-carlo.html"><a href="model-answers-monte-carlo.html#problem-mc-expectation-1"><i class="fa fa-check"></i><b>7.8</b> Problem: MC Expectation</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="model-answers-monte-carlo.html"><a href="model-answers-monte-carlo.html#problem-1"><i class="fa fa-check"></i><b>7.8.1</b> Problem 1</a></li>
+<li class="chapter" data-level="7.8.2" data-path="model-answers-monte-carlo.html"><a href="model-answers-monte-carlo.html#problem-2"><i class="fa fa-check"></i><b>7.8.2</b> Problem 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="maximum-likelihood.html"><a href="maximum-likelihood.html"><i class="fa fa-check"></i><b>8</b> Maximum Likelihood</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="maximum-likelihood.html"><a href="maximum-likelihood.html#the-likelihood-function"><i class="fa fa-check"></i><b>8.1</b> The likelihood function</a></li>
+<li class="chapter" data-level="8.2" data-path="maximum-likelihood.html"><a href="maximum-likelihood.html#optimisation"><i class="fa fa-check"></i><b>8.2</b> Optimisation</a></li>
+<li class="chapter" data-level="8.3" data-path="maximum-likelihood.html"><a href="maximum-likelihood.html#two-parameter-estimation"><i class="fa fa-check"></i><b>8.3</b> Two-parameter estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="model-answers-mle.html"><a href="model-answers-mle.html"><i class="fa fa-check"></i>Model Answers: MLE</a></li>
+<li class="chapter" data-level="9" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html"><i class="fa fa-check"></i><b>9</b> Practical: Linear regression</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#data"><i class="fa fa-check"></i><b>9.1</b> Data</a></li>
+<li class="chapter" data-level="9.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#simulating-data"><i class="fa fa-check"></i><b>9.2</b> Simulating data</a></li>
+<li class="chapter" data-level="9.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#fitting-simple-linear-regression-model"><i class="fa fa-check"></i><b>9.3</b> Fitting simple linear regression model</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#least-squared-estimation"><i class="fa fa-check"></i><b>9.3.1</b> Least squared estimation</a></li>
+<li class="chapter" data-level="9.3.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>9.3.2</b> Maximum likelihood estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#effect-of-variance"><i class="fa fa-check"></i><b>9.4</b> Effect of variance</a></li>
+<li class="chapter" data-level="9.5" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#exercise"><i class="fa fa-check"></i><b>9.5</b> Exercise</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-i"><i class="fa fa-check"></i><b>9.5.1</b> Part I</a></li>
+<li class="chapter" data-level="9.5.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-ii"><i class="fa fa-check"></i><b>9.5.2</b> Part II</a></li>
+<li class="chapter" data-level="9.5.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-iii"><i class="fa fa-check"></i><b>9.5.3</b> Part III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html"><i class="fa fa-check"></i>Model answers: Linear regression</a>
+<ul>
+<li class="chapter" data-level="9.6" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-i"><i class="fa fa-check"></i><b>9.6</b> Exercise I</a></li>
+<li class="chapter" data-level="9.7" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii"><i class="fa fa-check"></i><b>9.7</b> Exercise II</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#comparison-of-data"><i class="fa fa-check"></i><b>9.7.1</b> Comparison of data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii-1"><i class="fa fa-check"></i><b>9.8</b> Exercise II</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html"><i class="fa fa-check"></i><b>10</b> Practical: Principal component analysis</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#data-1"><i class="fa fa-check"></i><b>10.1</b> Data</a></li>
+<li class="chapter" data-level="10.2" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#introduction-1"><i class="fa fa-check"></i><b>10.2</b> Introduction</a></li>
+<li class="chapter" data-level="10.3" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-i-1"><i class="fa fa-check"></i><b>10.3</b> Exercise I</a></li>
+<li class="chapter" data-level="10.4" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-ii-2"><i class="fa fa-check"></i><b>10.4</b> Exercise II</a></li>
+<li class="chapter" data-level="10.5" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iii"><i class="fa fa-check"></i><b>10.5</b> Exercise III</a></li>
+<li class="chapter" data-level="10.6" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iv-single-cell-data"><i class="fa fa-check"></i><b>10.6</b> Exercise IV: Single cell data</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html"><i class="fa fa-check"></i><b>11</b> Practical: Multiple regression</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#multiple-regression"><i class="fa fa-check"></i><b>11.1</b> Multiple regression</a></li>
+<li class="chapter" data-level="11.2" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#categorical-covariates"><i class="fa fa-check"></i><b>11.2</b> Categorical covariates</a></li>
+<li class="chapter" data-level="11.3" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#residuals"><i class="fa fa-check"></i><b>11.3</b> Residuals</a></li>
+<li class="chapter" data-level="11.4" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#gradient-descent-algorithm"><i class="fa fa-check"></i><b>11.4</b> Gradient descent algorithm (+)</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html"><i class="fa fa-check"></i><b>12</b> Practical: Generalised linear models</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#data-2"><i class="fa fa-check"></i><b>12.1</b> Data</a></li>
+<li class="chapter" data-level="12.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#detecting-snp-associations"><i class="fa fa-check"></i><b>12.2</b> Detecting SNP associations</a></li>
+<li class="chapter" data-level="12.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#gwas-and-logistic-regression"><i class="fa fa-check"></i><b>12.3</b> GWAS and logistic regression</a></li>
+<li class="chapter" data-level="12.4" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-and-poisson-regression"><i class="fa fa-check"></i><b>12.4</b> Negative binomial and Poisson regression</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#count-based-glms"><i class="fa fa-check"></i><b>12.4.1</b> Count-based GLMs</a></li>
+<li class="chapter" data-level="12.4.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#fitting-a-glm"><i class="fa fa-check"></i><b>12.4.2</b> Fitting a GLM</a></li>
+<li class="chapter" data-level="12.4.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#comparing-nested-models"><i class="fa fa-check"></i><b>12.4.3</b> Comparing nested models</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-vs-poisson-glms"><i class="fa fa-check"></i><b>12.5</b> Negative-Binomial vs Poisson GLMs</a></li>
+<li class="chapter" data-level="12.6" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#further-understanding-the-model-optional"><i class="fa fa-check"></i><b>12.6</b> Further understanding the model (<strong>OPTIONAL</strong>)</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Essentials of Mathematics and Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="maximum-likelihood" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Maximum Likelihood</h1>
+<p>During the lectures, you saw how we could use a brute-force search of parameters to find the maximum likelihood estimate of an unknown mean for a Normal distribution given a set of data. In this exercise, we will now look at how we would do this more efficiently in real life.</p>
+<div id="the-likelihood-function" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> The likelihood function</h2>
+<p>First, we are going to write a function to compute the log-likelihood function given parameters:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="maximum-likelihood.html#cb54-1" aria-hidden="true" tabindex="-1"></a>neglogLikelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, x) {</span>
+<span id="cb54-2"><a href="maximum-likelihood.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  logF <span class="ot">=</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> mu, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb54-3"><a href="maximum-likelihood.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="sc">-</span><span class="fu">sum</span>(logF))</span>
+<span id="cb54-4"><a href="maximum-likelihood.html#cb54-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Note that this function returns the <code>-sum(logF)</code> because the numerical optimisation algorithm we are going to use finds the <em>minimum</em> of a function. We are interested in the <em>maximum</em> likelihood but we can turn this into a minimisation problem by simply negating the likelihood.</p>
+<p>Now, lets assume our data is captured in the following vector:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="maximum-likelihood.html#cb55-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">1.0</span>, <span class="fl">0.2</span>, <span class="sc">-</span><span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.89</span>, <span class="sc">-</span><span class="fl">0.11</span>, <span class="sc">-</span><span class="fl">0.71</span>, <span class="fl">1.0</span>, <span class="sc">-</span><span class="fl">1.3</span>, <span class="fl">0.84</span>)</span>
+<span id="cb55-2"><a href="maximum-likelihood.html#cb55-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(x)</span></code></pre></div>
+</div>
+<div id="optimisation" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Optimisation</h2>
+<p>Now, we will need to define an initial search value for the parameter, we will arbitrarily pick a value:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="maximum-likelihood.html#cb56-1" aria-hidden="true" tabindex="-1"></a>mu_init <span class="ot">=</span> <span class="fl">1.0</span></span></code></pre></div>
+<p>Now we will use the <code>R</code> function <code>optim</code> to find the maximum likelihood estimate. As mentioned above, <code>optim</code> finds the minimum value of a function so in this case we are trying to find the parameter that minimises the negative log likelihood.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="maximum-likelihood.html#cb57-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">optim</span>(mu_init, neglogLikelihood, <span class="at">gr =</span> <span class="cn">NULL</span>, x, <span class="at">method =</span> <span class="st">&quot;L-BFGS-B&quot;</span>,</span>
+<span id="cb57-2"><a href="maximum-likelihood.html#cb57-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">lower =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">upper =</span> <span class="cn">Inf</span>)</span></code></pre></div>
+<p>Here, this says that we will start the search at <code>mu_init</code> using the function <code>logLikelihood</code> that we have defined above. The <code>optim</code> algorithm will use the <code>L-BFGS-B</code> search method. The parameter is allowed to take any value from <code>lower = -Inf</code> to <code>upper = Inf</code>. The result is stored in out.</p>
+<p>Once the optimiser has run, we can see what parameter value it has found:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="maximum-likelihood.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(out<span class="sc">$</span>par)</span></code></pre></div>
+<pre><code>## [1] 0.1372727</code></pre>
+<p>which we can compare against the sample mean</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="maximum-likelihood.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>(x))</span></code></pre></div>
+<pre><code>## [1] 0.1372727</code></pre>
+<p>It turns out that it is theoretically known that the maximum likelihood estimate, for this particular problem, is the sample mean which is why they coincide!</p>
+<p>We can visualise this further. First we define an array of possible values for <code>mu</code> in this case between -0.1 and 0.3 with 101 values in-between:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="maximum-likelihood.html#cb62-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="at">length =</span> <span class="dv">101</span>)</span></code></pre></div>
+<p>We use the <code>apply</code> function to apply the <code>logLikelihood</code> function to each of the <code>mu</code> values we have defined. This means we do not need to use a for loop:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="maximum-likelihood.html#cb63-1" aria-hidden="true" tabindex="-1"></a>neglogL <span class="ot">&lt;-</span> <span class="fu">apply</span>( <span class="fu">matrix</span>(mu), <span class="dv">1</span>, neglogLikelihood, x)</span></code></pre></div>
+<p>We can then plot and overlay the maximum likelihood result:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="maximum-likelihood.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mu, neglogL, <span class="at">pch=</span><span class="st">&quot;-&quot;</span>)</span>
+<span id="cb64-2"><a href="maximum-likelihood.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(out<span class="sc">$</span>par, out<span class="sc">$</span>value, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">pch=</span><span class="dv">0</span>)</span></code></pre></div>
+<p><img src="Practicals-module_1_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p>The plot shows that <code>optim</code> has found the <code>mu</code> which minimises the negative log-likelihood.</p>
+</div>
+<div id="two-parameter-estimation" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Two-parameter estimation</h2>
+<p>Now suppose both the mean and the variance of the Normal distribution are unknown and we need to search over two parameters for the maximum likelihood estimation.</p>
+<p>We now need a modified negative log-likelihood function:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="maximum-likelihood.html#cb65-1" aria-hidden="true" tabindex="-1"></a>neglogLikelihood2 <span class="ot">&lt;-</span> <span class="cf">function</span>(theta,x) {</span>
+<span id="cb65-2"><a href="maximum-likelihood.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> theta[<span class="dv">1</span>] <span class="co"># get value for mu</span></span>
+<span id="cb65-3"><a href="maximum-likelihood.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  sigma2 <span class="ot">&lt;-</span> theta[<span class="dv">2</span>] <span class="co"># get value for sigma2</span></span>
+<span id="cb65-4"><a href="maximum-likelihood.html#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="maximum-likelihood.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute density for each data element in x</span></span>
+<span id="cb65-6"><a href="maximum-likelihood.html#cb65-6" aria-hidden="true" tabindex="-1"></a>  logF <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> mu, <span class="at">sd =</span> <span class="fu">sqrt</span>(sigma2), <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb65-7"><a href="maximum-likelihood.html#cb65-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-8"><a href="maximum-likelihood.html#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="sc">-</span><span class="fu">sum</span>(logF)) <span class="co"># return negative log-likelihood</span></span>
+<span id="cb65-9"><a href="maximum-likelihood.html#cb65-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Notice that we pass through one argument <code>theta</code> whose elements are the parameters for <code>mu</code> and <code>sigma2</code> which we unpack within the function.</p>
+<p>Now we can run <code>optim</code> but this time the initial parameters values must be initialised with two values. Furthermore, as variance cannot be negative, we bound the possible lower values that <code>sigma2</code> can take by setting <code>lower = c(-Inf, 0.001)</code>. The second argument means <code>sigma2</code> cannot be lower than 0.001:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="maximum-likelihood.html#cb66-1" aria-hidden="true" tabindex="-1"></a>theta_init <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb66-2"><a href="maximum-likelihood.html#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-3"><a href="maximum-likelihood.html#cb66-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">optim</span>(theta_init, neglogLikelihood2, <span class="at">gr =</span> <span class="cn">NULL</span>, x, <span class="at">method =</span> <span class="st">&quot;L-BFGS-B&quot;</span>,</span>
+<span id="cb66-4"><a href="maximum-likelihood.html#cb66-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">lower =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="fl">0.001</span>), <span class="at">upper =</span> <span class="fu">c</span>(<span class="cn">Inf</span>, <span class="cn">Inf</span>))</span></code></pre></div>
+<p>We can now visualise the results by creating a two-dimensional contour plot. We first need to generate a grid of values for <code>mu</code> and <code>sigma2</code>:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="maximum-likelihood.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># one dimensional grid of values for mu</span></span>
+<span id="cb67-2"><a href="maximum-likelihood.html#cb67-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">1.0</span>, <span class="at">length =</span> <span class="dv">101</span>)</span>
+<span id="cb67-3"><a href="maximum-likelihood.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co"># one dimensional grid of values for sigma2</span></span>
+<span id="cb67-4"><a href="maximum-likelihood.html#cb67-4" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="fl">1.0</span>, <span class="at">length =</span> <span class="dv">101</span>)</span>
+<span id="cb67-5"><a href="maximum-likelihood.html#cb67-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-6"><a href="maximum-likelihood.html#cb67-6" aria-hidden="true" tabindex="-1"></a>mu_xx <span class="ot">&lt;-</span> <span class="fu">rep</span>(mu, <span class="at">each =</span> <span class="dv">101</span>) <span class="co"># replicate this 101 times</span></span>
+<span id="cb67-7"><a href="maximum-likelihood.html#cb67-7" aria-hidden="true" tabindex="-1"></a>sigma2_yy <span class="ot">&lt;-</span> <span class="fu">rep</span>(sigma2, <span class="at">times =</span> <span class="dv">101</span>) <span class="co"># replicate this 101 times</span></span>
+<span id="cb67-8"><a href="maximum-likelihood.html#cb67-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-9"><a href="maximum-likelihood.html#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="co"># generate grid of values (each row contains a unique combination</span></span>
+<span id="cb67-10"><a href="maximum-likelihood.html#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="co"># of mu and sigma2 values)</span></span>
+<span id="cb67-11"><a href="maximum-likelihood.html#cb67-11" aria-hidden="true" tabindex="-1"></a>mu_sigma_grid <span class="ot">&lt;-</span> <span class="fu">cbind</span>(mu_xx, sigma2_yy)</span></code></pre></div>
+<p>Now we apply our negative log-likehood function to this grid to generate a negative log-likelihood value for each position on the grid:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="maximum-likelihood.html#cb68-1" aria-hidden="true" tabindex="-1"></a>neglogL2 <span class="ot">&lt;-</span> <span class="fu">apply</span>(mu_sigma_grid, <span class="dv">1</span>, neglogLikelihood2, x)</span></code></pre></div>
+<p>We now use the <code>contour</code> function to plot our results:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="maximum-likelihood.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert vector of negative log-likelihood values into a grid</span></span>
+<span id="cb69-2"><a href="maximum-likelihood.html#cb69-2" aria-hidden="true" tabindex="-1"></a>neglogL2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(neglogL2, <span class="dv">101</span>)</span>
+<span id="cb69-3"><a href="maximum-likelihood.html#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="maximum-likelihood.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co"># draw contour plot</span></span>
+<span id="cb69-5"><a href="maximum-likelihood.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(sigma2, mu, neglogL2, <span class="at">nlevels =</span> <span class="dv">50</span>, <span class="at">xlab =</span> <span class="st">&quot;sigma2&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;mu&quot;</span>)</span>
+<span id="cb69-6"><a href="maximum-likelihood.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="co"># overlay the maximum likelihood estimate as a red circle</span></span>
+<span id="cb69-7"><a href="maximum-likelihood.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(out<span class="sc">$</span>par[<span class="dv">2</span>], out<span class="sc">$</span>par[<span class="dv">1</span>], <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="Practicals-module_1_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p>Excellent! We have now found the maximum likelihood estimates for the unknown mean and variance for the Normal distribution that our data is assumed to be drawn from. Let’s compare our estimates against the sample mean and variance. First, the estimates:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="maximum-likelihood.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(out<span class="sc">$</span>par[<span class="dv">1</span>]) <span class="co"># mu estimate</span></span></code></pre></div>
+<pre><code>## [1] 0.1372727</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="maximum-likelihood.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(out<span class="sc">$</span>par[<span class="dv">2</span>]) <span class="co"># sigma2 estimate</span></span></code></pre></div>
+<pre><code>## [1] 0.5569665</code></pre>
+<p>Now, the sample mean and variances:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="maximum-likelihood.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>(x)) <span class="co"># sample mean</span></span></code></pre></div>
+<pre><code>## [1] 0.1372727</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="maximum-likelihood.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">var</span>(x)) <span class="co"># sample variance (normalised by n-1)</span></span></code></pre></div>
+<pre><code>## [1] 0.6126618</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="maximum-likelihood.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">var</span>(x)<span class="sc">*</span>(n<span class="dv">-1</span>)<span class="sc">/</span>n) <span class="co"># sample variance (normalised by n)</span></span></code></pre></div>
+<pre><code>## [1] 0.5569653</code></pre>
+<p>Interesting! The maximum likelihood estimates return the sample mean and the **biased* sample variance estimate (where we normalise by <span class="math inline">\(n\)</span>
+and not <span class="math inline">\(n−1\)</span>). Indeed, it turns out that theoretically, the maximum likelihood estimate does give a biased estimate of the population variance.</p>
+<p>## Problem: MLE</p>
+<blockquote>
+<p>A potentially biased coin is tossed 10 times and the number of heads recorded. The experiment is repeated 5 times and the number of heads recorded was 3, 2, 4, 5 and 2 respectively.
+Can you derive a maximum likelihood estimate of the probability of obtaining a head?</p>
+</blockquote>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="model-answers-monte-carlo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="model-answers-mle.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Practicals-module_1.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

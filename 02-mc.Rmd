@@ -1,0 +1,548 @@
+# Monte Carlo Methods
+
+Monte Carlo (MC) simulations provide a means to model a problem and apply brute force computational power to achieve a solution - randomly simulate from a model until you get an answer. The best way to explain is to just run through a bunch of examples, so lets go!
+
+## Integration
+
+We will start with basic integration. Suppose we have an instance of a Normal distribution with a mean of 1 and a standard deviation of 2 then we want to find the *integral* (area under the curve) from 1 to 3:
+
+\[
+ \int_1^3 \frac{1}{10 \sqrt{2\,\pi}}\, e^{- \frac{(x - 1)^2}{2\times 2^2}}dx
+\]
+
+which we can visualise as follows:
+
+```{r, echo=FALSE, engine='tikz', out.width='90%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', engine.opts = list(template = "latex/tikz2pdf.tex")}
+
+\begin{tikzpicture}
+\begin{axis}[domain=0:10, samples=100,
+axis lines*=left, xlabel=\(x\), ylabel=\(p(x)\), title={N$(1, 2)$},
+height=6cm, width=10cm,
+xtick={-5,  0, 1, 3, 5}, ytick=\empty,
+enlargelimits=false, clip=false, axis on top,
+grid = major]
+\addplot [fill=cyan!20, draw=none, domain=1:3] {gauss(1,2)} \closedcycle;
+\addplot [very thick,cyan!50!black, domain=-7:9] {gauss(1,2)};
+\end{axis}
+\end{tikzpicture}
+
+```
+
+If you have not done calculus before - do not worry. We are going to write a Monte Carlo approach for estimating this integral which does not require any knowledge of calculus!
+
+The method relies on being able to generate samples from this distribution and counting how many values fall between 1 and 3. The proportion of samples that fall in this range over the total number of samples gives the area.
+
+First, create a new `R` script in `Rstudio`. Next we define the number of samples we will obtain. Lets choose 10,000
+
+```{r}
+n <- 100 # number of samples to take
+```
+
+Now we use the `R` function `rnorm` to simulate 100 numbers from a Normal distribution with mean 1 and standard deviation 2:
+
+```{r}
+sims <- rnorm(n, mean = 1, sd = 2) # simulated normally distributed numbers
+```
+
+Lets estimate the integral between 1 and 3 by counting how many samples had a value in this range:
+
+```{r}
+# find proportion of values between 1-3
+mc_integral <- sum(sims >= 1 & sims <= 3) / n
+```
+The result we get is:
+
+```{r}
+print(mc_integral)
+```
+
+The exact answer given using the cumulative distribution function `pnorm` in R is given by:
+
+```{r}
+mc_exact = pnorm(q=3, mean=1, sd=2) - pnorm(q=1, mean=1, sd=2)
+print(mc_exact)
+```
+
+The `pnorm` gives the integral under the Normal distribution (in this case with mean 1 and standard deviation 2) from negative infinity up to the value specified by `q`.
+
+The first call to `pnorm(q=3, mean=1, sd=2)` gives us this integral:
+
+```{r, echo=FALSE, engine='tikz', out.width='90%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', engine.opts = list(template = "latex/tikz2pdf.tex")}
+
+\begin{tikzpicture}
+\begin{axis}[domain=0:10, samples=100,
+axis lines*=left, xlabel=\(x\), ylabel=\(p(x)\), title={N$(1, 2)$},
+height=6cm, width=10cm,
+xtick={-5,  0, 3, 5}, ytick=\empty,
+enlargelimits=false, clip=false, axis on top,
+grid = major]
+\addplot [fill=cyan!20, draw=none, domain=-7:3] {gauss(1,2)} \closedcycle;
+\addplot [very thick,cyan!50!black, domain=-7:9] {gauss(1,2)};
+\end{axis}
+\end{tikzpicture}
+
+```
+
+The second call to `pnorm(q=1, mean=1, sd=2)` gives us this integral:
+
+```{r, echo=FALSE, engine='tikz', out.width='90%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', engine.opts = list(template = "latex/tikz2pdf.tex")}
+
+\begin{tikzpicture}
+\begin{axis}[domain=0:10, samples=100,
+axis lines*=left, xlabel=\(x\), ylabel=\(p(x)\), title={N$(1, 2)$},
+height=6cm, width=10cm,
+xtick={-5,  0, 1, 5}, ytick=\empty,
+enlargelimits=false, clip=false, axis on top,
+grid = major]
+\addplot [fill=cyan!20, draw=none, domain=-7:1] {gauss(1,2)} \closedcycle;
+\addplot [very thick,cyan!50!black, domain=-7:9] {gauss(1,2)};
+\end{axis}
+\end{tikzpicture}
+
+```
+
+Therefore the difference between these gives us the integral of interest.
+
+**The Monte Carlo estimate is a fairly good approximation to the true value!**
+
+## Problem: MC accuracy
+
+> 1. Try increasing the number of simulations and see how the accuracy improves?
+> 2. Can you draw a graph of number of MC samples vs accuracy?
+
+*Model answers are in the next section*
+
+## Approximating the Binomial Distribution
+
+We flip a coin 10 times and we want to know the probability of getting more than 3 heads. This is a trivial problem using the Binomial distribution but suppose we have forgotten about this or never learned it in the first place.
+
+Lets solve this problem with a Monte Carlo simulation. We will use the common trick of representing tails with 0 and heads with 1, then simulate 10 coin tosses 100 times and see how often that happens.
+
+```{r}
+runs <- 100 # number of simulations to run
+
+greater_than_three <- rep(0, runs) # vector to hold outcomes
+
+# run 100 simulations
+for (i in 1:runs) {
+
+  # flip a coin ten times (0 - tail, 1 - head)
+  coin_flips <- sample(c(0, 1), 10, replace = T)
+
+  # count how many heads and check if greater than 3
+  greater_than_three[i] <- (sum(coin_flips) > 3)
+}
+
+# compute average over simulations
+pr_greater_than_three <- sum(greater_than_three) / runs
+```
+
+For our MC estimate of the probability \(P(X>3)\) we get
+
+```{r}
+print(pr_greater_than_three)
+```
+
+which we can compare to R’s built-in Binomial distribution function:
+
+```{r}
+print(pbinom(3, 10, 0.5, lower.tail = FALSE))
+```
+
+## Problem: MC Binomial
+
+> 1. Try increasing the number of simulations and see how the accuracy improves?
+> 2. Can you plot how the accuracy varies as a function of the number of simulations? (hint: see the previous section)
+
+
+
+Not bad! **The Monte Carlo estimate is close to the true value.**
+
+## Monte Carlo Expectations
+
+Consider the following spinner. If the spinner is spun randomly then it has a probability 0.5 of landing on yellow and 0.25 of landing on red or blue respectively.
+
+```{r, echo=FALSE, engine='tikz', out.width='20%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', engine.opts = list(template = "latex/tikz2pdf.tex")}
+
+ \begin{tikzpicture}
+    \pie[color={orange!50,blue!70,red!70}, sum=auto, before number=\myfrac, after number=\relax,text=white, font=\bfseries]
+{{1/2}/,{1/4}/,{1/4}/}
+
+   \end{tikzpicture}
+```
+
+If the rules of the game are such that landing on ‘yellow’ you gain 1 point, ‘red’ you lose 1 point and ‘blue’ you gain 2 points. We can easily calculate the expected score.
+
+Let \(X\) denote the random variable associated with the score of the spin then:
+
+\[
+    E[X] = \frac{1}{2} \times 1 + \frac{1}{4} \times (-1) + \frac{1}{4} \times 2 = 0.75
+\]
+
+If we ask a more challenging question such as:
+
+> **After 20 spins what is the probability that you will have less then 0 points?"**
+
+How might we solve this?
+
+Of course, there are methods to analytically solve this type of problem but by the time they are even explained we could have already written our simulation!
+
+To solve this with a Monte Carlo simulation you need to sample from the Spinner 20 times, and return 1 if we are below 0 other wise we’ll return 0. We will repeat this 10,000 times to see how often it happens!
+
+## Using Functions
+
+First, we are going to introduce the concept of a function. This is a piece of code which is encapsulated so then we can refer to it repeated via the name of the function rather than repeatedly writing those lines of code. The function we will write will simulate one game as indicated above and return whether the number of points is less than zero.
+
+```{r}
+# simulates a game of 20 spins
+play_game <- function(){
+    # picks a number from the list (1, -1, 2)
+    # with probability 50%, 25% and 25% twenty times
+  results <- sample(c(1, -1, 2), 20, replace = TRUE, prob = c(0.5, 0.25, 0.25))
+
+  # function returns whether the sum of all the spins is < 1
+  return(sum(results) < 0)
+}
+```
+
+## Simulating from function
+
+Now we can use this function in a loop to play the game 100 times:
+
+```{r}
+runs <- 100 # play the game 100 times
+
+less_than_zero <- rep(0, runs) # vector to store outcome of each game
+for (it in 1:runs) {
+  # play the game by calling the function and store the outcome
+  less_than_zero[it] <- play_game()
+}
+```
+
+We can then compute the probability that, after twenty spins, we will have less than zero points:
+
+```{r}
+prob_less_than_zero <- sum(less_than_zero)/runs
+print(prob_less_than_zero)
+
+```
+
+The probability is very low. This is not surprising since there is only a 25% chance of getting a point deduction on any spin and a 75% chance of gaining points. Try to increase the number of simulation runs to see if you can detect any games where you do find a negative score.
+
+## Problem: MC Expectation
+
+> 1. Modify your code to allow you to calculate the expected number of points after 20 spins.
+> 2. Simulate a game in which you have a maximum of 20 spins but you go “bust” once you hit a negative score and take this into account when you compute the expected end of game score.
+
+
+# Model Answers: Monte Carlo {-}
+
+## Problem: MC accuracy
+
+First let's increase the number of simulations and out the accuracy
+
+```{r}
+sample_sizes <- c(10, 50, 100, 250, 500, 1000) # try different sample sizes
+n_sample_sizes <- length(sample_sizes) # number of sample sizes to try
+rpts <- 100 # number of repeats for each sample size
+accuracy <- rep(0, n_sample_sizes) # vector to record accuracy values
+accuracy_sd <- rep(0, n_sample_sizes) # vector to record accuracy sd values
+
+# for each sample size
+for (i in 1:n_sample_sizes) {
+
+  sample_sz <- sample_sizes[i] # select a sanmple size to use
+
+  # vector to store results from each repeat
+  mc_integral <- rep(0, rpts)
+  for (j in 1:rpts){
+    # simulated normally distributed numbers
+    sims <- rnorm(sample_sz, mean = 1, sd = 2)
+    # find proportion of values between 1-3
+    mc_integral[j] <- sum(sims >= 1 & sims <= 3) / sample_sz
+  }
+
+  # compute average difference between integral estimate and real value
+  accuracy[i] <- mean(mc_integral - mc_exact)
+  # compute sd difference between integral estimate and real value
+  accuracy_sd[i] <- sd(mc_integral - mc_exact)
+
+}
+
+print(accuracy)
+
+print(accuracy_sd)
+print(accuracy + accuracy_sd)
+```
+
+Next, we will plot the results. Here we will make use of `ggplot2` a library to create nice plots without much effort. The input need to be a `data.frame` so we will need to create one based on the data.
+
+```{r}
+# load ggplot
+library(ggplot2)
+
+# create a data frame for plotting
+df <- data.frame(sample_sizes, accuracy, accuracy_sd)
+
+print(df)
+
+# use ggplot to plot lines for the mean accuracy and error bars
+# using the std dev
+ggplot(df, aes(x = sample_sizes, y = accuracy)) +
+  geom_line() +
+  geom_point() +
+  geom_errorbar(
+      aes(ymin = accuracy - accuracy_sd, ymax = accuracy + accuracy_sd),
+          width = .2,
+          position = position_dodge(0.05)) +
+  ylab("Estimate-Exact") +
+  xlab("Run")
+```
+
+This shows that as the number of Monte Carlo samples is increased, the accuracy increases (i.e. the difference between the estimated integral value and real values converges to zero). In addition, the variability in the integral estimates across different simulation runs reduces.
+
+## Problem: MC Expectation
+
+### Problem 1
+
+```{r}
+# simulates a game of 20 spins
+play_game <- function() {
+    # picks a number from the list (1, -1, 2)
+    #  with probability 50%, 25% and 25% twenty times
+  results <- sample(c(1, -1, 2), 20, replace = TRUE, prob = c(0.5, 0.25, 0.25))
+  return(sum(results)) # function returns the sum of all the spins
+}
+
+score_per_game = rep(0, runs) # vector to store outcome of each game
+for (it in 1:runs) {
+  score_per_game[it] <- play_game() # play the game by calling the function
+}
+expected_score = mean(score_per_game) # average over all simulations
+
+print(expected_score)
+```
+
+### Problem 2
+
+```{r}
+# simulates a game of up to 20 spins
+play_game <- function() {
+    # picks a number from the list (1, -1, 2)
+    #  with probability 50%, 25% and 25% twenty times
+  results <- sample(c(1, -1, 2), 20, replace = TRUE, prob = c(0.5, 0.25, 0.25))
+  results_sum <- cumsum(results) # compute a running sum of points
+  # check if the game goes to zero at any point
+  if (sum(results_sum <= 0)) {
+    return(0) # return zero
+  } else {
+    return(results_sum[20]) # returns the final score
+  }
+}
+
+game_score <- rep(0, runs) # vector to store scores in each game played
+
+# for each game
+for (it in 1:runs) {
+  game_score[it] <- play_game()
+}
+
+print(mean(game_score))
+
+plot(game_score)
+```
+
+The games with score zero now corresponds to the number of games where we went bust (or genuinely ended the game with zero).
+
+# Maximum Likelihood
+
+During the lectures, you saw how we could use a brute-force search of parameters to find the maximum likelihood estimate of an unknown mean for a Normal distribution given a set of data. In this exercise, we will now look at how we would do this more efficiently in real life.
+
+## The likelihood function
+
+First, we are going to write a function to compute the log-likelihood function given parameters:
+```{r}
+neglogLikelihood <- function(mu, x) {
+  logF = dnorm(x, mean = mu, sd = 1, log = TRUE)
+  return(-sum(logF))
+}
+```
+
+Note that this function returns the `-sum(logF)` because the numerical optimisation algorithm we are going to use finds the *minimum* of a function. We are interested in the *maximum* likelihood but we can turn this into a minimisation problem by simply negating the likelihood.
+
+Now, lets assume our data is captured in the following vector:
+
+```{r}
+x = c(-0.5, 1.0, 0.2, -0.3, 0.5, 0.89, -0.11, -0.71, 1.0, -1.3, 0.84)
+n = length(x)
+
+```
+
+## Optimisation
+
+Now, we will need to define an initial search value for the parameter, we will arbitrarily pick a value:
+```{r}
+mu_init = 1.0
+```
+Now we will use the `R` function `optim` to find the maximum likelihood estimate. As mentioned above, `optim` finds the minimum value of a function so in this case we are trying to find the parameter that minimises the negative log likelihood.
+
+```{r}
+out <- optim(mu_init, neglogLikelihood, gr = NULL, x, method = "L-BFGS-B",
+         lower = -Inf, upper = Inf)
+```
+
+Here, this says that we will start the search at `mu_init` using the function `logLikelihood` that we have defined above. The `optim` algorithm will use the `L-BFGS-B` search method. The parameter is allowed to take any value from `lower = -Inf` to `upper = Inf`. The result is stored in out.
+
+Once the optimiser has run, we can see what parameter value it has found:
+
+```{r}
+print(out$par)
+```
+
+which we can compare against the sample mean
+
+```{r}
+print(mean(x))
+```
+
+It turns out that it is theoretically known that the maximum likelihood estimate, for this particular problem, is the sample mean which is why they coincide!
+
+We can visualise this further. First we define an array of possible values for `mu` in this case between -0.1 and 0.3 with 101 values in-between:
+
+```{r}
+mu <- seq(-0.1, 0.3, length = 101)
+```
+
+We use the `apply` function to apply the `logLikelihood` function to each of the `mu` values we have defined. This means we do not need to use a for loop:
+
+```{r}
+neglogL <- apply( matrix(mu), 1, neglogLikelihood, x)
+```
+
+We can then plot and overlay the maximum likelihood result:
+
+```{r}
+plot(mu, neglogL, pch="-")
+points(out$par, out$value, col="red", pch=0)
+```
+
+The plot shows that `optim` has found the `mu` which minimises the negative log-likelihood.
+
+## Two-parameter estimation
+
+
+Now suppose both the mean and the variance of the Normal distribution are unknown and we need to search over two parameters for the maximum likelihood estimation.
+
+We now need a modified negative log-likelihood function:
+
+```{r}
+neglogLikelihood2 <- function(theta,x) {
+  mu <- theta[1] # get value for mu
+  sigma2 <- theta[2] # get value for sigma2
+
+  # compute density for each data element in x
+  logF <- dnorm(x, mean = mu, sd = sqrt(sigma2), log = TRUE)
+
+  return(-sum(logF)) # return negative log-likelihood
+}
+```
+
+Notice that we pass through one argument `theta` whose elements are the parameters for `mu` and `sigma2` which we unpack within the function.
+
+Now we can run `optim` but this time the initial parameters values must be initialised with two values. Furthermore, as variance cannot be negative, we bound the possible lower values that `sigma2` can take by setting `lower = c(-Inf, 0.001)`. The second argument means `sigma2` cannot be lower than 0.001:
+
+```{r}
+theta_init = c(1, 1)
+
+out <- optim(theta_init, neglogLikelihood2, gr = NULL, x, method = "L-BFGS-B",
+        lower = c(-Inf, 0.001), upper = c(Inf, Inf))
+```
+
+We can now visualise the results by creating a two-dimensional contour plot. We first need to generate a grid of values for `mu` and `sigma2`:
+
+```{r}
+# one dimensional grid of values for mu
+mu <- seq(-0.1, 1.0, length = 101)
+# one dimensional grid of values for sigma2
+sigma2 <- seq(0.1, 1.0, length = 101)
+
+mu_xx <- rep(mu, each = 101) # replicate this 101 times
+sigma2_yy <- rep(sigma2, times = 101) # replicate this 101 times
+
+# generate grid of values (each row contains a unique combination
+# of mu and sigma2 values)
+mu_sigma_grid <- cbind(mu_xx, sigma2_yy)
+```
+
+Now we apply our negative log-likehood function to this grid to generate a negative log-likelihood value for each position on the grid:
+
+```{r}
+neglogL2 <- apply(mu_sigma_grid, 1, neglogLikelihood2, x)
+```
+
+We now use the `contour` function to plot our results:
+
+```{r}
+# convert vector of negative log-likelihood values into a grid
+neglogL2 <- matrix(neglogL2, 101)
+
+# draw contour plot
+contour(sigma2, mu, neglogL2, nlevels = 50, xlab = "sigma2", ylab = "mu")
+# overlay the maximum likelihood estimate as a red circle
+points(out$par[2], out$par[1], col="red")
+```
+
+Excellent! We have now found the maximum likelihood estimates for the unknown mean and variance for the Normal distribution that our data is assumed to be drawn from. Let’s compare our estimates against the sample mean and variance. First, the estimates:
+
+```{r}
+print(out$par[1]) # mu estimate
+print(out$par[2]) # sigma2 estimate
+
+```
+
+Now, the sample mean and variances:
+
+```{r}
+print(mean(x)) # sample mean
+print(var(x)) # sample variance (normalised by n-1)
+print(var(x)*(n-1)/n) # sample variance (normalised by n)
+
+```
+
+Interesting! The maximum likelihood estimates return the sample mean and the **biased* sample variance estimate (where we normalise by \(n\)
+ and not \(n−1\)). Indeed, it turns out that theoretically, the maximum likelihood estimate does give a biased estimate of the population variance.
+
+## Problem: MLE
+
+ > A potentially biased coin is tossed 10 times and the number of heads recorded. The experiment is repeated 5 times and the number of heads recorded was 3, 2, 4, 5 and 2 respectively.
+> Can you derive a maximum likelihood estimate of the probability of obtaining a head?
+
+# Model Answers: MLE {-}
+
+```{r}
+neglogLikelihood <- function(p, n, x) {
+  # compute density for each data element in x
+  logF <- dbinom(x, n, prob = c(p, 1 - p), log = TRUE)
+  return(-sum(logF)) # return negative log-likelihood
+}
+
+n <- 10 # number of coin tosses
+x <- c(3, 2, 4, 5, 2) # number of heads observed
+
+p_init <- 0.5 # initial value of the probability
+
+# run optim to get maximum likelihood estimates
+out <- optim(p_init, neglogLikelihood, gr = NULL, n, x, method = "L-BFGS-B",
+  lower = 0.001, upper = 1-0.001)
+
+# create a grid of probability values
+p_vals <- seq(0.001, 1 - 0.001, length = 101)
+
+# use apply to compute the negative log-likelihood for each probability value
+neglogL <- apply(matrix(p_vals), 1, neglogLikelihood, n, x)
+
+# plot negative log-likelihood function and overlay maximum (negative)
+# log-likelihood estimate
+plot(p_vals, neglogL, pch = "-")
+points(out$par, out$value, col = "red", pch = 0)
+```
