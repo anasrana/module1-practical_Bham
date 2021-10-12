@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Further Exercises | Essentials of Mathematics and Statistics</title>
+  <meta name="description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Further Exercises | Essentials of Mathematics and Statistics" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
+  
+  <meta property="og:description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
+  <meta name="github-repo" content="anasrana/module1-practical_Bham" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Further Exercises | Essentials of Mathematics and Statistics" />
+  
+  <meta name="twitter:description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
+  
+
+<meta name="author" content="Anas A Rana" />
+
+
+<meta name="date" content="2021-10-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="a-monopoly-simulation.html"/>
+<link rel="next" href="practical-linear-regression.html"/>
+<script src="assets/header-attrs-2.11/header-attrs.js"></script>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Essentials of Mathematics and Statistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-use-these-resources"><i class="fa fa-check"></i><b>1.1</b> How to use these resources</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#r-scripts"><i class="fa fa-check"></i><b>1.2</b> R scripts</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#creating-an-r-script"><i class="fa fa-check"></i><b>1.3</b> Creating an R script</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#saving-an-r-script"><i class="fa fa-check"></i><b>1.4</b> Saving an R script</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#executing-code-in-an-r-script"><i class="fa fa-check"></i><b>1.5</b> Executing code in an R script</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#comments-in-an-r-script-documenting-your-code"><i class="fa fa-check"></i><b>1.5.1</b> Comments in an R script (documenting your code)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="simulating-random-numbers.html"><a href="simulating-random-numbers.html"><i class="fa fa-check"></i><b>3</b> Simulating random numbers</a></li>
+<li class="chapter" data-level="4" data-path="markov-chains.html"><a href="markov-chains.html"><i class="fa fa-check"></i><b>4</b> Markov Chains</a></li>
+<li class="chapter" data-level="" data-path="model-answers-3-state-markov-chain.html"><a href="model-answers-3-state-markov-chain.html"><i class="fa fa-check"></i>Model answers 3 state Markov Chain</a></li>
+<li class="chapter" data-level="5" data-path="a-monopoly-simulation.html"><a href="a-monopoly-simulation.html"><i class="fa fa-check"></i><b>5</b> A Monopoly simulation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="a-monopoly-simulation.html"><a href="a-monopoly-simulation.html#moving-around-the-board"><i class="fa fa-check"></i><b>5.1</b> Moving around the board</a></li>
+<li class="chapter" data-level="5.2" data-path="a-monopoly-simulation.html"><a href="a-monopoly-simulation.html#going-to-jail"><i class="fa fa-check"></i><b>5.2</b> Going to Jail</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="further-exercises.html"><a href="further-exercises.html"><i class="fa fa-check"></i><b>6</b> Further Exercises</a></li>
+<li class="chapter" data-level="7" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html"><i class="fa fa-check"></i><b>7</b> Practical: Linear regression</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#data"><i class="fa fa-check"></i><b>7.1</b> Data</a></li>
+<li class="chapter" data-level="7.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#simulating-data"><i class="fa fa-check"></i><b>7.2</b> Simulating data</a></li>
+<li class="chapter" data-level="7.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#fitting-simple-linear-regression-model"><i class="fa fa-check"></i><b>7.3</b> Fitting simple linear regression model</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#least-squared-estimation"><i class="fa fa-check"></i><b>7.3.1</b> Least squared estimation</a></li>
+<li class="chapter" data-level="7.3.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>7.3.2</b> Maximum likelihood estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#effect-of-variance"><i class="fa fa-check"></i><b>7.4</b> Effect of variance</a></li>
+<li class="chapter" data-level="7.5" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#exercise"><i class="fa fa-check"></i><b>7.5</b> Exercise</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-i"><i class="fa fa-check"></i><b>7.5.1</b> Part I</a></li>
+<li class="chapter" data-level="7.5.2" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-ii"><i class="fa fa-check"></i><b>7.5.2</b> Part II</a></li>
+<li class="chapter" data-level="7.5.3" data-path="practical-linear-regression.html"><a href="practical-linear-regression.html#part-iii"><i class="fa fa-check"></i><b>7.5.3</b> Part III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html"><i class="fa fa-check"></i>Model answers: Linear regression</a>
+<ul>
+<li class="chapter" data-level="7.6" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-i"><i class="fa fa-check"></i><b>7.6</b> Exercise I</a></li>
+<li class="chapter" data-level="7.7" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii"><i class="fa fa-check"></i><b>7.7</b> Exercise II</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#comparison-of-data"><i class="fa fa-check"></i><b>7.7.1</b> Comparison of data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="model-answers-linear-regression.html"><a href="model-answers-linear-regression.html#exercise-ii-1"><i class="fa fa-check"></i><b>7.8</b> Exercise II</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html"><i class="fa fa-check"></i><b>8</b> Practical: Principal component analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#data-1"><i class="fa fa-check"></i><b>8.1</b> Data</a></li>
+<li class="chapter" data-level="8.2" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#introduction-2"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-i-1"><i class="fa fa-check"></i><b>8.3</b> Exercise I</a></li>
+<li class="chapter" data-level="8.4" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-ii-2"><i class="fa fa-check"></i><b>8.4</b> Exercise II</a></li>
+<li class="chapter" data-level="8.5" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iii"><i class="fa fa-check"></i><b>8.5</b> Exercise III</a></li>
+<li class="chapter" data-level="8.6" data-path="practical-principal-component-analysis.html"><a href="practical-principal-component-analysis.html#exercise-iv-single-cell-data"><i class="fa fa-check"></i><b>8.6</b> Exercise IV: Single cell data</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html"><i class="fa fa-check"></i><b>9</b> Practical: Multiple regression</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#multiple-regression"><i class="fa fa-check"></i><b>9.1</b> Multiple regression</a></li>
+<li class="chapter" data-level="9.2" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#categorical-covariates"><i class="fa fa-check"></i><b>9.2</b> Categorical covariates</a></li>
+<li class="chapter" data-level="9.3" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#residuals"><i class="fa fa-check"></i><b>9.3</b> Residuals</a></li>
+<li class="chapter" data-level="9.4" data-path="practical-multiple-regression.html"><a href="practical-multiple-regression.html#gradient-descent-algorithm"><i class="fa fa-check"></i><b>9.4</b> Gradient descent algorithm (+)</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html"><i class="fa fa-check"></i><b>10</b> Practical: Generalised linear models</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#data-2"><i class="fa fa-check"></i><b>10.1</b> Data</a></li>
+<li class="chapter" data-level="10.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#detecting-snp-associations"><i class="fa fa-check"></i><b>10.2</b> Detecting SNP associations</a></li>
+<li class="chapter" data-level="10.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#gwas-and-logistic-regression"><i class="fa fa-check"></i><b>10.3</b> GWAS and logistic regression</a></li>
+<li class="chapter" data-level="10.4" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-and-poisson-regression"><i class="fa fa-check"></i><b>10.4</b> Negative binomial and Poisson regression</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#count-based-glms"><i class="fa fa-check"></i><b>10.4.1</b> Count-based GLMs</a></li>
+<li class="chapter" data-level="10.4.2" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#fitting-a-glm"><i class="fa fa-check"></i><b>10.4.2</b> Fitting a GLM</a></li>
+<li class="chapter" data-level="10.4.3" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#comparing-nested-models"><i class="fa fa-check"></i><b>10.4.3</b> Comparing nested models</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#negative-binomial-vs-poisson-glms"><i class="fa fa-check"></i><b>10.5</b> Negative-Binomial vs Poisson GLMs</a></li>
+<li class="chapter" data-level="10.6" data-path="practical-generalised-linear-models.html"><a href="practical-generalised-linear-models.html#further-understanding-the-model-optional"><i class="fa fa-check"></i><b>10.6</b> Further understanding the model (<strong>OPTIONAL</strong>)</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Essentials of Mathematics and Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="further-exercises" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Further Exercises</h1>
+<p>Now consider building a more complex Monopoly simulation by incorporating more complex aspects of the game such as:</p>
+<ul>
+<li><p>the purchase of properties</p></li>
+<li><p>a ledger for each player</p></li>
+<li><p>chance and community cards</p></li>
+</ul>
+<p>You will need to think carefully about the simplifying assumptions you will make to make the task achievable. Do not be over-ambitious. For example, you might initially assume that players will not build houses/hotels on properties.</p>
+<p>Here are some questions to answer with your simulations:</p>
+<ol style="list-style-type: decimal">
+<li><p>How many turns does it take before all properties are purchased?</p></li>
+<li><p>What are the best properties to buy?</p></li>
+<li><p>How long does it take for a winner to be determined?</p></li>
+</ol>
+<p>For example, the following simple extension of the previous example adds some features to record properties being purchased. This simulation is constructed based on the assumption that a players always buys any free property that land on.</p>
+<pre><code> num_games &lt;- 1000 # number of games to play
+num_turns &lt;- 1000 # number of turns to take
+
+current_board_position &lt;- 0 # start on the GO space
+go_to_jail_position = 30 # the go to jail space
+jail_position = 10 # jail space
+properties_that_can_be_bought = c(1, 3, 5, 6, 8, 9, 11, 12, 13, 14, 15, 16, 18, 19, 21, 23, 24, 25, 26, 27, 28, 29, 31, 32, 34, 35, 37, 39) # vector of squares containing properties
+
+time_to_buy_all_properties &lt;- rep(0, num_games) # vector to store number of turns to buy all properties
+
+# simulate multiple games
+for ( game in 1:num_games ) {
+
+  move.size &lt;- rep(0, num_turns)
+  positions_visited &lt;- rep(0, num_turns)
+  positions_purchased &lt;- rep(0, 40)
+  properties_bought &lt;- rep(0, num_turns)
+
+  # use a for loop to simulate a number of turns
+  for ( turn in 1:num_turns ) {
+
+    # roll two dice
+    die.values = sample(c(1:6), 2, replace=TRUE)
+
+    # move player position
+
+    # number of positions to move
+    plus.move = sum(die.values)
+
+    # compute new board position
+    new_board_position = current_board_position + plus.move
+
+    # if land on GO TO JAIL square, then go backwards to the JAIL square
+    if ( new_board_position == go_to_jail_position ) {
+      new_board_position = jail_position
+    }
+
+    # update board position (this corrects for the fact the board is circular)
+    current_board_position = ( new_board_position %% 40 )
+
+    # if we can on a square that can be purchased and which has not been purchased (note R uses 1-indexing for arrays)
+    if ( positions_purchased[current_board_position+1] == 0 ) {
+      if ( current_board_position %in% properties_that_can_be_bought ) {
+        positions_purchased[current_board_position+1] = 1
+      }
+    }
+
+    # store position visited
+    positions_visited[turn] &lt;- current_board_position
+
+    # store number of properties bought
+    properties_bought[turn] &lt;- sum(positions_purchased)
+
+    # check if all properties are gone
+    if ( properties_bought[turn] == length(properties_that_can_be_bought) ) {
+      time_to_buy_all_properties[game] = turn
+      break
+    }
+
+
+  }
+
+}
+
+hist(time_to_buy_all_properties, breaks=20)</code></pre>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="a-monopoly-simulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="practical-linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Practicals-module_1.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

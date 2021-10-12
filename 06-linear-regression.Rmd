@@ -323,6 +323,3 @@ Fit the linear model and comment on the differences between the data.
 ### Part III
 
 Investigate how the sample size will affect the quality of the fit using mse, use the code for investigating the affect of variance as inspiration.
-
-
-
