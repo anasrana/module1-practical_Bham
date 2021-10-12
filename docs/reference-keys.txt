@@ -30,9 +30,16 @@ maximum-likelihood
 the-likelihood-function
 optimisation
 two-parameter-estimation
+problem-mle
+confidence-intervals
+setup
+simulating-data
+constructing-the-confidence-interval
+experiment
+problem-confidence-interval
 practical-linear-regression
 data
-simulating-data
+simulating-data-1
 fitting-simple-linear-regression-model
 least-squared-estimation
 maximum-likelihood-estimation

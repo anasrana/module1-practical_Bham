@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Model Answers: MLE | Essentials of Mathematics and Statistics</title>
+  <title>Model Answer: Confidence Interval | Essentials of Mathematics and Statistics</title>
   <meta name="description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Model Answers: MLE | Essentials of Mathematics and Statistics" />
+  <meta property="og:title" content="Model Answer: Confidence Interval | Essentials of Mathematics and Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="anasrana/module1-practical_Bham" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Model Answers: MLE | Essentials of Mathematics and Statistics" />
+  <meta name="twitter:title" content="Model Answer: Confidence Interval | Essentials of Mathematics and Statistics" />
   
   <meta name="twitter:description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="maximum-likelihood.html"/>
-<link rel="next" href="confidence-intervals.html"/>
+<link rel="prev" href="confidence-intervals.html"/>
+<link rel="next" href="practical-linear-regression.html"/>
 <script src="assets/header-attrs-2.11/header-attrs.js"></script>
 <script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -274,34 +274,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="model-answers-mle" class="section level1 unnumbered">
-<h1>Model Answers: MLE</h1>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="model-answers-mle.html#cb80-1" aria-hidden="true" tabindex="-1"></a>neglogLikelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(p, n, x) {</span>
-<span id="cb80-2"><a href="model-answers-mle.html#cb80-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute density for each data element in x</span></span>
-<span id="cb80-3"><a href="model-answers-mle.html#cb80-3" aria-hidden="true" tabindex="-1"></a>  logF <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x, n, <span class="at">prob =</span> <span class="fu">c</span>(p, <span class="dv">1</span> <span class="sc">-</span> p), <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb80-4"><a href="model-answers-mle.html#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="sc">-</span><span class="fu">sum</span>(logF)) <span class="co"># return negative log-likelihood</span></span>
-<span id="cb80-5"><a href="model-answers-mle.html#cb80-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb80-6"><a href="model-answers-mle.html#cb80-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-7"><a href="model-answers-mle.html#cb80-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># number of coin tosses</span></span>
-<span id="cb80-8"><a href="model-answers-mle.html#cb80-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">2</span>) <span class="co"># number of heads observed</span></span>
-<span id="cb80-9"><a href="model-answers-mle.html#cb80-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-10"><a href="model-answers-mle.html#cb80-10" aria-hidden="true" tabindex="-1"></a>p_init <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co"># initial value of the probability</span></span>
-<span id="cb80-11"><a href="model-answers-mle.html#cb80-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-12"><a href="model-answers-mle.html#cb80-12" aria-hidden="true" tabindex="-1"></a><span class="co"># run optim to get maximum likelihood estimates</span></span>
-<span id="cb80-13"><a href="model-answers-mle.html#cb80-13" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">optim</span>(p_init, neglogLikelihood, <span class="at">gr =</span> <span class="cn">NULL</span>, n, x, <span class="at">method =</span> <span class="st">&quot;L-BFGS-B&quot;</span>,</span>
-<span id="cb80-14"><a href="model-answers-mle.html#cb80-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">lower =</span> <span class="fl">0.001</span>, <span class="at">upper =</span> <span class="dv">1</span><span class="fl">-0.001</span>)</span>
-<span id="cb80-15"><a href="model-answers-mle.html#cb80-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-16"><a href="model-answers-mle.html#cb80-16" aria-hidden="true" tabindex="-1"></a><span class="co"># create a grid of probability values</span></span>
-<span id="cb80-17"><a href="model-answers-mle.html#cb80-17" aria-hidden="true" tabindex="-1"></a>p_vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.001</span>, <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.001</span>, <span class="at">length =</span> <span class="dv">101</span>)</span>
-<span id="cb80-18"><a href="model-answers-mle.html#cb80-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-19"><a href="model-answers-mle.html#cb80-19" aria-hidden="true" tabindex="-1"></a><span class="co"># use apply to compute the negative log-likelihood for each probability value</span></span>
-<span id="cb80-20"><a href="model-answers-mle.html#cb80-20" aria-hidden="true" tabindex="-1"></a>neglogL <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="fu">matrix</span>(p_vals), <span class="dv">1</span>, neglogLikelihood, n, x)</span>
-<span id="cb80-21"><a href="model-answers-mle.html#cb80-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-22"><a href="model-answers-mle.html#cb80-22" aria-hidden="true" tabindex="-1"></a><span class="co"># plot negative log-likelihood function and overlay maximum (negative)</span></span>
-<span id="cb80-23"><a href="model-answers-mle.html#cb80-23" aria-hidden="true" tabindex="-1"></a><span class="co"># log-likelihood estimate</span></span>
-<span id="cb80-24"><a href="model-answers-mle.html#cb80-24" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(p_vals, neglogL, <span class="at">pch =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb80-25"><a href="model-answers-mle.html#cb80-25" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(out<span class="sc">$</span>par, out<span class="sc">$</span>value, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">pch =</span> <span class="dv">0</span>)</span></code></pre></div>
-<p><img src="Practicals-module_1_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<div id="model-answer-confidence-interval" class="section level1 unnumbered">
+<h1>Model Answer: Confidence Interval</h1>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="model-answer-confidence-interval.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector to store the number of times</span></span>
+<span id="cb99-2"><a href="model-answer-confidence-interval.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the population variance is contained</span></span>
+<span id="cb99-3"><a href="model-answer-confidence-interval.html#cb99-3" aria-hidden="true" tabindex="-1"></a>sigma_contained <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, n_interval_widths)</span>
+<span id="cb99-4"><a href="model-answer-confidence-interval.html#cb99-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-5"><a href="model-answer-confidence-interval.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (replicate <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
+<span id="cb99-6"><a href="model-answer-confidence-interval.html#cb99-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-7"><a href="model-answer-confidence-interval.html#cb99-7" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean=</span>mu, <span class="at">sd=</span>sigma) <span class="sc">+</span> mu <span class="co"># simulate a data set</span></span>
+<span id="cb99-8"><a href="model-answer-confidence-interval.html#cb99-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-9"><a href="model-answer-confidence-interval.html#cb99-9" aria-hidden="true" tabindex="-1"></a>  sigmabar <span class="ot">&lt;-</span> <span class="fu">sd</span>(x) <span class="co"># compute the sample standard deviation</span></span>
+<span id="cb99-10"><a href="model-answer-confidence-interval.html#cb99-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-11"><a href="model-answer-confidence-interval.html#cb99-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for each interval width that we are testing ...</span></span>
+<span id="cb99-12"><a href="model-answer-confidence-interval.html#cb99-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_interval_widths) {</span>
+<span id="cb99-13"><a href="model-answer-confidence-interval.html#cb99-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check if the interval contains the true mean</span></span>
+<span id="cb99-14"><a href="model-answer-confidence-interval.html#cb99-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ((sigma <span class="sc">&gt;</span> sigmabar <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> interval_width[j]) <span class="sc">&amp;</span></span>
+<span id="cb99-15"><a href="model-answer-confidence-interval.html#cb99-15" aria-hidden="true" tabindex="-1"></a>        (sigma <span class="sc">&lt;</span> sigmabar <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> interval_width[j])) {</span>
+<span id="cb99-16"><a href="model-answer-confidence-interval.html#cb99-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-17"><a href="model-answer-confidence-interval.html#cb99-17" aria-hidden="true" tabindex="-1"></a>      <span class="co"># if it is, we increment the count by one for this width</span></span>
+<span id="cb99-18"><a href="model-answer-confidence-interval.html#cb99-18" aria-hidden="true" tabindex="-1"></a>      sigma_contained[j] <span class="ot">&lt;-</span> sigma_contained[j] <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb99-19"><a href="model-answer-confidence-interval.html#cb99-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb99-20"><a href="model-answer-confidence-interval.html#cb99-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb99-21"><a href="model-answer-confidence-interval.html#cb99-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb99-22"><a href="model-answer-confidence-interval.html#cb99-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-23"><a href="model-answer-confidence-interval.html#cb99-23" aria-hidden="true" tabindex="-1"></a>probability_var_contained <span class="ot">&lt;-</span> sigma_contained<span class="sc">/</span>nreps</span>
+<span id="cb99-24"><a href="model-answer-confidence-interval.html#cb99-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-25"><a href="model-answer-confidence-interval.html#cb99-25" aria-hidden="true" tabindex="-1"></a><span class="co"># create a data frame containing the variables we wish to plot</span></span>
+<span id="cb99-26"><a href="model-answer-confidence-interval.html#cb99-26" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">interval_width =</span> interval_width,</span>
+<span id="cb99-27"><a href="model-answer-confidence-interval.html#cb99-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">probability_var_contained =</span> probability_var_contained)</span>
+<span id="cb99-28"><a href="model-answer-confidence-interval.html#cb99-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-29"><a href="model-answer-confidence-interval.html#cb99-29" aria-hidden="true" tabindex="-1"></a><span class="co"># initialise the ggplot</span></span>
+<span id="cb99-30"><a href="model-answer-confidence-interval.html#cb99-30" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> interval_width, <span class="at">y =</span> probability_var_contained))</span>
+<span id="cb99-31"><a href="model-answer-confidence-interval.html#cb99-31" aria-hidden="true" tabindex="-1"></a><span class="co"># create a line plot</span></span>
+<span id="cb99-32"><a href="model-answer-confidence-interval.html#cb99-32" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> plt <span class="sc">+</span> <span class="fu">geom_line</span>()</span>
+<span id="cb99-33"><a href="model-answer-confidence-interval.html#cb99-33" aria-hidden="true" tabindex="-1"></a><span class="co"># add a horizontal axis label</span></span>
+<span id="cb99-34"><a href="model-answer-confidence-interval.html#cb99-34" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> plt <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Interval Width&quot;</span>)</span>
+<span id="cb99-35"><a href="model-answer-confidence-interval.html#cb99-35" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vertical axis label</span></span>
+<span id="cb99-36"><a href="model-answer-confidence-interval.html#cb99-36" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> plt <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Probability that sigma is contained&quot;</span>)</span>
+<span id="cb99-37"><a href="model-answer-confidence-interval.html#cb99-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-38"><a href="model-answer-confidence-interval.html#cb99-38" aria-hidden="true" tabindex="-1"></a><span class="co"># plot to screen</span></span>
+<span id="cb99-39"><a href="model-answer-confidence-interval.html#cb99-39" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plt)</span></code></pre></div>
+<p><img src="Practicals-module_1_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="model-answer-confidence-interval.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
+<pre><code>##    interval_width probability_var_contained
+## 1             0.1                     0.275
+## 2             0.2                     0.552
+## 3             0.3                     0.746
+## 4             0.4                     0.883
+## 5             0.5                     0.949
+## 6             0.6                     0.980
+## 7             0.7                     0.993
+## 8             0.8                     0.998
+## 9             0.9                     1.000
+## 10            1.0                     1.000</code></pre>
 
 </div>
             </section>
@@ -309,8 +335,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="maximum-likelihood.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="confidence-intervals.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="confidence-intervals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="practical-linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

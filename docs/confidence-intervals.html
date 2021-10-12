@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Model Answers: MLE | Essentials of Mathematics and Statistics</title>
+  <title>9 Confidence Intervals | Essentials of Mathematics and Statistics</title>
   <meta name="description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Model Answers: MLE | Essentials of Mathematics and Statistics" />
+  <meta property="og:title" content="9 Confidence Intervals | Essentials of Mathematics and Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://anasrana.github.io/module1-practical_Bham/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="anasrana/module1-practical_Bham" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Model Answers: MLE | Essentials of Mathematics and Statistics" />
+  <meta name="twitter:title" content="9 Confidence Intervals | Essentials of Mathematics and Statistics" />
   
   <meta name="twitter:description" content="This contains practicals for Module 1 (Essentials of Mathematics and Statistics)." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="maximum-likelihood.html"/>
-<link rel="next" href="confidence-intervals.html"/>
+<link rel="prev" href="model-answers-mle.html"/>
+<link rel="next" href="model-answer-confidence-interval.html"/>
 <script src="assets/header-attrs-2.11/header-attrs.js"></script>
 <script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -274,43 +274,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="model-answers-mle" class="section level1 unnumbered">
-<h1>Model Answers: MLE</h1>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="model-answers-mle.html#cb80-1" aria-hidden="true" tabindex="-1"></a>neglogLikelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(p, n, x) {</span>
-<span id="cb80-2"><a href="model-answers-mle.html#cb80-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute density for each data element in x</span></span>
-<span id="cb80-3"><a href="model-answers-mle.html#cb80-3" aria-hidden="true" tabindex="-1"></a>  logF <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x, n, <span class="at">prob =</span> <span class="fu">c</span>(p, <span class="dv">1</span> <span class="sc">-</span> p), <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb80-4"><a href="model-answers-mle.html#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="sc">-</span><span class="fu">sum</span>(logF)) <span class="co"># return negative log-likelihood</span></span>
-<span id="cb80-5"><a href="model-answers-mle.html#cb80-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb80-6"><a href="model-answers-mle.html#cb80-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-7"><a href="model-answers-mle.html#cb80-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># number of coin tosses</span></span>
-<span id="cb80-8"><a href="model-answers-mle.html#cb80-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">2</span>) <span class="co"># number of heads observed</span></span>
-<span id="cb80-9"><a href="model-answers-mle.html#cb80-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-10"><a href="model-answers-mle.html#cb80-10" aria-hidden="true" tabindex="-1"></a>p_init <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co"># initial value of the probability</span></span>
-<span id="cb80-11"><a href="model-answers-mle.html#cb80-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-12"><a href="model-answers-mle.html#cb80-12" aria-hidden="true" tabindex="-1"></a><span class="co"># run optim to get maximum likelihood estimates</span></span>
-<span id="cb80-13"><a href="model-answers-mle.html#cb80-13" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">optim</span>(p_init, neglogLikelihood, <span class="at">gr =</span> <span class="cn">NULL</span>, n, x, <span class="at">method =</span> <span class="st">&quot;L-BFGS-B&quot;</span>,</span>
-<span id="cb80-14"><a href="model-answers-mle.html#cb80-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">lower =</span> <span class="fl">0.001</span>, <span class="at">upper =</span> <span class="dv">1</span><span class="fl">-0.001</span>)</span>
-<span id="cb80-15"><a href="model-answers-mle.html#cb80-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-16"><a href="model-answers-mle.html#cb80-16" aria-hidden="true" tabindex="-1"></a><span class="co"># create a grid of probability values</span></span>
-<span id="cb80-17"><a href="model-answers-mle.html#cb80-17" aria-hidden="true" tabindex="-1"></a>p_vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.001</span>, <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.001</span>, <span class="at">length =</span> <span class="dv">101</span>)</span>
-<span id="cb80-18"><a href="model-answers-mle.html#cb80-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-19"><a href="model-answers-mle.html#cb80-19" aria-hidden="true" tabindex="-1"></a><span class="co"># use apply to compute the negative log-likelihood for each probability value</span></span>
-<span id="cb80-20"><a href="model-answers-mle.html#cb80-20" aria-hidden="true" tabindex="-1"></a>neglogL <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="fu">matrix</span>(p_vals), <span class="dv">1</span>, neglogLikelihood, n, x)</span>
-<span id="cb80-21"><a href="model-answers-mle.html#cb80-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-22"><a href="model-answers-mle.html#cb80-22" aria-hidden="true" tabindex="-1"></a><span class="co"># plot negative log-likelihood function and overlay maximum (negative)</span></span>
-<span id="cb80-23"><a href="model-answers-mle.html#cb80-23" aria-hidden="true" tabindex="-1"></a><span class="co"># log-likelihood estimate</span></span>
-<span id="cb80-24"><a href="model-answers-mle.html#cb80-24" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(p_vals, neglogL, <span class="at">pch =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb80-25"><a href="model-answers-mle.html#cb80-25" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(out<span class="sc">$</span>par, out<span class="sc">$</span>value, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">pch =</span> <span class="dv">0</span>)</span></code></pre></div>
-<p><img src="Practicals-module_1_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
-
+<div id="confidence-intervals" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> Confidence Intervals</h1>
+<p>In this practical, you will learn how to derive confidence intervals for a particular problem using Monte Carlo simulations.</p>
+<p>In a random experiment, a sample of data is collected from which we can estimate a population parameter of interest. This estimate can either be a point estimate or an <em>interval estimate</em> - a range of values.</p>
+<p>A <strong>confidence interval</strong> is an interval estimate which has an associated <em>confidence level</em>. The confidence level tells us the probability that the <em>procedure</em> that is used to construct the confidence interval will result in the interval containing the true population parameter. It is <em>not</em> the probability that the population parameter lies in the range.</p>
+<p>This is a very counter-intuitive concept which we shall now illustrate in this exercise.</p>
+<div id="setup" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Setup</h2>
+<p>First, create a new <code>R</code> script within Rstudio then we will start with some code preamble. We will use the package <code>ggplot2</code> for plotting.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="confidence-intervals.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<p>Use <code>install.packages("ggplot2")</code> in the console window if the package is not installed on your system.</p>
+<p>Lets define the width of an interval, we will set this to 1 initially but we will change this later on:</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="confidence-intervals.html#cb82-1" aria-hidden="true" tabindex="-1"></a>interval_width <span class="ot">=</span> <span class="dv">1</span> <span class="co"># width of confidence interval</span></span></code></pre></div>
+</div>
+<div id="simulating-data" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Simulating data</h2>
+<p>We are now going to generate some simulated data for our experiment. We will create 30 samples from a Normal distribution with mean 2.5 and variance 1. These are <em>true</em> values of the population parameters. In a real experiment, we would not know these values but using simulated data, we obviously control these.</p>
+<p>Let define these first:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="confidence-intervals.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of data points to generate</span></span>
+<span id="cb83-2"><a href="confidence-intervals.html#cb83-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb83-3"><a href="confidence-intervals.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="co"># population mean</span></span>
+<span id="cb83-4"><a href="confidence-intervals.html#cb83-4" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">2.5</span></span>
+<span id="cb83-5"><a href="confidence-intervals.html#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="co"># population standard deviation (square root of population variance)</span></span>
+<span id="cb83-6"><a href="confidence-intervals.html#cb83-6" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">1.0</span></span></code></pre></div>
+<p>Now, we generate some normally distributed data using the <code>R</code> function <code>rnorm</code>,</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="confidence-intervals.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate n values from the  Normal distribution N(mu, sigma)</span></span>
+<span id="cb84-2"><a href="confidence-intervals.html#cb84-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span></code></pre></div>
+<p>We now have 30 samples from a Normal distribution with population mean 2.5 and variance 1.</p>
+</div>
+<div id="constructing-the-confidence-interval" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Constructing the confidence interval</h2>
+<p>We are going to pretend that we do not know the population mean value (2.5) used to generate this dataset and try to provide an interval estimate for it from the simulated sample data.</p>
+<p>Remember, from lectures, that the sample mean <span class="math inline">\(\bar{x}\)</span> is a natural point estimate for the population mean <span class="math inline">\(\mu\)</span>.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="confidence-intervals.html#cb85-1" aria-hidden="true" tabindex="-1"></a>x_bar <span class="ot">=</span> <span class="fu">mean</span>(x) <span class="co"># compute sample mean</span></span></code></pre></div>
+<p>so a suitable interval might be centred on the sample mean and extend out,</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="confidence-intervals.html#cb86-1" aria-hidden="true" tabindex="-1"></a>interval <span class="ot">&lt;-</span> <span class="fu">c</span>(x_bar <span class="sc">-</span> interval_width <span class="sc">/</span> <span class="dv">2</span>, x_bar <span class="sc">+</span> interval_width <span class="sc">/</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>Let’s look at this interval:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="confidence-intervals.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(interval)</span></code></pre></div>
+<pre><code>## [1] 1.891126 2.891126</code></pre>
+<blockquote>
+<p><strong>Q: Does the confidence interval contain the true parameter?</strong></p>
+</blockquote>
+</div>
+<div id="experiment" class="section level2" number="9.4">
+<h2><span class="header-section-number">9.4</span> Experiment</h2>
+<p>The previous experiment only examined one simulated dataset so we cannot fully understand the probabilistic interpretation of the confidence interval just yet. At the moment, the interval you have calculated will either contain the population mean or not.</p>
+<p>In order to understand the probabilistic interpretation, we will need to generate many data sets, construct confidence intervals as we have for each and then see across all generated data sets, how often those intervals cover the true population mean.</p>
+<p>For a Monte Carlo simulation, we will need many repeats of the simulation. Lets define the number of repeats to be used:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="confidence-intervals.html#cb89-1" aria-hidden="true" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co"># number of Monte Carlo simulation runs</span></span></code></pre></div>
+<p>We will use 1000 simulations initially to make the code quick to run but you may want to make this higher later on for greater accuracy.</p>
+<p>Now, let us define a series of interval widths to simultaneously test,</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="confidence-intervals.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define a series of interval widths</span></span>
+<span id="cb90-2"><a href="confidence-intervals.html#cb90-2" aria-hidden="true" tabindex="-1"></a>interval_width <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="fl">1.0</span>, <span class="fl">0.1</span>)</span>
+<span id="cb90-3"><a href="confidence-intervals.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="co"># store the number of interval widths generated</span></span>
+<span id="cb90-4"><a href="confidence-intervals.html#cb90-4" aria-hidden="true" tabindex="-1"></a>n_interval_widths <span class="ot">&lt;-</span> <span class="fu">length</span>(interval_width)</span></code></pre></div>
+<p>This creates a sequence of values from 0.1 to 1.0 in steps of 0.1 in the vector <code>interval_width</code>:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="confidence-intervals.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(interval_width)</span></code></pre></div>
+<pre><code>##  [1] 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
+<p>Now, we will create a vector of zeros of the same length. We will use this to store the number of times that a confidence interval of those specific widths contain the true population mean</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="confidence-intervals.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector to store the number of times the population mean is contained</span></span>
+<span id="cb93-2"><a href="confidence-intervals.html#cb93-2" aria-hidden="true" tabindex="-1"></a>mu_contained <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, n_interval_widths)</span></code></pre></div>
+<p>The hard work now begins. We use a <code>for</code> loop to repeat the simulation <code>nreps</code> times. Within each loop, we will simulate a new data set, compute a sample mean and then check if the confidence interval contains the true population mean. Since we are using more than one confidence width, we use a second <code>for</code> loop to cycle through the different widths.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="confidence-intervals.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (replicate <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
+<span id="cb94-2"><a href="confidence-intervals.html#cb94-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-3"><a href="confidence-intervals.html#cb94-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> sigma <span class="sc">*</span> <span class="fu">rnorm</span>(n) <span class="sc">+</span> mu <span class="co"># simulate a data set</span></span>
+<span id="cb94-4"><a href="confidence-intervals.html#cb94-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-5"><a href="confidence-intervals.html#cb94-5" aria-hidden="true" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x) <span class="co"># compute the sample mean</span></span>
+<span id="cb94-6"><a href="confidence-intervals.html#cb94-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-7"><a href="confidence-intervals.html#cb94-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for each interval width that we are testing ...</span></span>
+<span id="cb94-8"><a href="confidence-intervals.html#cb94-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_interval_widths) {</span>
+<span id="cb94-9"><a href="confidence-intervals.html#cb94-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check if the interval contains the true mean</span></span>
+<span id="cb94-10"><a href="confidence-intervals.html#cb94-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ((mu <span class="sc">&gt;</span> xbar <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> interval_width[j]) <span class="sc">&amp;</span></span>
+<span id="cb94-11"><a href="confidence-intervals.html#cb94-11" aria-hidden="true" tabindex="-1"></a>        (mu <span class="sc">&lt;</span> xbar <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> interval_width[j])) {</span>
+<span id="cb94-12"><a href="confidence-intervals.html#cb94-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># if it is, we increment the count by one for this width</span></span>
+<span id="cb94-13"><a href="confidence-intervals.html#cb94-13" aria-hidden="true" tabindex="-1"></a>      mu_contained[j] <span class="ot">&lt;-</span> mu_contained[j] <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb94-14"><a href="confidence-intervals.html#cb94-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb94-15"><a href="confidence-intervals.html#cb94-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb94-16"><a href="confidence-intervals.html#cb94-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-17"><a href="confidence-intervals.html#cb94-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>We can now calculate, for each width, an estimate of the probability that a confidence interval of that width will contain the population mean.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="confidence-intervals.html#cb95-1" aria-hidden="true" tabindex="-1"></a>probability_mean_contained <span class="ot">&lt;-</span> mu_contained <span class="sc">/</span> nreps</span></code></pre></div>
+<p>Let’s use <code>ggplot2</code> to plot this relationship,</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="confidence-intervals.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a data frame containing the variables we wish to plot</span></span>
+<span id="cb96-2"><a href="confidence-intervals.html#cb96-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">interval_width =</span> interval_width,</span>
+<span id="cb96-3"><a href="confidence-intervals.html#cb96-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">probability_mean_contained =</span> probability_mean_contained)</span>
+<span id="cb96-4"><a href="confidence-intervals.html#cb96-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-5"><a href="confidence-intervals.html#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="co"># initialise the ggplot</span></span>
+<span id="cb96-6"><a href="confidence-intervals.html#cb96-6" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> interval_width, <span class="at">y =</span> probability_mean_contained))</span>
+<span id="cb96-7"><a href="confidence-intervals.html#cb96-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create a line plot</span></span>
+<span id="cb96-8"><a href="confidence-intervals.html#cb96-8" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> plt <span class="sc">+</span> <span class="fu">geom_line</span>()</span>
+<span id="cb96-9"><a href="confidence-intervals.html#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="co"># add a horizontal axis label</span></span>
+<span id="cb96-10"><a href="confidence-intervals.html#cb96-10" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> plt <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Interval Width&quot;</span>)</span>
+<span id="cb96-11"><a href="confidence-intervals.html#cb96-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vertical axis label</span></span>
+<span id="cb96-12"><a href="confidence-intervals.html#cb96-12" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> plt <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Probability that mu is contained&quot;</span>)</span>
+<span id="cb96-13"><a href="confidence-intervals.html#cb96-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-14"><a href="confidence-intervals.html#cb96-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plt) <span class="co"># plot to screen</span></span></code></pre></div>
+<p><img src="Practicals-module_1_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<p>Can you see that an interval width of <span class="math inline">\(0.6\times (\bar{x} \pm 0.3)\)</span> gives a confidence interval close to 90% probability of containing the population mean?</p>
+<p>Remember from the lectures that we saw that the theory says <span class="math inline">\(\bar{x} \pm 1.65\,\frac{\sigma}{\sqrt{n}}\)</span> gives a 90% confidence interval?</p>
+<p>So, if we compute <span class="math inline">\(2 \pm 1.65\, \frac{\sigma}{\sqrt{n}}\)</span>, what do we get?</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="confidence-intervals.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">1.65</span> <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span></code></pre></div>
+<pre><code>## [1] 0.6024948</code></pre>
+<p>The Monte Carlo estimate matches up with the theory!</p>
+</div>
+<div id="problem-confidence-interval" class="section level2" number="9.5">
+<h2><span class="header-section-number">9.5</span> Problem: Confidence Interval</h2>
+<p>Can you devise a way to compute a confidence interval for the population variance?</p>
+<p>You can make use of the following as a point estimate of the sample variance:</p>
+<p><span class="math display">\[
+  s^2 = \frac{1}{n - 1}\sum_{i = 1}^n (x - \bar{x})^2
+\]</span></p>
+<p>which can be calculated using the <code>sd</code> function in <code>R</code>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="maximum-likelihood.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="confidence-intervals.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="model-answers-mle.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="model-answer-confidence-interval.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
