@@ -24,7 +24,7 @@
 <meta name="author" content="Anas A Rana" />
 
 
-<meta name="date" content="2021-10-12" />
+<meta name="date" content="2021-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -328,11 +328,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb40-26"><a href="model-answers-monte-carlo.html#cb40-26" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb40-27"><a href="model-answers-monte-carlo.html#cb40-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-28"><a href="model-answers-monte-carlo.html#cb40-28" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(accuracy)</span></code></pre></div>
-<pre><code>## [1]  0.0106552539  0.0036552539 -0.0039447461  0.0032152539 -0.0031647461 -0.0006047461</code></pre>
+<pre><code>## [1]  0.0036552539  0.0060552539 -0.0019447461 -0.0021847461 -0.0008047461
+## [6] -0.0027447461</code></pre>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="model-answers-monte-carlo.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(accuracy_sd)</span></code></pre></div>
-<pre><code>## [1] 0.13594414 0.06632488 0.04777092 0.02988473 0.02036256 0.01492582</code></pre>
+<pre><code>## [1] 0.15658928 0.06640281 0.04039752 0.03365563 0.02103168 0.01486029</code></pre>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="model-answers-monte-carlo.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(accuracy <span class="sc">+</span> accuracy_sd)</span></code></pre></div>
-<pre><code>## [1] 0.14659939 0.06998014 0.04382617 0.03309999 0.01719782 0.01432108</code></pre>
+<pre><code>## [1] 0.16024453 0.07245807 0.03845277 0.03147088 0.02022694 0.01211555</code></pre>
 <p>Next, we will plot the results. Here we will make use of <code>ggplot2</code> a library to create nice plots without much effort. The input need to be a <code>data.frame</code> so we will need to create one based on the data.</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="model-answers-monte-carlo.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load ggplot</span></span>
 <span id="cb46-2"><a href="model-answers-monte-carlo.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -342,12 +343,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb46-6"><a href="model-answers-monte-carlo.html#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-7"><a href="model-answers-monte-carlo.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
 <pre><code>##   sample_sizes      accuracy accuracy_sd
-## 1           10  0.0106552539  0.13594414
-## 2           50  0.0036552539  0.06632488
-## 3          100 -0.0039447461  0.04777092
-## 4          250  0.0032152539  0.02988473
-## 5          500 -0.0031647461  0.02036256
-## 6         1000 -0.0006047461  0.01492582</code></pre>
+## 1           10  0.0036552539  0.15658928
+## 2           50  0.0060552539  0.06640281
+## 3          100 -0.0019447461  0.04039752
+## 4          250 -0.0021847461  0.03365563
+## 5          500 -0.0008047461  0.02103168
+## 6         1000 -0.0027447461  0.01486029</code></pre>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="model-answers-monte-carlo.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use ggplot to plot lines for the mean accuracy and error bars</span></span>
 <span id="cb48-2"><a href="model-answers-monte-carlo.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using the std dev</span></span>
 <span id="cb48-3"><a href="model-answers-monte-carlo.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> sample_sizes, <span class="at">y =</span> accuracy)) <span class="sc">+</span></span>
@@ -381,7 +382,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb49-13"><a href="model-answers-monte-carlo.html#cb49-13" aria-hidden="true" tabindex="-1"></a>expected_score <span class="ot">=</span> <span class="fu">mean</span>(score_per_game) <span class="co"># average over all simulations</span></span>
 <span id="cb49-14"><a href="model-answers-monte-carlo.html#cb49-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-15"><a href="model-answers-monte-carlo.html#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(expected_score)</span></code></pre></div>
-<pre><code>## [1] 14.84</code></pre>
+<pre><code>## [1] 14.28</code></pre>
 </div>
 <div id="problem-2" class="section level3" number="7.10.2">
 <h3><span class="header-section-number">7.10.2</span> Problem 2</h3>
@@ -407,7 +408,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb51-20"><a href="model-answers-monte-carlo.html#cb51-20" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb51-21"><a href="model-answers-monte-carlo.html#cb51-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-22"><a href="model-answers-monte-carlo.html#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>(game_score))</span></code></pre></div>
-<pre><code>## [1] 8.6</code></pre>
+<pre><code>## [1] 11.13</code></pre>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="model-answers-monte-carlo.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(game_score)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 <p>The games with score zero now corresponds to the number of games where we went bust (or genuinely ended the game with zero).</p>

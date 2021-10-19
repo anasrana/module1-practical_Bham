@@ -24,7 +24,7 @@
 <meta name="author" content="Anas A Rana" />
 
 
-<meta name="date" content="2021-10-12" />
+<meta name="date" content="2021-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -299,37 +299,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Model answers: Linear regression</h1>
 <div id="exercise-i" class="section level2" number="11.6">
 <h2><span class="header-section-number">11.6</span> Exercise I</h2>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="model-answers-linear-regression.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb201-2"><a href="model-answers-linear-regression.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span></code></pre></div>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="model-answers-linear-regression.html#cb202-1" aria-hidden="true" tabindex="-1"></a>stork_dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;stork.txt&quot;</span>, <span class="at">hedaer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="model-answers-linear-regression.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(stork_dat, <span class="fu">aes</span>(<span class="at">x =</span> no_storks, <span class="at">y =</span> people)) <span class="sc">+</span></span>
-<span id="cb203-2"><a href="model-answers-linear-regression.html#cb203-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="model-answers-linear-regression.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb196-2"><a href="model-answers-linear-regression.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="model-answers-linear-regression.html#cb197-1" aria-hidden="true" tabindex="-1"></a>stork_dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;stork.txt&quot;</span>, <span class="at">hedaer =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="model-answers-linear-regression.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(stork_dat, <span class="fu">aes</span>(<span class="at">x =</span> no_storks, <span class="at">y =</span> people)) <span class="sc">+</span></span>
+<span id="cb198-2"><a href="model-answers-linear-regression.html#cb198-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/unnamed-chunk-124-1.png" width="2100" /></p>
 <p>This is a plot of number of people in Oldenburg (Germany) against the number of storks. We can calculate the correlation in <code>R</code></p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="model-answers-linear-regression.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(stork_dat<span class="sc">$</span>no_storks, stork_dat<span class="sc">$</span>peopl)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="model-answers-linear-regression.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(stork_dat<span class="sc">$</span>no_storks, stork_dat<span class="sc">$</span>peopl)</span></code></pre></div>
 <pre><code>## [1] 0.9443965</code></pre>
 <p>This is a very high correlation, and obviously there is no causation. Think about why there would be a correlation between these two random variables.</p>
 </div>
 <div id="exercise-ii" class="section level2" number="11.7">
 <h2><span class="header-section-number">11.7</span> Exercise II</h2>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="model-answers-linear-regression.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load first data set and create data.frame</span></span>
-<span id="cb206-2"><a href="model-answers-linear-regression.html#cb206-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;lr_data1.Rdata&quot;</span>)</span>
-<span id="cb206-3"><a href="model-answers-linear-regression.html#cb206-3" aria-hidden="true" tabindex="-1"></a>sim_data1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
-<span id="cb206-4"><a href="model-answers-linear-regression.html#cb206-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb206-5"><a href="model-answers-linear-regression.html#cb206-5" aria-hidden="true" tabindex="-1"></a><span class="co"># load second data set and create data.frame</span></span>
-<span id="cb206-6"><a href="model-answers-linear-regression.html#cb206-6" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;lr_data2.Rdata&quot;</span>)</span>
-<span id="cb206-7"><a href="model-answers-linear-regression.html#cb206-7" aria-hidden="true" tabindex="-1"></a>sim_data2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
-<span id="cb206-8"><a href="model-answers-linear-regression.html#cb206-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb206-9"><a href="model-answers-linear-regression.html#cb206-9" aria-hidden="true" tabindex="-1"></a>lr_fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data1)</span>
-<span id="cb206-10"><a href="model-answers-linear-regression.html#cb206-10" aria-hidden="true" tabindex="-1"></a>lr_fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data2)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="model-answers-linear-regression.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load first data set and create data.frame</span></span>
+<span id="cb201-2"><a href="model-answers-linear-regression.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;lr_data1.Rdata&quot;</span>)</span>
+<span id="cb201-3"><a href="model-answers-linear-regression.html#cb201-3" aria-hidden="true" tabindex="-1"></a>sim_data1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
+<span id="cb201-4"><a href="model-answers-linear-regression.html#cb201-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-5"><a href="model-answers-linear-regression.html#cb201-5" aria-hidden="true" tabindex="-1"></a><span class="co"># load second data set and create data.frame</span></span>
+<span id="cb201-6"><a href="model-answers-linear-regression.html#cb201-6" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;lr_data2.Rdata&quot;</span>)</span>
+<span id="cb201-7"><a href="model-answers-linear-regression.html#cb201-7" aria-hidden="true" tabindex="-1"></a>sim_data2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
+<span id="cb201-8"><a href="model-answers-linear-regression.html#cb201-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-9"><a href="model-answers-linear-regression.html#cb201-9" aria-hidden="true" tabindex="-1"></a>lr_fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data1)</span>
+<span id="cb201-10"><a href="model-answers-linear-regression.html#cb201-10" aria-hidden="true" tabindex="-1"></a>lr_fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data2)</span></code></pre></div>
 <div id="comparison-of-data" class="section level3" number="11.7.1">
 <h3><span class="header-section-number">11.7.1</span> Comparison of data</h3>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="model-answers-linear-regression.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb207-2"><a href="model-answers-linear-regression.html#cb207-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb207-3"><a href="model-answers-linear-regression.html#cb207-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> sim_data2, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">shape =</span> <span class="dv">18</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="model-answers-linear-regression.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb202-2"><a href="model-answers-linear-regression.html#cb202-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb202-3"><a href="model-answers-linear-regression.html#cb202-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> sim_data2, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">shape =</span> <span class="dv">18</span>)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/comp-scatter-1.png" width="2100" /></p>
 <p>If we plot the data on top of each other, the first data set in black and the second one in red, we can see a small number of points are different between the two data sets.</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="model-answers-linear-regression.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_fit1)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="model-answers-linear-regression.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_fit1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = y ~ x, data = sim_data1)
@@ -348,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 1.229 on 98 degrees of freedom
 ## Multiple R-squared:  0.8643, Adjusted R-squared:  0.8629 
 ## F-statistic: 624.2 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="model-answers-linear-regression.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_fit2)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="model-answers-linear-regression.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_fit2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = y ~ x, data = sim_data2)
@@ -368,16 +368,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.08245,    Adjusted R-squared:  0.07309 
 ## F-statistic: 8.806 on 1 and 98 DF,  p-value: 0.003772</code></pre>
 <p>From the summary data we can see a discrepancy between the two estimates in the regression coefficients (<span class="math inline">\(\approx 1\)</span>), though the error in the estimate is quite large. The other thing to notice is that the summary of the residuals look quite different. If we investigate further and plot them we see:</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="model-answers-linear-regression.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(lr_fit1))</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="model-answers-linear-regression.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(lr_fit1))</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/resid-1.png" width="2100" /></p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="model-answers-linear-regression.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(lr_fit2))</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="model-answers-linear-regression.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(lr_fit2))</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/resid-2.png" width="2100" /></p>
 <p>Here we can once again see the outliers in the second data set which affect the estimation. We now plot the histogram and boxplots for comparison:</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="model-answers-linear-regression.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">residuals</span>(lr_fit1))</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="model-answers-linear-regression.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">residuals</span>(lr_fit1))</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/hist-resid-1.png" width="2100" /></p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="model-answers-linear-regression.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">residuals</span>(lr_fit2))</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="model-answers-linear-regression.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">residuals</span>(lr_fit2))</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/hist-resid-2.png" width="2100" /></p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="model-answers-linear-regression.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">residuals</span>(lr_fit2), <span class="fu">residuals</span>(lr_fit1))</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="model-answers-linear-regression.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">residuals</span>(lr_fit2), <span class="fu">residuals</span>(lr_fit1))</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/hist-resid-3.png" width="2100" /></p>
 <p>Her we can see that the distribution of the residuals has significantly changed in data set 2.</p>
 <p>A change in only 4 data points was sufficient to change the regression coefficients.</p>
@@ -385,54 +385,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="exercise-ii-1" class="section level2" number="11.8">
 <h2><span class="header-section-number">11.8</span> Exercise II</h2>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="model-answers-linear-regression.html#cb217-1" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># regression coefficient for intercept</span></span>
-<span id="cb217-2"><a href="model-answers-linear-regression.html#cb217-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">8</span> <span class="co"># regression coefficient for slope</span></span>
-<span id="cb217-3"><a href="model-answers-linear-regression.html#cb217-3" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co"># noise variance</span></span>
-<span id="cb217-4"><a href="model-answers-linear-regression.html#cb217-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb217-5"><a href="model-answers-linear-regression.html#cb217-5" aria-hidden="true" tabindex="-1"></a><span class="co"># number of simulations for each sample size</span></span>
-<span id="cb217-6"><a href="model-answers-linear-regression.html#cb217-6" aria-hidden="true" tabindex="-1"></a>n_simulations <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb217-7"><a href="model-answers-linear-regression.html#cb217-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb217-8"><a href="model-answers-linear-regression.html#cb217-8" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector of sample sizes to try</span></span>
-<span id="cb217-9"><a href="model-answers-linear-regression.html#cb217-9" aria-hidden="true" tabindex="-1"></a>sample_size_v <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">80</span>, <span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">500</span>, <span class="dv">750</span>, <span class="dv">1000</span> )</span>
-<span id="cb217-10"><a href="model-answers-linear-regression.html#cb217-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb217-11"><a href="model-answers-linear-regression.html#cb217-11" aria-hidden="true" tabindex="-1"></a>n_sample_size <span class="ot">&lt;-</span> <span class="fu">length</span>(sample_size_v)</span>
-<span id="cb217-12"><a href="model-answers-linear-regression.html#cb217-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb217-13"><a href="model-answers-linear-regression.html#cb217-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix to store results</span></span>
-<span id="cb217-14"><a href="model-answers-linear-regression.html#cb217-14" aria-hidden="true" tabindex="-1"></a>mse_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> n_simulations, <span class="at">ncol =</span> n_sample_size)</span>
-<span id="cb217-15"><a href="model-answers-linear-regression.html#cb217-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb217-16"><a href="model-answers-linear-regression.html#cb217-16" aria-hidden="true" tabindex="-1"></a><span class="co"># name row and column</span></span>
-<span id="cb217-17"><a href="model-answers-linear-regression.html#cb217-17" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mse_matrix) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>n_simulations)</span>
-<span id="cb217-18"><a href="model-answers-linear-regression.html#cb217-18" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mse_matrix) <span class="ot">&lt;-</span> sample_size_v</span></code></pre></div>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="model-answers-linear-regression.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loop over sample size</span></span>
-<span id="cb218-2"><a href="model-answers-linear-regression.html#cb218-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sample_size) {</span>
-<span id="cb218-3"><a href="model-answers-linear-regression.html#cb218-3" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> sample_size_v[i]</span>
-<span id="cb218-4"><a href="model-answers-linear-regression.html#cb218-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-5"><a href="model-answers-linear-regression.html#cb218-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for each simulation</span></span>
-<span id="cb218-6"><a href="model-answers-linear-regression.html#cb218-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (it <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_simulations) {</span>
-<span id="cb218-7"><a href="model-answers-linear-regression.html#cb218-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-8"><a href="model-answers-linear-regression.html#cb218-8" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb218-9"><a href="model-answers-linear-regression.html#cb218-9" aria-hidden="true" tabindex="-1"></a>    e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(sigma2))</span>
-<span id="cb218-10"><a href="model-answers-linear-regression.html#cb218-10" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> x <span class="sc">+</span> e</span>
-<span id="cb218-11"><a href="model-answers-linear-regression.html#cb218-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-12"><a href="model-answers-linear-regression.html#cb218-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># set up a data frame and run lm()</span></span>
-<span id="cb218-13"><a href="model-answers-linear-regression.html#cb218-13" aria-hidden="true" tabindex="-1"></a>    sim_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
-<span id="cb218-14"><a href="model-answers-linear-regression.html#cb218-14" aria-hidden="true" tabindex="-1"></a>    lm_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data)</span>
-<span id="cb218-15"><a href="model-answers-linear-regression.html#cb218-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-16"><a href="model-answers-linear-regression.html#cb218-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># compute the mean squared error between the fit and the actual y&#39;s</span></span>
-<span id="cb218-17"><a href="model-answers-linear-regression.html#cb218-17" aria-hidden="true" tabindex="-1"></a>    y_hat <span class="ot">&lt;-</span> <span class="fu">fitted</span>(lm_fit)</span>
-<span id="cb218-18"><a href="model-answers-linear-regression.html#cb218-18" aria-hidden="true" tabindex="-1"></a>    mse_matrix[it, i] <span class="ot">&lt;-</span> <span class="fu">mean</span>((y_hat <span class="sc">-</span> y)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb218-19"><a href="model-answers-linear-regression.html#cb218-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-20"><a href="model-answers-linear-regression.html#cb218-20" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb218-21"><a href="model-answers-linear-regression.html#cb218-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="model-answers-linear-regression.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb219-2"><a href="model-answers-linear-regression.html#cb219-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb219-3"><a href="model-answers-linear-regression.html#cb219-3" aria-hidden="true" tabindex="-1"></a>mse_df <span class="ot">=</span> <span class="fu">melt</span>(mse_matrix) <span class="co"># convert the matrix into a data frame for ggplot</span></span>
-<span id="cb219-4"><a href="model-answers-linear-regression.html#cb219-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mse_df) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Simulation&quot;</span>, <span class="st">&quot;Sample_Size&quot;</span>, <span class="st">&quot;MSE&quot;</span>) <span class="co"># rename the columns</span></span>
-<span id="cb219-5"><a href="model-answers-linear-regression.html#cb219-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb219-6"><a href="model-answers-linear-regression.html#cb219-6" aria-hidden="true" tabindex="-1"></a><span class="co"># now use a boxplot to look at the relationship between mean-squared prediction error and sample size</span></span>
-<span id="cb219-7"><a href="model-answers-linear-regression.html#cb219-7" aria-hidden="true" tabindex="-1"></a>mse_plt <span class="ot">=</span> <span class="fu">ggplot</span>(mse_df, <span class="fu">aes</span>(<span class="at">x=</span>Sample_Size, <span class="at">y=</span>MSE))</span>
-<span id="cb219-8"><a href="model-answers-linear-regression.html#cb219-8" aria-hidden="true" tabindex="-1"></a>mse_plt <span class="ot">=</span> mse_plt <span class="sc">+</span> <span class="fu">geom_boxplot</span>( <span class="fu">aes</span>(<span class="at">group=</span>Sample_Size) )</span>
-<span id="cb219-9"><a href="model-answers-linear-regression.html#cb219-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mse_plt)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="model-answers-linear-regression.html#cb212-1" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># regression coefficient for intercept</span></span>
+<span id="cb212-2"><a href="model-answers-linear-regression.html#cb212-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">8</span> <span class="co"># regression coefficient for slope</span></span>
+<span id="cb212-3"><a href="model-answers-linear-regression.html#cb212-3" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co"># noise variance</span></span>
+<span id="cb212-4"><a href="model-answers-linear-regression.html#cb212-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-5"><a href="model-answers-linear-regression.html#cb212-5" aria-hidden="true" tabindex="-1"></a><span class="co"># number of simulations for each sample size</span></span>
+<span id="cb212-6"><a href="model-answers-linear-regression.html#cb212-6" aria-hidden="true" tabindex="-1"></a>n_simulations <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb212-7"><a href="model-answers-linear-regression.html#cb212-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-8"><a href="model-answers-linear-regression.html#cb212-8" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector of sample sizes to try</span></span>
+<span id="cb212-9"><a href="model-answers-linear-regression.html#cb212-9" aria-hidden="true" tabindex="-1"></a>sample_size_v <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">80</span>, <span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">500</span>, <span class="dv">750</span>, <span class="dv">1000</span> )</span>
+<span id="cb212-10"><a href="model-answers-linear-regression.html#cb212-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-11"><a href="model-answers-linear-regression.html#cb212-11" aria-hidden="true" tabindex="-1"></a>n_sample_size <span class="ot">&lt;-</span> <span class="fu">length</span>(sample_size_v)</span>
+<span id="cb212-12"><a href="model-answers-linear-regression.html#cb212-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-13"><a href="model-answers-linear-regression.html#cb212-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix to store results</span></span>
+<span id="cb212-14"><a href="model-answers-linear-regression.html#cb212-14" aria-hidden="true" tabindex="-1"></a>mse_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> n_simulations, <span class="at">ncol =</span> n_sample_size)</span>
+<span id="cb212-15"><a href="model-answers-linear-regression.html#cb212-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-16"><a href="model-answers-linear-regression.html#cb212-16" aria-hidden="true" tabindex="-1"></a><span class="co"># name row and column</span></span>
+<span id="cb212-17"><a href="model-answers-linear-regression.html#cb212-17" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mse_matrix) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>n_simulations)</span>
+<span id="cb212-18"><a href="model-answers-linear-regression.html#cb212-18" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mse_matrix) <span class="ot">&lt;-</span> sample_size_v</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="model-answers-linear-regression.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loop over sample size</span></span>
+<span id="cb213-2"><a href="model-answers-linear-regression.html#cb213-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sample_size) {</span>
+<span id="cb213-3"><a href="model-answers-linear-regression.html#cb213-3" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> sample_size_v[i]</span>
+<span id="cb213-4"><a href="model-answers-linear-regression.html#cb213-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-5"><a href="model-answers-linear-regression.html#cb213-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for each simulation</span></span>
+<span id="cb213-6"><a href="model-answers-linear-regression.html#cb213-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (it <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_simulations) {</span>
+<span id="cb213-7"><a href="model-answers-linear-regression.html#cb213-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-8"><a href="model-answers-linear-regression.html#cb213-8" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb213-9"><a href="model-answers-linear-regression.html#cb213-9" aria-hidden="true" tabindex="-1"></a>    e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(sigma2))</span>
+<span id="cb213-10"><a href="model-answers-linear-regression.html#cb213-10" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> x <span class="sc">+</span> e</span>
+<span id="cb213-11"><a href="model-answers-linear-regression.html#cb213-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-12"><a href="model-answers-linear-regression.html#cb213-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># set up a data frame and run lm()</span></span>
+<span id="cb213-13"><a href="model-answers-linear-regression.html#cb213-13" aria-hidden="true" tabindex="-1"></a>    sim_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
+<span id="cb213-14"><a href="model-answers-linear-regression.html#cb213-14" aria-hidden="true" tabindex="-1"></a>    lm_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data)</span>
+<span id="cb213-15"><a href="model-answers-linear-regression.html#cb213-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-16"><a href="model-answers-linear-regression.html#cb213-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># compute the mean squared error between the fit and the actual y&#39;s</span></span>
+<span id="cb213-17"><a href="model-answers-linear-regression.html#cb213-17" aria-hidden="true" tabindex="-1"></a>    y_hat <span class="ot">&lt;-</span> <span class="fu">fitted</span>(lm_fit)</span>
+<span id="cb213-18"><a href="model-answers-linear-regression.html#cb213-18" aria-hidden="true" tabindex="-1"></a>    mse_matrix[it, i] <span class="ot">&lt;-</span> <span class="fu">mean</span>((y_hat <span class="sc">-</span> y)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb213-19"><a href="model-answers-linear-regression.html#cb213-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-20"><a href="model-answers-linear-regression.html#cb213-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb213-21"><a href="model-answers-linear-regression.html#cb213-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="model-answers-linear-regression.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb214-2"><a href="model-answers-linear-regression.html#cb214-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb214-3"><a href="model-answers-linear-regression.html#cb214-3" aria-hidden="true" tabindex="-1"></a>mse_df <span class="ot">=</span> <span class="fu">melt</span>(mse_matrix) <span class="co"># convert the matrix into a data frame for ggplot</span></span>
+<span id="cb214-4"><a href="model-answers-linear-regression.html#cb214-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mse_df) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Simulation&quot;</span>, <span class="st">&quot;Sample_Size&quot;</span>, <span class="st">&quot;MSE&quot;</span>) <span class="co"># rename the columns</span></span>
+<span id="cb214-5"><a href="model-answers-linear-regression.html#cb214-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb214-6"><a href="model-answers-linear-regression.html#cb214-6" aria-hidden="true" tabindex="-1"></a><span class="co"># now use a boxplot to look at the relationship between mean-squared prediction error and sample size</span></span>
+<span id="cb214-7"><a href="model-answers-linear-regression.html#cb214-7" aria-hidden="true" tabindex="-1"></a>mse_plt <span class="ot">=</span> <span class="fu">ggplot</span>(mse_df, <span class="fu">aes</span>(<span class="at">x=</span>Sample_Size, <span class="at">y=</span>MSE))</span>
+<span id="cb214-8"><a href="model-answers-linear-regression.html#cb214-8" aria-hidden="true" tabindex="-1"></a>mse_plt <span class="ot">=</span> mse_plt <span class="sc">+</span> <span class="fu">geom_boxplot</span>( <span class="fu">aes</span>(<span class="at">group=</span>Sample_Size) )</span>
+<span id="cb214-9"><a href="model-answers-linear-regression.html#cb214-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mse_plt)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/effect-plot-answ-1.png" width="3600" /></p>
 <p>You should see that the variance of the mean-squared error goes down as the sample size goes up and converges towards a limiting value. Larger sample sizes help reduce the variance in our estimators but do not make the estimates more accurate.</p>
 <p>Can you do something similar to work out the relationship between how accurate the regression coefficient estimates are as a function of sample size?</p>

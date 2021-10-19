@@ -24,7 +24,7 @@
 <meta name="author" content="Anas A Rana" />
 
 
-<meta name="date" content="2021-10-12" />
+<meta name="date" content="2021-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -333,7 +333,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="confidence-intervals.html#cb86-1" aria-hidden="true" tabindex="-1"></a>interval <span class="ot">&lt;-</span> <span class="fu">c</span>(x_bar <span class="sc">-</span> interval_width <span class="sc">/</span> <span class="dv">2</span>, x_bar <span class="sc">+</span> interval_width <span class="sc">/</span> <span class="dv">2</span>)</span></code></pre></div>
 <p>Let’s look at this interval:</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="confidence-intervals.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(interval)</span></code></pre></div>
-<pre><code>## [1] 1.959777 2.959777</code></pre>
+<pre><code>## [1] 1.891126 2.891126</code></pre>
 <blockquote>
 <p><strong>Q: Does the confidence interval contain the true parameter?</strong></p>
 </blockquote>
@@ -392,21 +392,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb96-13"><a href="confidence-intervals.html#cb96-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb96-14"><a href="confidence-intervals.html#cb96-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plt) <span class="co"># plot to screen</span></span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
-<p>Can you see that an interval width of <span class="math inline">\(0.6\times (\bar{x} \pm 0.3)\)</span> gives a confidence interval close to 90% probability of containing the population mean?</p>
+<p>Can you see that an interval width of <span class="math inline">\(0.6\)</span> <span class="math inline">\((\bar{x} \pm 0.3)\)</span> gives a confidence interval close to 90% probability of containing the population mean?</p>
 <p>Remember from the lectures that we saw that the theory says <span class="math inline">\(\bar{x} \pm 1.65\,\frac{\sigma}{\sqrt{n}}\)</span> gives a 90% confidence interval?</p>
-<p>So, if we compute <span class="math inline">\(2 \pm 1.65\, \frac{\sigma}{\sqrt{n}}\)</span>, what do we get?</p>
+<p>So, if we compute <span class="math inline">\(2 \times 1.65\, \frac{\sigma}{\sqrt{n}}\)</span>, what do we get?</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="confidence-intervals.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fl">1.65</span> <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span></code></pre></div>
 <pre><code>## [1] 0.6024948</code></pre>
 <p>The Monte Carlo estimate matches up with the theory!</p>
 </div>
 <div id="problem-confidence-interval" class="section level2" number="9.5">
 <h2><span class="header-section-number">9.5</span> Problem: Confidence Interval</h2>
-<p>Can you devise a way to compute a confidence interval for the population variance?</p>
+<blockquote>
+<p>Can you devise a way to compute a confidence interval for the population standard deviation?</p>
+</blockquote>
 <p>You can make use of the following as a point estimate of the sample variance:</p>
 <p><span class="math display">\[
   s^2 = \frac{1}{n - 1}\sum_{i = 1}^n (x - \bar{x})^2
 \]</span></p>
-<p>which can be calculated using the <code>sd</code> function in <code>R</code>.</p>
+<p>which can be calculated using the <code>sd</code> function in <code>R</code>, remember the relationship between the standard deviation and variance.</p>
 </div>
 </div>
             </section>

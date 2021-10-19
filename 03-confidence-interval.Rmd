@@ -153,11 +153,11 @@ plt <- plt + ylab("Probability that mu is contained")
 print(plt) # plot to screen
 ```
 
-Can you see that an interval width of \(0.6\times (\bar{x} \pm 0.3)\) gives a confidence interval close to 90% probability of containing the population mean?
+Can you see that an interval width of \(0.6\) \((\bar{x} \pm 0.3)\) gives a confidence interval close to 90% probability of containing the population mean?
 
 Remember from the lectures that we saw that the theory says \(\bar{x} \pm 1.65\,\frac{\sigma}{\sqrt{n}}\) gives a 90% confidence interval?
 
-So, if we compute  \(2 \pm 1.65\, \frac{\sigma}{\sqrt{n}}\), what do we get?
+So, if we compute  \(2 \times 1.65\, \frac{\sigma}{\sqrt{n}}\), what do we get?
 
 ```{r}
 print(2 * 1.65 * sigma / sqrt(n))
@@ -167,7 +167,7 @@ The Monte Carlo estimate matches up with the theory!
 
 ## Problem: Confidence Interval
 
-Can you devise a way to compute a confidence interval for the population variance?
+> Can you devise a way to compute a confidence interval for the population standard deviation?
 
 You can make use of the following as a point estimate of the sample variance:
 
@@ -175,7 +175,7 @@ You can make use of the following as a point estimate of the sample variance:
   s^2 = \frac{1}{n - 1}\sum_{i = 1}^n (x - \bar{x})^2
 \]
 
-which can be calculated using the `sd` function in `R`.
+which can be calculated using the `sd` function in `R`, remember the relationship between the standard deviation and variance.
 
 # Model Answer: Confidence Interval {-}
 
@@ -186,7 +186,7 @@ sigma_contained <- rep(0, n_interval_widths)
 
 for (replicate in 1:nreps) {
 
-  x <- rnorm(n, mean = mu, sd = sigma) + mu # simulate a data set
+  x <- rnorm(n, mean = mu, sd = sigma) # simulate a data set
 
   sigmabar <- sd(x) # compute the sample standard deviation
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Anas A Rana" />
 
 
-<meta name="date" content="2021-10-12" />
+<meta name="date" content="2021-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -305,13 +305,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>correlation of real world data</li>
 </ul>
 <p>We will use <code>reshape2</code>, <code>ggplo2</code>, and <code>bbmle</code> packages. Run the following command to make sure they are installed and loaded</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="practical-linear-regression.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
-<span id="cb173-2"><a href="practical-linear-regression.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;reshape2&quot;</span>)</span>
-<span id="cb173-3"><a href="practical-linear-regression.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;bbmle&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="practical-linear-regression.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb174-2"><a href="practical-linear-regression.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb174-3"><a href="practical-linear-regression.html#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bbmle)</span></code></pre></div>
-<pre><code>## Loading required package: stats4</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="practical-linear-regression.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb169-2"><a href="practical-linear-regression.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;reshape2&quot;</span>)</span>
+<span id="cb169-3"><a href="practical-linear-regression.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;bbmle&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="practical-linear-regression.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb170-2"><a href="practical-linear-regression.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb170-3"><a href="practical-linear-regression.html#cb170-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bbmle)</span></code></pre></div>
 <div id="data" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> Data</h2>
 <p>For this practical you will require three datasets:</p>
@@ -329,39 +328,39 @@ y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
 \]</span></p>
 <p>where <span class="math inline">\((x_i, y_i)\)</span> represent the <span class="math inline">\(i\)</span>-th measurement pair with <span class="math inline">\(i = 1, \ldots, N\)</span>, <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are regression coefficients representing intercept and slope respectively. We assume the noise term <span class="math inline">\(\epsilon_i \sim N(0, \sigma^2)\)</span> is normally distributed with zero mean and variance <span class="math inline">\(\sigma^2\)</span>.</p>
 <p>First we define the values of the parameters of linear regression <span class="math inline">\((\beta_0, \beta_1, \sigma^2)\)</span>:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="practical-linear-regression.html#cb176-1" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># regression coefficient for intercept</span></span>
-<span id="cb176-2"><a href="practical-linear-regression.html#cb176-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">8</span> <span class="co"># regression coefficient for slope</span></span>
-<span id="cb176-3"><a href="practical-linear-regression.html#cb176-3" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co"># noise variance</span></span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="practical-linear-regression.html#cb171-1" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># regression coefficient for intercept</span></span>
+<span id="cb171-2"><a href="practical-linear-regression.html#cb171-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">8</span> <span class="co"># regression coefficient for slope</span></span>
+<span id="cb171-3"><a href="practical-linear-regression.html#cb171-3" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co"># noise variance</span></span></code></pre></div>
 <p>In the next step we will simulate <span class="math inline">\(N = 100\)</span> covariates <span class="math inline">\(x_i\)</span> by randomly sampling from the standard normal distribution:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="practical-linear-regression.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">198</span>) <span class="co"># set a seed to ensure data is reproducible</span></span>
-<span id="cb177-2"><a href="practical-linear-regression.html#cb177-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># no of data points to simulate</span></span>
-<span id="cb177-3"><a href="practical-linear-regression.html#cb177-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co"># simulate covariate</span></span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="practical-linear-regression.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">198</span>) <span class="co"># set a seed to ensure data is reproducible</span></span>
+<span id="cb172-2"><a href="practical-linear-regression.html#cb172-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># no of data points to simulate</span></span>
+<span id="cb172-3"><a href="practical-linear-regression.html#cb172-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co"># simulate covariate</span></span></code></pre></div>
 <p>Next we simulate the error term:</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="practical-linear-regression.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simulate the noise terms, rnorm requires the standard deviation</span></span>
-<span id="cb178-2"><a href="practical-linear-regression.html#cb178-2" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(sigma2))</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="practical-linear-regression.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simulate the noise terms, rnorm requires the standard deviation</span></span>
+<span id="cb173-2"><a href="practical-linear-regression.html#cb173-2" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(sigma2))</span></code></pre></div>
 <p>Finally we have all the parameters and variables to simulate the response variable <span class="math inline">\(y\)</span>:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="practical-linear-regression.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute (simulate) the response variable</span></span>
-<span id="cb179-2"><a href="practical-linear-regression.html#cb179-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> x <span class="sc">+</span> e</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="practical-linear-regression.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute (simulate) the response variable</span></span>
+<span id="cb174-2"><a href="practical-linear-regression.html#cb174-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> x <span class="sc">+</span> e</span></code></pre></div>
 <p>We will plot our data using <code>ggplot2</code> so the data need to be in a <code>data.frame</code> object:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="practical-linear-regression.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the data point</span></span>
-<span id="cb180-2"><a href="practical-linear-regression.html#cb180-2" aria-hidden="true" tabindex="-1"></a>sim_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
-<span id="cb180-3"><a href="practical-linear-regression.html#cb180-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb180-4"><a href="practical-linear-regression.html#cb180-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new scatter plot using ggplot2</span></span>
-<span id="cb180-5"><a href="practical-linear-regression.html#cb180-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb180-6"><a href="practical-linear-regression.html#cb180-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="practical-linear-regression.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the data point</span></span>
+<span id="cb175-2"><a href="practical-linear-regression.html#cb175-2" aria-hidden="true" tabindex="-1"></a>sim_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
+<span id="cb175-3"><a href="practical-linear-regression.html#cb175-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-4"><a href="practical-linear-regression.html#cb175-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new scatter plot using ggplot2</span></span>
+<span id="cb175-5"><a href="practical-linear-regression.html#cb175-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb175-6"><a href="practical-linear-regression.html#cb175-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/sim-data-1.png" width="2100" /></p>
 <p>We define the true data <code>y_true</code> to be the true linear relationship between the covariate and the response without the noise.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="practical-linear-regression.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute true y values</span></span>
-<span id="cb181-2"><a href="practical-linear-regression.html#cb181-2" aria-hidden="true" tabindex="-1"></a>y_true <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> x</span>
-<span id="cb181-3"><a href="practical-linear-regression.html#cb181-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb181-4"><a href="practical-linear-regression.html#cb181-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the data to the existing data frame</span></span>
-<span id="cb181-5"><a href="practical-linear-regression.html#cb181-5" aria-hidden="true" tabindex="-1"></a>sim_data<span class="sc">$</span>y_true <span class="ot">&lt;-</span> y_true</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="practical-linear-regression.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute true y values</span></span>
+<span id="cb176-2"><a href="practical-linear-regression.html#cb176-2" aria-hidden="true" tabindex="-1"></a>y_true <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> x</span>
+<span id="cb176-3"><a href="practical-linear-regression.html#cb176-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-4"><a href="practical-linear-regression.html#cb176-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the data to the existing data frame</span></span>
+<span id="cb176-5"><a href="practical-linear-regression.html#cb176-5" aria-hidden="true" tabindex="-1"></a>sim_data<span class="sc">$</span>y_true <span class="ot">&lt;-</span> y_true</span></code></pre></div>
 <p>Now we will add the true values of <span class="math inline">\(y\)</span> to the scatter plot:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="practical-linear-regression.html#cb182-1" aria-hidden="true" tabindex="-1"></a>lr_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb182-2"><a href="practical-linear-regression.html#cb182-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb182-3"><a href="practical-linear-regression.html#cb182-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_true), <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb182-4"><a href="practical-linear-regression.html#cb182-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-5"><a href="practical-linear-regression.html#cb182-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lr_plot)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="practical-linear-regression.html#cb177-1" aria-hidden="true" tabindex="-1"></a>lr_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb177-2"><a href="practical-linear-regression.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb177-3"><a href="practical-linear-regression.html#cb177-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_true), <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb177-4"><a href="practical-linear-regression.html#cb177-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-5"><a href="practical-linear-regression.html#cb177-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lr_plot)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/scatter-true-1.png" width="2100" /></p>
 </div>
 <div id="fitting-simple-linear-regression-model" class="section level2" number="11.3">
@@ -369,11 +368,11 @@ y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
 <div id="least-squared-estimation" class="section level3" number="11.3.1">
 <h3><span class="header-section-number">11.3.1</span> Least squared estimation</h3>
 <p>Now that you have simulated data you can use it to regress <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span>, since this is simulated data we know the parameters and can make a comparison. In <code>R</code> we can use the function <code>lm()</code> for this, by default it implements a least squares estimate:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="practical-linear-regression.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the lm function to fit the data</span></span>
-<span id="cb183-2"><a href="practical-linear-regression.html#cb183-2" aria-hidden="true" tabindex="-1"></a>ls_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data)</span>
-<span id="cb183-3"><a href="practical-linear-regression.html#cb183-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-4"><a href="practical-linear-regression.html#cb183-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display a summary of fit</span></span>
-<span id="cb183-5"><a href="practical-linear-regression.html#cb183-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ls_fit)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="practical-linear-regression.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the lm function to fit the data</span></span>
+<span id="cb178-2"><a href="practical-linear-regression.html#cb178-2" aria-hidden="true" tabindex="-1"></a>ls_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data)</span>
+<span id="cb178-3"><a href="practical-linear-regression.html#cb178-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-4"><a href="practical-linear-regression.html#cb178-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display a summary of fit</span></span>
+<span id="cb178-5"><a href="practical-linear-regression.html#cb178-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ls_fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = y ~ x, data = sim_data)
@@ -393,75 +392,75 @@ y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
 ## Multiple R-squared:  0.9915, Adjusted R-squared:  0.9914 
 ## F-statistic: 1.148e+04 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The output for <code>lm()</code> is an object (in this case <code>ls_fit</code>) which contains multiple variables. To access them there are some built in functions, e.g. <code>coef()</code>, <code>residuals()</code>, and <code>fitted()</code>. We will explore these in turn:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="practical-linear-regression.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract coefficients as a named vector</span></span>
-<span id="cb185-2"><a href="practical-linear-regression.html#cb185-2" aria-hidden="true" tabindex="-1"></a>ls_coef <span class="ot">&lt;-</span> <span class="fu">coef</span>(ls_fit)</span>
-<span id="cb185-3"><a href="practical-linear-regression.html#cb185-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-4"><a href="practical-linear-regression.html#cb185-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ls_coef)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="practical-linear-regression.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract coefficients as a named vector</span></span>
+<span id="cb180-2"><a href="practical-linear-regression.html#cb180-2" aria-hidden="true" tabindex="-1"></a>ls_coef <span class="ot">&lt;-</span> <span class="fu">coef</span>(ls_fit)</span>
+<span id="cb180-3"><a href="practical-linear-regression.html#cb180-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-4"><a href="practical-linear-regression.html#cb180-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ls_coef)</span></code></pre></div>
 <pre><code>## (Intercept)           x 
 ##    9.956981   -7.947016</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="practical-linear-regression.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract intercept and slope</span></span>
-<span id="cb187-2"><a href="practical-linear-regression.html#cb187-2" aria-hidden="true" tabindex="-1"></a>b0_hat <span class="ot">&lt;-</span> ls_coef[<span class="dv">1</span>] <span class="co"># alternative ls_fit$coefficients[1]</span></span>
-<span id="cb187-3"><a href="practical-linear-regression.html#cb187-3" aria-hidden="true" tabindex="-1"></a>b1_hat <span class="ot">&lt;-</span> ls_coef[<span class="dv">2</span>] <span class="co"># alternative ls_fit$coefficients[2]</span></span>
-<span id="cb187-4"><a href="practical-linear-regression.html#cb187-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb187-5"><a href="practical-linear-regression.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the predicted data based on estimated parameters</span></span>
-<span id="cb187-6"><a href="practical-linear-regression.html#cb187-6" aria-hidden="true" tabindex="-1"></a>y_hat <span class="ot">&lt;-</span> b0_hat <span class="sc">+</span> b1_hat <span class="sc">*</span> x</span>
-<span id="cb187-7"><a href="practical-linear-regression.html#cb187-7" aria-hidden="true" tabindex="-1"></a>sim_data<span class="sc">$</span>y_hat <span class="ot">&lt;-</span> y_hat <span class="co"># add to the existing data frame</span></span>
-<span id="cb187-8"><a href="practical-linear-regression.html#cb187-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb187-9"><a href="practical-linear-regression.html#cb187-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot and lines for the original and fitted</span></span>
-<span id="cb187-10"><a href="practical-linear-regression.html#cb187-10" aria-hidden="true" tabindex="-1"></a>lr_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb187-11"><a href="practical-linear-regression.html#cb187-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb187-12"><a href="practical-linear-regression.html#cb187-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_true), <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="fl">1.3</span>) <span class="sc">+</span></span>
-<span id="cb187-13"><a href="practical-linear-regression.html#cb187-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot predicted relationship in blue</span></span>
-<span id="cb187-14"><a href="practical-linear-regression.html#cb187-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_hat), <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb187-15"><a href="practical-linear-regression.html#cb187-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb187-16"><a href="practical-linear-regression.html#cb187-16" aria-hidden="true" tabindex="-1"></a><span class="co"># force Rstudio to display the plot</span></span>
-<span id="cb187-17"><a href="practical-linear-regression.html#cb187-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(lr_plot)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="practical-linear-regression.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract intercept and slope</span></span>
+<span id="cb182-2"><a href="practical-linear-regression.html#cb182-2" aria-hidden="true" tabindex="-1"></a>b0_hat <span class="ot">&lt;-</span> ls_coef[<span class="dv">1</span>] <span class="co"># alternative ls_fit$coefficients[1]</span></span>
+<span id="cb182-3"><a href="practical-linear-regression.html#cb182-3" aria-hidden="true" tabindex="-1"></a>b1_hat <span class="ot">&lt;-</span> ls_coef[<span class="dv">2</span>] <span class="co"># alternative ls_fit$coefficients[2]</span></span>
+<span id="cb182-4"><a href="practical-linear-regression.html#cb182-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-5"><a href="practical-linear-regression.html#cb182-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the predicted data based on estimated parameters</span></span>
+<span id="cb182-6"><a href="practical-linear-regression.html#cb182-6" aria-hidden="true" tabindex="-1"></a>y_hat <span class="ot">&lt;-</span> b0_hat <span class="sc">+</span> b1_hat <span class="sc">*</span> x</span>
+<span id="cb182-7"><a href="practical-linear-regression.html#cb182-7" aria-hidden="true" tabindex="-1"></a>sim_data<span class="sc">$</span>y_hat <span class="ot">&lt;-</span> y_hat <span class="co"># add to the existing data frame</span></span>
+<span id="cb182-8"><a href="practical-linear-regression.html#cb182-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-9"><a href="practical-linear-regression.html#cb182-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot and lines for the original and fitted</span></span>
+<span id="cb182-10"><a href="practical-linear-regression.html#cb182-10" aria-hidden="true" tabindex="-1"></a>lr_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb182-11"><a href="practical-linear-regression.html#cb182-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb182-12"><a href="practical-linear-regression.html#cb182-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_true), <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="fl">1.3</span>) <span class="sc">+</span></span>
+<span id="cb182-13"><a href="practical-linear-regression.html#cb182-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot predicted relationship in blue</span></span>
+<span id="cb182-14"><a href="practical-linear-regression.html#cb182-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_hat), <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb182-15"><a href="practical-linear-regression.html#cb182-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-16"><a href="practical-linear-regression.html#cb182-16" aria-hidden="true" tabindex="-1"></a><span class="co"># force Rstudio to display the plot</span></span>
+<span id="cb182-17"><a href="practical-linear-regression.html#cb182-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(lr_plot)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/lm-fit-1.png" width="2100" /></p>
 <p>The estimated parameters and the plot shows a good correspondence between fitted regression parameters and the true relationship between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span>. We can check this by plotting the residuals, this data is stored as the <code>residuals</code> parameter in the <code>ls_fit</code> object.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="practical-linear-regression.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residuals</span></span>
-<span id="cb188-2"><a href="practical-linear-regression.html#cb188-2" aria-hidden="true" tabindex="-1"></a>ls_residual <span class="ot">&lt;-</span> <span class="fu">residuals</span>(ls_fit) <span class="co"># can also be accessed via ls_fit$residuals</span></span>
-<span id="cb188-3"><a href="practical-linear-regression.html#cb188-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-4"><a href="practical-linear-regression.html#cb188-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot of residuals</span></span>
-<span id="cb188-5"><a href="practical-linear-regression.html#cb188-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ls_residual)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="practical-linear-regression.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residuals</span></span>
+<span id="cb183-2"><a href="practical-linear-regression.html#cb183-2" aria-hidden="true" tabindex="-1"></a>ls_residual <span class="ot">&lt;-</span> <span class="fu">residuals</span>(ls_fit) <span class="co"># can also be accessed via ls_fit$residuals</span></span>
+<span id="cb183-3"><a href="practical-linear-regression.html#cb183-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-4"><a href="practical-linear-regression.html#cb183-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot of residuals</span></span>
+<span id="cb183-5"><a href="practical-linear-regression.html#cb183-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ls_residual)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/resid-scatter-1.png" width="2100" /></p>
 <p>A better way of summarising the data is to visualise them as a histogram:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="practical-linear-regression.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ls_residual)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="practical-linear-regression.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ls_residual)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/resid_hist-1.png" width="2100" /></p>
 <p>We expect the mean and variance of the residuals to be close to the level used to generate the data.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="practical-linear-regression.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>(ls_residual))</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="practical-linear-regression.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>(ls_residual))</span></code></pre></div>
 <pre><code>## [1] -7.157903e-18</code></pre>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="practical-linear-regression.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">var</span>(ls_residual))</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="practical-linear-regression.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">var</span>(ls_residual))</span></code></pre></div>
 <pre><code>## [1] 0.4444955</code></pre>
 <p>This is as expected since subtracting a good fit from the data leaves <span class="math inline">\(\epsilon\)</span> which has <span class="math inline">\(0\)</span> mean and <span class="math inline">\(0.5\)</span> variance.</p>
 </div>
 <div id="maximum-likelihood-estimation" class="section level3" number="11.3.2">
 <h3><span class="header-section-number">11.3.2</span> Maximum likelihood estimation</h3>
 <p>Next you will look at maximum likelihood estimation based on the same data you simulated earlier. This is a bit more involved as it requires you to explicitly write the function you wish to minimise. The function we use is part of the <code>bbmle</code> package.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="practical-linear-regression.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading the required package</span></span>
-<span id="cb194-2"><a href="practical-linear-regression.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bbmle)</span>
-<span id="cb194-3"><a href="practical-linear-regression.html#cb194-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb194-4"><a href="practical-linear-regression.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="co"># function that will be minimised. It takes as arguments all parameters</span></span>
-<span id="cb194-5"><a href="practical-linear-regression.html#cb194-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we are helped by the way R works we don&#39;t have to explicitly pass x.</span></span>
-<span id="cb194-6"><a href="practical-linear-regression.html#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The function will use the existing estimates in the environment</span></span>
-<span id="cb194-7"><a href="practical-linear-regression.html#cb194-7" aria-hidden="true" tabindex="-1"></a>mle_ll <span class="ot">&lt;-</span> <span class="cf">function</span>(beta0, beta1, sigma) {</span>
-<span id="cb194-8"><a href="practical-linear-regression.html#cb194-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># first we predict the response variable based on the guess for our response</span></span>
-<span id="cb194-9"><a href="practical-linear-regression.html#cb194-9" aria-hidden="true" tabindex="-1"></a>  y_pred <span class="ot">=</span> beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> x</span>
-<span id="cb194-10"><a href="practical-linear-regression.html#cb194-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb194-11"><a href="practical-linear-regression.html#cb194-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># next we calculate the normal distribution based on the predicted value</span></span>
-<span id="cb194-12"><a href="practical-linear-regression.html#cb194-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the guess for sigma and return the log</span></span>
-<span id="cb194-13"><a href="practical-linear-regression.html#cb194-13" aria-hidden="true" tabindex="-1"></a>  log_lh <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(y, <span class="at">mean =</span> y_pred, <span class="at">sd =</span> sigma, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb194-14"><a href="practical-linear-regression.html#cb194-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb194-15"><a href="practical-linear-regression.html#cb194-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">#  We returnr the negative sum of the log likelihood</span></span>
-<span id="cb194-16"><a href="practical-linear-regression.html#cb194-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="sc">-</span><span class="fu">sum</span>(log_lh))</span>
-<span id="cb194-17"><a href="practical-linear-regression.html#cb194-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb194-18"><a href="practical-linear-regression.html#cb194-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb194-19"><a href="practical-linear-regression.html#cb194-19" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the function that actually performs the estimation</span></span>
-<span id="cb194-20"><a href="practical-linear-regression.html#cb194-20" aria-hidden="true" tabindex="-1"></a><span class="co"># The first variable here is the function we will use</span></span>
-<span id="cb194-21"><a href="practical-linear-regression.html#cb194-21" aria-hidden="true" tabindex="-1"></a><span class="co"># The second variable passed is a list of initial guesses of parameters</span></span>
-<span id="cb194-22"><a href="practical-linear-regression.html#cb194-22" aria-hidden="true" tabindex="-1"></a>mle_fit <span class="ot">&lt;-</span> <span class="fu">mle2</span>(mle_ll, <span class="at">start =</span> <span class="fu">list</span>(<span class="at">beta0 =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">beta1 =</span> <span class="dv">20</span>, <span class="at">sigma =</span> <span class="dv">10</span>))</span>
-<span id="cb194-23"><a href="practical-linear-regression.html#cb194-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb194-24"><a href="practical-linear-regression.html#cb194-24" aria-hidden="true" tabindex="-1"></a><span class="co"># With the same summary function as above we can output a summary of the fit</span></span>
-<span id="cb194-25"><a href="practical-linear-regression.html#cb194-25" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mle_fit)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="practical-linear-regression.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading the required package</span></span>
+<span id="cb189-2"><a href="practical-linear-regression.html#cb189-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bbmle)</span>
+<span id="cb189-3"><a href="practical-linear-regression.html#cb189-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-4"><a href="practical-linear-regression.html#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="co"># function that will be minimised. It takes as arguments all parameters</span></span>
+<span id="cb189-5"><a href="practical-linear-regression.html#cb189-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we are helped by the way R works we don&#39;t have to explicitly pass x.</span></span>
+<span id="cb189-6"><a href="practical-linear-regression.html#cb189-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The function will use the existing estimates in the environment</span></span>
+<span id="cb189-7"><a href="practical-linear-regression.html#cb189-7" aria-hidden="true" tabindex="-1"></a>mle_ll <span class="ot">&lt;-</span> <span class="cf">function</span>(beta0, beta1, sigma) {</span>
+<span id="cb189-8"><a href="practical-linear-regression.html#cb189-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># first we predict the response variable based on the guess for our response</span></span>
+<span id="cb189-9"><a href="practical-linear-regression.html#cb189-9" aria-hidden="true" tabindex="-1"></a>  y_pred <span class="ot">=</span> beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> x</span>
+<span id="cb189-10"><a href="practical-linear-regression.html#cb189-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-11"><a href="practical-linear-regression.html#cb189-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># next we calculate the normal distribution based on the predicted value</span></span>
+<span id="cb189-12"><a href="practical-linear-regression.html#cb189-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the guess for sigma and return the log</span></span>
+<span id="cb189-13"><a href="practical-linear-regression.html#cb189-13" aria-hidden="true" tabindex="-1"></a>  log_lh <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(y, <span class="at">mean =</span> y_pred, <span class="at">sd =</span> sigma, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb189-14"><a href="practical-linear-regression.html#cb189-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-15"><a href="practical-linear-regression.html#cb189-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">#  We returnr the negative sum of the log likelihood</span></span>
+<span id="cb189-16"><a href="practical-linear-regression.html#cb189-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="sc">-</span><span class="fu">sum</span>(log_lh))</span>
+<span id="cb189-17"><a href="practical-linear-regression.html#cb189-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb189-18"><a href="practical-linear-regression.html#cb189-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-19"><a href="practical-linear-regression.html#cb189-19" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the function that actually performs the estimation</span></span>
+<span id="cb189-20"><a href="practical-linear-regression.html#cb189-20" aria-hidden="true" tabindex="-1"></a><span class="co"># The first variable here is the function we will use</span></span>
+<span id="cb189-21"><a href="practical-linear-regression.html#cb189-21" aria-hidden="true" tabindex="-1"></a><span class="co"># The second variable passed is a list of initial guesses of parameters</span></span>
+<span id="cb189-22"><a href="practical-linear-regression.html#cb189-22" aria-hidden="true" tabindex="-1"></a>mle_fit <span class="ot">&lt;-</span> <span class="fu">mle2</span>(mle_ll, <span class="at">start =</span> <span class="fu">list</span>(<span class="at">beta0 =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">beta1 =</span> <span class="dv">20</span>, <span class="at">sigma =</span> <span class="dv">10</span>))</span>
+<span id="cb189-23"><a href="practical-linear-regression.html#cb189-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-24"><a href="practical-linear-regression.html#cb189-24" aria-hidden="true" tabindex="-1"></a><span class="co"># With the same summary function as above we can output a summary of the fit</span></span>
+<span id="cb189-25"><a href="practical-linear-regression.html#cb189-25" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mle_fit)</span></code></pre></div>
 <pre><code>## Maximum likelihood estimation
 ## 
 ## Call:
@@ -484,56 +483,56 @@ y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
 <h2><span class="header-section-number">11.4</span> Effect of variance</h2>
 <p>Now investigate the quality of the predictions further by simulating more data sets and seeing how the variance affects the quality of the fit as indicated by the mean-squared error (mse).</p>
 <p>To start you will define some parameter for the simulations, the number of simulations to run for each variance, and the variance values to try.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="practical-linear-regression.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of simulations for each noise level</span></span>
-<span id="cb196-2"><a href="practical-linear-regression.html#cb196-2" aria-hidden="true" tabindex="-1"></a>n_simulations <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb196-3"><a href="practical-linear-regression.html#cb196-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-4"><a href="practical-linear-regression.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector of noise levels to try</span></span>
-<span id="cb196-5"><a href="practical-linear-regression.html#cb196-5" aria-hidden="true" tabindex="-1"></a>sigma_v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">4.0</span>, <span class="fl">6.0</span>, <span class="fl">8.0</span>)</span>
-<span id="cb196-6"><a href="practical-linear-regression.html#cb196-6" aria-hidden="true" tabindex="-1"></a>n_sigma <span class="ot">&lt;-</span> <span class="fu">length</span>(sigma_v)</span>
-<span id="cb196-7"><a href="practical-linear-regression.html#cb196-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-8"><a href="practical-linear-regression.html#cb196-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix to store results</span></span>
-<span id="cb196-9"><a href="practical-linear-regression.html#cb196-9" aria-hidden="true" tabindex="-1"></a>mse_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> n_simulations, <span class="at">ncol =</span> n_sigma)</span>
-<span id="cb196-10"><a href="practical-linear-regression.html#cb196-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-11"><a href="practical-linear-regression.html#cb196-11" aria-hidden="true" tabindex="-1"></a><span class="co"># name row and column</span></span>
-<span id="cb196-12"><a href="practical-linear-regression.html#cb196-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mse_matrix) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>n_simulations)</span>
-<span id="cb196-13"><a href="practical-linear-regression.html#cb196-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mse_matrix) <span class="ot">&lt;-</span> sigma_v</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="practical-linear-regression.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of simulations for each noise level</span></span>
+<span id="cb191-2"><a href="practical-linear-regression.html#cb191-2" aria-hidden="true" tabindex="-1"></a>n_simulations <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb191-3"><a href="practical-linear-regression.html#cb191-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-4"><a href="practical-linear-regression.html#cb191-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector of noise levels to try</span></span>
+<span id="cb191-5"><a href="practical-linear-regression.html#cb191-5" aria-hidden="true" tabindex="-1"></a>sigma_v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">4.0</span>, <span class="fl">6.0</span>, <span class="fl">8.0</span>)</span>
+<span id="cb191-6"><a href="practical-linear-regression.html#cb191-6" aria-hidden="true" tabindex="-1"></a>n_sigma <span class="ot">&lt;-</span> <span class="fu">length</span>(sigma_v)</span>
+<span id="cb191-7"><a href="practical-linear-regression.html#cb191-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-8"><a href="practical-linear-regression.html#cb191-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix to store results</span></span>
+<span id="cb191-9"><a href="practical-linear-regression.html#cb191-9" aria-hidden="true" tabindex="-1"></a>mse_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> n_simulations, <span class="at">ncol =</span> n_sigma)</span>
+<span id="cb191-10"><a href="practical-linear-regression.html#cb191-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-11"><a href="practical-linear-regression.html#cb191-11" aria-hidden="true" tabindex="-1"></a><span class="co"># name row and column</span></span>
+<span id="cb191-12"><a href="practical-linear-regression.html#cb191-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mse_matrix) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>n_simulations)</span>
+<span id="cb191-13"><a href="practical-linear-regression.html#cb191-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mse_matrix) <span class="ot">&lt;-</span> sigma_v</span></code></pre></div>
 <p>Next we will write a nested <code>for</code> loop. The first loop will be over the variances and a second loop over the number of repeats. We will simulate the data, perform a fit with <code>lm()</code>. We can use the <code>fitted()</code> function on the resulting object to extract the fitted values <span class="math inline">\(\hat{y}\)</span> and use this to compute the mean-squared error from the true value <span class="math inline">\(y\)</span>.</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="practical-linear-regression.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loop over variance</span></span>
-<span id="cb197-2"><a href="practical-linear-regression.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sigma) {</span>
-<span id="cb197-3"><a href="practical-linear-regression.html#cb197-3" aria-hidden="true" tabindex="-1"></a>  sigma2 <span class="ot">&lt;-</span> sigma_v[i]</span>
-<span id="cb197-4"><a href="practical-linear-regression.html#cb197-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-5"><a href="practical-linear-regression.html#cb197-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for each simulation</span></span>
-<span id="cb197-6"><a href="practical-linear-regression.html#cb197-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (it <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_simulations) {</span>
-<span id="cb197-7"><a href="practical-linear-regression.html#cb197-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-8"><a href="practical-linear-regression.html#cb197-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simulate the data</span></span>
-<span id="cb197-9"><a href="practical-linear-regression.html#cb197-9" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb197-10"><a href="practical-linear-regression.html#cb197-10" aria-hidden="true" tabindex="-1"></a>    e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(sigma2))</span>
-<span id="cb197-11"><a href="practical-linear-regression.html#cb197-11" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> x <span class="sc">+</span> e</span>
-<span id="cb197-12"><a href="practical-linear-regression.html#cb197-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-13"><a href="practical-linear-regression.html#cb197-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># set up a data frame and run lm()</span></span>
-<span id="cb197-14"><a href="practical-linear-regression.html#cb197-14" aria-hidden="true" tabindex="-1"></a>    sim_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
-<span id="cb197-15"><a href="practical-linear-regression.html#cb197-15" aria-hidden="true" tabindex="-1"></a>    lm_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data)</span>
-<span id="cb197-16"><a href="practical-linear-regression.html#cb197-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-17"><a href="practical-linear-regression.html#cb197-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># compute the mean squared error between the fit and the actual y&#39;s</span></span>
-<span id="cb197-18"><a href="practical-linear-regression.html#cb197-18" aria-hidden="true" tabindex="-1"></a>    y_hat <span class="ot">&lt;-</span> <span class="fu">fitted</span>(lm_fit)</span>
-<span id="cb197-19"><a href="practical-linear-regression.html#cb197-19" aria-hidden="true" tabindex="-1"></a>    mse_matrix[it, i] <span class="ot">&lt;-</span> <span class="fu">mean</span>((y_hat <span class="sc">-</span> y)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb197-20"><a href="practical-linear-regression.html#cb197-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-21"><a href="practical-linear-regression.html#cb197-21" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb197-22"><a href="practical-linear-regression.html#cb197-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="practical-linear-regression.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loop over variance</span></span>
+<span id="cb192-2"><a href="practical-linear-regression.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sigma) {</span>
+<span id="cb192-3"><a href="practical-linear-regression.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  sigma2 <span class="ot">&lt;-</span> sigma_v[i]</span>
+<span id="cb192-4"><a href="practical-linear-regression.html#cb192-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-5"><a href="practical-linear-regression.html#cb192-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for each simulation</span></span>
+<span id="cb192-6"><a href="practical-linear-regression.html#cb192-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (it <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_simulations) {</span>
+<span id="cb192-7"><a href="practical-linear-regression.html#cb192-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-8"><a href="practical-linear-regression.html#cb192-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simulate the data</span></span>
+<span id="cb192-9"><a href="practical-linear-regression.html#cb192-9" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb192-10"><a href="practical-linear-regression.html#cb192-10" aria-hidden="true" tabindex="-1"></a>    e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(sigma2))</span>
+<span id="cb192-11"><a href="practical-linear-regression.html#cb192-11" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> x <span class="sc">+</span> e</span>
+<span id="cb192-12"><a href="practical-linear-regression.html#cb192-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-13"><a href="practical-linear-regression.html#cb192-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># set up a data frame and run lm()</span></span>
+<span id="cb192-14"><a href="practical-linear-regression.html#cb192-14" aria-hidden="true" tabindex="-1"></a>    sim_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
+<span id="cb192-15"><a href="practical-linear-regression.html#cb192-15" aria-hidden="true" tabindex="-1"></a>    lm_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data)</span>
+<span id="cb192-16"><a href="practical-linear-regression.html#cb192-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-17"><a href="practical-linear-regression.html#cb192-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># compute the mean squared error between the fit and the actual y&#39;s</span></span>
+<span id="cb192-18"><a href="practical-linear-regression.html#cb192-18" aria-hidden="true" tabindex="-1"></a>    y_hat <span class="ot">&lt;-</span> <span class="fu">fitted</span>(lm_fit)</span>
+<span id="cb192-19"><a href="practical-linear-regression.html#cb192-19" aria-hidden="true" tabindex="-1"></a>    mse_matrix[it, i] <span class="ot">&lt;-</span> <span class="fu">mean</span>((y_hat <span class="sc">-</span> y)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb192-20"><a href="practical-linear-regression.html#cb192-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-21"><a href="practical-linear-regression.html#cb192-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb192-22"><a href="practical-linear-regression.html#cb192-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>We created a matrix to store the mse values, but to plot them using <code>ggplot2</code> we have to convert them to a <code>data.frame</code>. This can be done using the <code>melt()</code> function form the <code>reshape2</code> library. We can compare the results using boxplots.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="practical-linear-regression.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb198-2"><a href="practical-linear-regression.html#cb198-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-3"><a href="practical-linear-regression.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="co"># convert the matrix into a data frame for ggplot2</span></span>
-<span id="cb198-4"><a href="practical-linear-regression.html#cb198-4" aria-hidden="true" tabindex="-1"></a>mse_df <span class="ot">&lt;-</span> <span class="fu">melt</span>(mse_matrix)</span>
-<span id="cb198-5"><a href="practical-linear-regression.html#cb198-5" aria-hidden="true" tabindex="-1"></a><span class="co"># rename the columns</span></span>
-<span id="cb198-6"><a href="practical-linear-regression.html#cb198-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mse_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Simulation&quot;</span>, <span class="st">&quot;variance&quot;</span>, <span class="st">&quot;MSE&quot;</span>)</span>
-<span id="cb198-7"><a href="practical-linear-regression.html#cb198-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-8"><a href="practical-linear-regression.html#cb198-8" aria-hidden="true" tabindex="-1"></a><span class="co"># now use a boxplot to look at the relationship between</span></span>
-<span id="cb198-9"><a href="practical-linear-regression.html#cb198-9" aria-hidden="true" tabindex="-1"></a><span class="co"># mean-squared prediction error and variance</span></span>
-<span id="cb198-10"><a href="practical-linear-regression.html#cb198-10" aria-hidden="true" tabindex="-1"></a>mse_plt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mse_df, <span class="fu">aes</span>(<span class="at">x =</span> variance, <span class="at">y =</span> MSE)) <span class="sc">+</span></span>
-<span id="cb198-11"><a href="practical-linear-regression.html#cb198-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">group =</span> variance))</span>
-<span id="cb198-12"><a href="practical-linear-regression.html#cb198-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-13"><a href="practical-linear-regression.html#cb198-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mse_plt)</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="practical-linear-regression.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb193-2"><a href="practical-linear-regression.html#cb193-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-3"><a href="practical-linear-regression.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="co"># convert the matrix into a data frame for ggplot2</span></span>
+<span id="cb193-4"><a href="practical-linear-regression.html#cb193-4" aria-hidden="true" tabindex="-1"></a>mse_df <span class="ot">&lt;-</span> <span class="fu">melt</span>(mse_matrix)</span>
+<span id="cb193-5"><a href="practical-linear-regression.html#cb193-5" aria-hidden="true" tabindex="-1"></a><span class="co"># rename the columns</span></span>
+<span id="cb193-6"><a href="practical-linear-regression.html#cb193-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mse_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Simulation&quot;</span>, <span class="st">&quot;variance&quot;</span>, <span class="st">&quot;MSE&quot;</span>)</span>
+<span id="cb193-7"><a href="practical-linear-regression.html#cb193-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-8"><a href="practical-linear-regression.html#cb193-8" aria-hidden="true" tabindex="-1"></a><span class="co"># now use a boxplot to look at the relationship between</span></span>
+<span id="cb193-9"><a href="practical-linear-regression.html#cb193-9" aria-hidden="true" tabindex="-1"></a><span class="co"># mean-squared prediction error and variance</span></span>
+<span id="cb193-10"><a href="practical-linear-regression.html#cb193-10" aria-hidden="true" tabindex="-1"></a>mse_plt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mse_df, <span class="fu">aes</span>(<span class="at">x =</span> variance, <span class="at">y =</span> MSE)) <span class="sc">+</span></span>
+<span id="cb193-11"><a href="practical-linear-regression.html#cb193-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">group =</span> variance))</span>
+<span id="cb193-12"><a href="practical-linear-regression.html#cb193-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-13"><a href="practical-linear-regression.html#cb193-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mse_plt)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/effect-plot-1.png" width="3600" /></p>
 <p>You can see that the variances of the mse and the value of the mse go up with increasing variance in the simulation.</p>
 <p>What changes do you need to make to the above function to plot the accuracy of the estimated regression coefficients as a function of variance?</p>
@@ -549,11 +548,11 @@ y_i = \beta_0 + \beta_1\, x_i + \epsilon_i,
 <h3><span class="header-section-number">11.5.2</span> Part II</h3>
 <p>Fit a simple linear model to the two data sets supplied (<code>lr_data1.Rdata</code> and <code>lr_data2.Rdata</code>). In both files the <span class="math inline">\((x,y)\)</span> data is saved in two vectors, <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
 <p>Download the data from Canvas, you can read it into <code>R</code> and plot it with the following commands:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="practical-linear-regression.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;lr_data1.Rdata&quot;</span>)</span>
-<span id="cb199-2"><a href="practical-linear-regression.html#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="practical-linear-regression.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;lr_data1.Rdata&quot;</span>)</span>
+<span id="cb194-2"><a href="practical-linear-regression.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/ex-1-1.png" width="2100" /></p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="practical-linear-regression.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;lr_data2.Rdata&quot;</span>)</span>
-<span id="cb200-2"><a href="practical-linear-regression.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="practical-linear-regression.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;lr_data2.Rdata&quot;</span>)</span>
+<span id="cb195-2"><a href="practical-linear-regression.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/ex-1-2.png" width="2100" /></p>
 <p>Fit the linear model and comment on the differences between the data.</p>
 </div>

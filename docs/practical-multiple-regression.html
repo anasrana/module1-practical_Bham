@@ -24,7 +24,7 @@
 <meta name="author" content="Anas A Rana" />
 
 
-<meta name="date" content="2021-10-12" />
+<meta name="date" content="2021-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -312,8 +312,8 @@ library(ggplot2)
 <h2><span class="header-section-number">13.1</span> Multiple regression</h2>
 <p>For this part we will use the inbuilt <code>trees</code> dataset containing <code>Volume</code>, <code>Girth</code> and <code>Height</code> data for 31 trees.</p>
 <p>First we revisit linear regression on this example, recall the function to fit a linear model <code>lm()</code>. Consider <code>Volume</code> to be the response variable and <code>Girth</code> to be the covariate.</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="practical-multiple-regression.html#cb241-1" aria-hidden="true" tabindex="-1"></a>lr_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Volume <span class="sc">~</span> Girth, <span class="at">data =</span> trees)</span>
-<span id="cb241-2"><a href="practical-multiple-regression.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_fit)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="practical-multiple-regression.html#cb236-1" aria-hidden="true" tabindex="-1"></a>lr_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Volume <span class="sc">~</span> Girth, <span class="at">data =</span> trees)</span>
+<span id="cb236-2"><a href="practical-multiple-regression.html#cb236-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Volume ~ Girth, data = trees)
@@ -333,10 +333,10 @@ library(ggplot2)
 ## Multiple R-squared:  0.9353, Adjusted R-squared:  0.9331 
 ## F-statistic: 419.4 on 1 and 29 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>We will now consider a linear regression example with multiple covariates, <code>Girth</code> as well as <code>Height</code>. In this case of course we know that they are related so we do expect both covariates to be significant.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="practical-multiple-regression.html#cb243-1" aria-hidden="true" tabindex="-1"></a>mr_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Volume <span class="sc">~</span> Girth <span class="sc">+</span> Height, <span class="at">data =</span> trees)</span>
-<span id="cb243-2"><a href="practical-multiple-regression.html#cb243-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb243-3"><a href="practical-multiple-regression.html#cb243-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb243-4"><a href="practical-multiple-regression.html#cb243-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mr_fit)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="practical-multiple-regression.html#cb238-1" aria-hidden="true" tabindex="-1"></a>mr_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Volume <span class="sc">~</span> Girth <span class="sc">+</span> Height, <span class="at">data =</span> trees)</span>
+<span id="cb238-2"><a href="practical-multiple-regression.html#cb238-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb238-3"><a href="practical-multiple-regression.html#cb238-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb238-4"><a href="practical-multiple-regression.html#cb238-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mr_fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Volume ~ Girth + Height, data = trees)
@@ -359,9 +359,9 @@ library(ggplot2)
 <p><em>Note</em>, in the formula you only enter the covariates and not the regression coefficients or any information regarding the noise.</p>
 <p>Let us now look at RSS values, we can calculate the RSS for the <code>lf_fit</code> object by using <code>sum(residuals(lr_fit)^2)</code>. We see that the RSS for LR = 524.3 and the RSS for MR = 421.92. Therefore the fit has improved but the regression coefficient for <code>Height</code> is very small and not significant.</p>
 <p>One reason for this is that the in the relationship between <code>Volume</code>, <code>Girth</code>, and <code>Height</code> is not additive but rather <code>Girth</code> and <code>Height</code> are multiplied. Using the fact that <span class="math inline">\(\log(a*b) = \log(a) + \log(b)\)</span> we can consider the log-transformed data in a linear model.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="practical-multiple-regression.html#cb245-1" aria-hidden="true" tabindex="-1"></a>mrl_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Volume) <span class="sc">~</span> <span class="fu">log</span>(Girth) <span class="sc">+</span> <span class="fu">log</span>(Height), <span class="at">data =</span> trees)</span>
-<span id="cb245-2"><a href="practical-multiple-regression.html#cb245-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb245-3"><a href="practical-multiple-regression.html#cb245-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mrl_fit)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="practical-multiple-regression.html#cb240-1" aria-hidden="true" tabindex="-1"></a>mrl_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Volume) <span class="sc">~</span> <span class="fu">log</span>(Girth) <span class="sc">+</span> <span class="fu">log</span>(Height), <span class="at">data =</span> trees)</span>
+<span id="cb240-2"><a href="practical-multiple-regression.html#cb240-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb240-3"><a href="practical-multiple-regression.html#cb240-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mrl_fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(Volume) ~ log(Girth) + log(Height), data = trees)
@@ -386,10 +386,10 @@ library(ggplot2)
 <div id="categorical-covariates" class="section level2" number="13.2">
 <h2><span class="header-section-number">13.2</span> Categorical covariates</h2>
 <p>Recall from the lecture that covariates don’t need to be numerical but can also be <em>categorical</em>. We will now explore regression with a categorical variable. Load a new dataset which is included in the <code>MASS</code> package, you won’t be able to load this dataset if package isn’t installed. Load the dataset explore what the data looks like.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="practical-multiple-regression.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb247-2"><a href="practical-multiple-regression.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;birthwt&quot;</span>)</span>
-<span id="cb247-3"><a href="practical-multiple-regression.html#cb247-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb247-4"><a href="practical-multiple-regression.html#cb247-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birthwt)</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="practical-multiple-regression.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb242-2"><a href="practical-multiple-regression.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;birthwt&quot;</span>)</span>
+<span id="cb242-3"><a href="practical-multiple-regression.html#cb242-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb242-4"><a href="practical-multiple-regression.html#cb242-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birthwt)</span></code></pre></div>
 <pre><code>##    low age lwt race smoke ptl ht ui ftv  bwt
 ## 85   0  19 182    2     0   0  0  1   0 2523
 ## 86   0  33 155    3     0   0  0  0   3 2551
@@ -397,45 +397,52 @@ library(ggplot2)
 ## 88   0  21 108    1     1   0  0  1   2 2594
 ## 89   0  18 107    1     1   0  0  1   0 2600
 ## 91   0  21 124    3     0   0  0  0   0 2622</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="practical-multiple-regression.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(birthwt)</span></code></pre></div>
-<pre><code>##       low              age             lwt             race           smoke       
-##  Min.   :0.0000   Min.   :14.00   Min.   : 80.0   Min.   :1.000   Min.   :0.0000  
-##  1st Qu.:0.0000   1st Qu.:19.00   1st Qu.:110.0   1st Qu.:1.000   1st Qu.:0.0000  
-##  Median :0.0000   Median :23.00   Median :121.0   Median :1.000   Median :0.0000  
-##  Mean   :0.3122   Mean   :23.24   Mean   :129.8   Mean   :1.847   Mean   :0.3915  
-##  3rd Qu.:1.0000   3rd Qu.:26.00   3rd Qu.:140.0   3rd Qu.:3.000   3rd Qu.:1.0000  
-##  Max.   :1.0000   Max.   :45.00   Max.   :250.0   Max.   :3.000   Max.   :1.0000  
-##       ptl               ht                ui              ftv              bwt      
-##  Min.   :0.0000   Min.   :0.00000   Min.   :0.0000   Min.   :0.0000   Min.   : 709  
-##  1st Qu.:0.0000   1st Qu.:0.00000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:2414  
-##  Median :0.0000   Median :0.00000   Median :0.0000   Median :0.0000   Median :2977  
-##  Mean   :0.1958   Mean   :0.06349   Mean   :0.1481   Mean   :0.7937   Mean   :2945  
-##  3rd Qu.:0.0000   3rd Qu.:0.00000   3rd Qu.:0.0000   3rd Qu.:1.0000   3rd Qu.:3487  
-##  Max.   :3.0000   Max.   :1.00000   Max.   :1.0000   Max.   :6.0000   Max.   :4990</code></pre>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="practical-multiple-regression.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(birthwt)</span></code></pre></div>
+<pre><code>##       low              age             lwt             race      
+##  Min.   :0.0000   Min.   :14.00   Min.   : 80.0   Min.   :1.000  
+##  1st Qu.:0.0000   1st Qu.:19.00   1st Qu.:110.0   1st Qu.:1.000  
+##  Median :0.0000   Median :23.00   Median :121.0   Median :1.000  
+##  Mean   :0.3122   Mean   :23.24   Mean   :129.8   Mean   :1.847  
+##  3rd Qu.:1.0000   3rd Qu.:26.00   3rd Qu.:140.0   3rd Qu.:3.000  
+##  Max.   :1.0000   Max.   :45.00   Max.   :250.0   Max.   :3.000  
+##      smoke             ptl               ht                ui        
+##  Min.   :0.0000   Min.   :0.0000   Min.   :0.00000   Min.   :0.0000  
+##  1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.00000   1st Qu.:0.0000  
+##  Median :0.0000   Median :0.0000   Median :0.00000   Median :0.0000  
+##  Mean   :0.3915   Mean   :0.1958   Mean   :0.06349   Mean   :0.1481  
+##  3rd Qu.:1.0000   3rd Qu.:0.0000   3rd Qu.:0.00000   3rd Qu.:0.0000  
+##  Max.   :1.0000   Max.   :3.0000   Max.   :1.00000   Max.   :1.0000  
+##       ftv              bwt      
+##  Min.   :0.0000   Min.   : 709  
+##  1st Qu.:0.0000   1st Qu.:2414  
+##  Median :0.0000   Median :2977  
+##  Mean   :0.7937   Mean   :2945  
+##  3rd Qu.:1.0000   3rd Qu.:3487  
+##  Max.   :6.0000   Max.   :4990</code></pre>
 <p>We will give the data more interpretable names and generally cleanup the data a little bit.</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="practical-multiple-regression.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename columns</span></span>
-<span id="cb251-2"><a href="practical-multiple-regression.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(birthwt) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;bwt_below_2500&quot;</span>, <span class="st">&quot;mother_age&quot;</span>, <span class="st">&quot;mother_weight&quot;</span>, <span class="st">&quot;race&quot;</span>,</span>
-<span id="cb251-3"><a href="practical-multiple-regression.html#cb251-3" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;mother_smokes&quot;</span>, <span class="st">&quot;previous_prem_labor&quot;</span>, <span class="st">&quot;hypertension&quot;</span>,</span>
-<span id="cb251-4"><a href="practical-multiple-regression.html#cb251-4" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;uterine_irr&quot;</span>, <span class="st">&quot;physician_visits&quot;</span>, <span class="st">&quot;bwt_grams&quot;</span>)</span>
-<span id="cb251-5"><a href="practical-multiple-regression.html#cb251-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-6"><a href="practical-multiple-regression.html#cb251-6" aria-hidden="true" tabindex="-1"></a>birthwt<span class="sc">$</span>race <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;other&quot;</span>)[birthwt<span class="sc">$</span>race])</span>
-<span id="cb251-7"><a href="practical-multiple-regression.html#cb251-7" aria-hidden="true" tabindex="-1"></a>birthwt<span class="sc">$</span>mother_smokes <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)[birthwt<span class="sc">$</span>mother_smokes <span class="sc">+</span> <span class="dv">1</span>])</span>
-<span id="cb251-8"><a href="practical-multiple-regression.html#cb251-8" aria-hidden="true" tabindex="-1"></a>birthwt<span class="sc">$</span>uterine_irr <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)[birthwt<span class="sc">$</span>uterine_irr <span class="sc">+</span> <span class="dv">1</span>])</span>
-<span id="cb251-9"><a href="practical-multiple-regression.html#cb251-9" aria-hidden="true" tabindex="-1"></a>birthwt<span class="sc">$</span>hypertension <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)[birthwt<span class="sc">$</span>hypertension <span class="sc">+</span> <span class="dv">1</span>])</span>
-<span id="cb251-10"><a href="practical-multiple-regression.html#cb251-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-11"><a href="practical-multiple-regression.html#cb251-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> mother_smokes, <span class="at">y =</span> bwt_grams)) <span class="sc">+</span></span>
-<span id="cb251-12"><a href="practical-multiple-regression.html#cb251-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb251-13"><a href="practical-multiple-regression.html#cb251-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Data on baby births in Springfield (1986)&quot;</span>,</span>
-<span id="cb251-14"><a href="practical-multiple-regression.html#cb251-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Does the mother smoke?&quot;</span>,</span>
-<span id="cb251-15"><a href="practical-multiple-regression.html#cb251-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Birth-weight [grams]&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="practical-multiple-regression.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename columns</span></span>
+<span id="cb246-2"><a href="practical-multiple-regression.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(birthwt) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;bwt_below_2500&quot;</span>, <span class="st">&quot;mother_age&quot;</span>, <span class="st">&quot;mother_weight&quot;</span>, <span class="st">&quot;race&quot;</span>,</span>
+<span id="cb246-3"><a href="practical-multiple-regression.html#cb246-3" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;mother_smokes&quot;</span>, <span class="st">&quot;previous_prem_labor&quot;</span>, <span class="st">&quot;hypertension&quot;</span>,</span>
+<span id="cb246-4"><a href="practical-multiple-regression.html#cb246-4" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;uterine_irr&quot;</span>, <span class="st">&quot;physician_visits&quot;</span>, <span class="st">&quot;bwt_grams&quot;</span>)</span>
+<span id="cb246-5"><a href="practical-multiple-regression.html#cb246-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb246-6"><a href="practical-multiple-regression.html#cb246-6" aria-hidden="true" tabindex="-1"></a>birthwt<span class="sc">$</span>race <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;other&quot;</span>)[birthwt<span class="sc">$</span>race])</span>
+<span id="cb246-7"><a href="practical-multiple-regression.html#cb246-7" aria-hidden="true" tabindex="-1"></a>birthwt<span class="sc">$</span>mother_smokes <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)[birthwt<span class="sc">$</span>mother_smokes <span class="sc">+</span> <span class="dv">1</span>])</span>
+<span id="cb246-8"><a href="practical-multiple-regression.html#cb246-8" aria-hidden="true" tabindex="-1"></a>birthwt<span class="sc">$</span>uterine_irr <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)[birthwt<span class="sc">$</span>uterine_irr <span class="sc">+</span> <span class="dv">1</span>])</span>
+<span id="cb246-9"><a href="practical-multiple-regression.html#cb246-9" aria-hidden="true" tabindex="-1"></a>birthwt<span class="sc">$</span>hypertension <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)[birthwt<span class="sc">$</span>hypertension <span class="sc">+</span> <span class="dv">1</span>])</span>
+<span id="cb246-10"><a href="practical-multiple-regression.html#cb246-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb246-11"><a href="practical-multiple-regression.html#cb246-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> mother_smokes, <span class="at">y =</span> bwt_grams)) <span class="sc">+</span></span>
+<span id="cb246-12"><a href="practical-multiple-regression.html#cb246-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb246-13"><a href="practical-multiple-regression.html#cb246-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Data on baby births in Springfield (1986)&quot;</span>,</span>
+<span id="cb246-14"><a href="practical-multiple-regression.html#cb246-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Does the mother smoke?&quot;</span>,</span>
+<span id="cb246-15"><a href="practical-multiple-regression.html#cb246-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Birth-weight [grams]&quot;</span>)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/bplt-1.png" width="2400" /></p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="practical-multiple-regression.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> mother_age, <span class="at">y =</span> bwt_grams, <span class="at">col =</span> mother_smokes)) <span class="sc">+</span></span>
-<span id="cb252-2"><a href="practical-multiple-regression.html#cb252-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="practical-multiple-regression.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> mother_age, <span class="at">y =</span> bwt_grams, <span class="at">col =</span> mother_smokes)) <span class="sc">+</span></span>
+<span id="cb247-2"><a href="practical-multiple-regression.html#cb247-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/bwt_sct-1.png" width="3000" /></p>
 <p>Now we perform linear regression using the categorical variable, it is no different than performing linear regression on numeric data. The difference is in interpretation.</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="practical-multiple-regression.html#cb253-1" aria-hidden="true" tabindex="-1"></a>bwt_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(bwt_grams <span class="sc">~</span> mother_smokes, <span class="at">data =</span> birthwt)</span>
-<span id="cb253-2"><a href="practical-multiple-regression.html#cb253-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-3"><a href="practical-multiple-regression.html#cb253-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bwt_fit)</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="practical-multiple-regression.html#cb248-1" aria-hidden="true" tabindex="-1"></a>bwt_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(bwt_grams <span class="sc">~</span> mother_smokes, <span class="at">data =</span> birthwt)</span>
+<span id="cb248-2"><a href="practical-multiple-regression.html#cb248-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb248-3"><a href="practical-multiple-regression.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bwt_fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = bwt_grams ~ mother_smokes, data = birthwt)
@@ -466,14 +473,14 @@ The coefficients in the model can be interpreted as follows:</p>
 <div id="residuals" class="section level2" number="13.3">
 <h2><span class="header-section-number">13.3</span> Residuals</h2>
 <p>Recall from the lectures the residuals are the differences between the observed data <span class="math inline">\(y\)</span> and the fitted values <span class="math inline">\(\hat{y}\)</span>. One of the assumptions we make in the simple linear regression model is that the residuals should be normally distributed. To extract residuals from an <code>lm</code> object we will use the <code>residuals()</code> function.</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="practical-multiple-regression.html#cb255-1" aria-hidden="true" tabindex="-1"></a>residuals_df <span class="ot">&lt;-</span></span>
-<span id="cb255-2"><a href="practical-multiple-regression.html#cb255-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">resid =</span> <span class="fu">residuals</span>(bwt_fit))</span>
-<span id="cb255-3"><a href="practical-multiple-regression.html#cb255-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb255-4"><a href="practical-multiple-regression.html#cb255-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(residuals_df, <span class="fu">aes</span>(<span class="at">x =</span> resid)) <span class="sc">+</span></span>
-<span id="cb255-5"><a href="practical-multiple-regression.html#cb255-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="practical-multiple-regression.html#cb250-1" aria-hidden="true" tabindex="-1"></a>residuals_df <span class="ot">&lt;-</span></span>
+<span id="cb250-2"><a href="practical-multiple-regression.html#cb250-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">resid =</span> <span class="fu">residuals</span>(bwt_fit))</span>
+<span id="cb250-3"><a href="practical-multiple-regression.html#cb250-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb250-4"><a href="practical-multiple-regression.html#cb250-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(residuals_df, <span class="fu">aes</span>(<span class="at">x =</span> resid)) <span class="sc">+</span></span>
+<span id="cb250-5"><a href="practical-multiple-regression.html#cb250-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/bwt_resid-1.png" width="3000" /></p>
 <p>Even if we consider that these residuals look like they are normally distributed we need to get better understanding of this we will use the Q-Q Plot. You can take a look at the wiki to get a better understanding (<a href="https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot">Q–Q plot - Wikipedia</a>). In simple terms if the residuals are normally distributed we expect them to be on the diagonal straight line on a Q-Q plot. The simplest way to get such a plot is using the <code>plot()</code> function and specifically for an <code>lm</code> object it has an option <code>which =</code> that takes a numeric value depending on which plot you want to plot.</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="practical-multiple-regression.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt_fit, <span class="at">which =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="practical-multiple-regression.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt_fit, <span class="at">which =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/qq-1.png" width="1800" /></p>
 <p>As we can see in this example the residuals are very close to normal with some outliers especially towards larger values of the residual. This would indicate that the model as it stands does not fulfill that assumption fully but comes close.</p>
 </div>
@@ -482,49 +489,49 @@ The coefficients in the model can be interpreted as follows:</p>
 <p>Finally, in todays practical we will implement the <em>gradient descent algorithm</em> which we discussed in the lecture.</p>
 <p>For simplicity we will only consider the case with one covariate. In this section we will use simulated data and compare the results with <code>lm()</code>. The model we will simulate from is:</p>
 <p><span class="math display">\[y = 2 + 3 x + \epsilon\]</span></p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="practical-multiple-regression.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># setting seed to be able to reproduce the simulation</span></span>
-<span id="cb257-2"><a href="practical-multiple-regression.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">200</span>)</span>
-<span id="cb257-3"><a href="practical-multiple-regression.html#cb257-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb257-4"><a href="practical-multiple-regression.html#cb257-4" aria-hidden="true" tabindex="-1"></a><span class="co"># number of samples</span></span>
-<span id="cb257-5"><a href="practical-multiple-regression.html#cb257-5" aria-hidden="true" tabindex="-1"></a>n_sample <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb257-6"><a href="practical-multiple-regression.html#cb257-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb257-7"><a href="practical-multiple-regression.html#cb257-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We sample x values from a uniform distribution in the range [-5, 5]</span></span>
-<span id="cb257-8"><a href="practical-multiple-regression.html#cb257-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(n_sample, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>)</span>
-<span id="cb257-9"><a href="practical-multiple-regression.html#cb257-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Next we compute y</span></span>
-<span id="cb257-10"><a href="practical-multiple-regression.html#cb257-10" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> n_sample, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb257-11"><a href="practical-multiple-regression.html#cb257-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb257-12"><a href="practical-multiple-regression.html#cb257-12" aria-hidden="true" tabindex="-1"></a>sim_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
-<span id="cb257-13"><a href="practical-multiple-regression.html#cb257-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb257-14"><a href="practical-multiple-regression.html#cb257-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb257-15"><a href="practical-multiple-regression.html#cb257-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="practical-multiple-regression.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="co"># setting seed to be able to reproduce the simulation</span></span>
+<span id="cb252-2"><a href="practical-multiple-regression.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">200</span>)</span>
+<span id="cb252-3"><a href="practical-multiple-regression.html#cb252-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-4"><a href="practical-multiple-regression.html#cb252-4" aria-hidden="true" tabindex="-1"></a><span class="co"># number of samples</span></span>
+<span id="cb252-5"><a href="practical-multiple-regression.html#cb252-5" aria-hidden="true" tabindex="-1"></a>n_sample <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb252-6"><a href="practical-multiple-regression.html#cb252-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-7"><a href="practical-multiple-regression.html#cb252-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We sample x values from a uniform distribution in the range [-5, 5]</span></span>
+<span id="cb252-8"><a href="practical-multiple-regression.html#cb252-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(n_sample, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>)</span>
+<span id="cb252-9"><a href="practical-multiple-regression.html#cb252-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Next we compute y</span></span>
+<span id="cb252-10"><a href="practical-multiple-regression.html#cb252-10" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> n_sample, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb252-11"><a href="practical-multiple-regression.html#cb252-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-12"><a href="practical-multiple-regression.html#cb252-12" aria-hidden="true" tabindex="-1"></a>sim_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
+<span id="cb252-13"><a href="practical-multiple-regression.html#cb252-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-14"><a href="practical-multiple-regression.html#cb252-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb252-15"><a href="practical-multiple-regression.html#cb252-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/sim-mr-1.png" width="2100" /></p>
 <p>Recall that in gradient descent we want to minimise the Mean Squared Error (<span class="math inline">\(J(\beta)\)</span>) which is the cost function. The first step is to write this cost function in R. For simplicity we will use matrix multiplication, which in R is implemented as <code>%*%</code>. (<em>Note</em>, to get help on these function with special characters you can’t simply run the command <code>?%*%</code> instead you have to put it in quotes <code>?"%*%"</code>.)</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="practical-multiple-regression.html#cb258-1" aria-hidden="true" tabindex="-1"></a>cost_fn <span class="ot">&lt;-</span> <span class="cf">function</span>(X, y, coef) {</span>
-<span id="cb258-2"><a href="practical-multiple-regression.html#cb258-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>( (X <span class="sc">%*%</span> coef <span class="sc">-</span> y)<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span><span class="fu">length</span>(y))</span>
-<span id="cb258-3"><a href="practical-multiple-regression.html#cb258-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="practical-multiple-regression.html#cb253-1" aria-hidden="true" tabindex="-1"></a>cost_fn <span class="ot">&lt;-</span> <span class="cf">function</span>(X, y, coef) {</span>
+<span id="cb253-2"><a href="practical-multiple-regression.html#cb253-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>( (X <span class="sc">%*%</span> coef <span class="sc">-</span> y)<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span><span class="fu">length</span>(y))</span>
+<span id="cb253-3"><a href="practical-multiple-regression.html#cb253-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>To perform an optimisation we will have to initialise parameters, in general optimisation algorithms won’t always produce the same results for all choices of initialisations.</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="practical-multiple-regression.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First we set alpha and the number of iterations we will perform</span></span>
-<span id="cb259-2"><a href="practical-multiple-regression.html#cb259-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
-<span id="cb259-3"><a href="practical-multiple-regression.html#cb259-3" aria-hidden="true" tabindex="-1"></a>num_iters <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb259-4"><a href="practical-multiple-regression.html#cb259-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb259-5"><a href="practical-multiple-regression.html#cb259-5" aria-hidden="true" tabindex="-1"></a><span class="co"># next we will initialise regression coefficients</span></span>
-<span id="cb259-6"><a href="practical-multiple-regression.html#cb259-6" aria-hidden="true" tabindex="-1"></a>coef <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="at">nrow=</span><span class="dv">2</span>)</span>
-<span id="cb259-7"><a href="practical-multiple-regression.html#cb259-7" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, <span class="fu">matrix</span>(x))</span>
-<span id="cb259-8"><a href="practical-multiple-regression.html#cb259-8" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, num_iters)</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="practical-multiple-regression.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First we set alpha and the number of iterations we will perform</span></span>
+<span id="cb254-2"><a href="practical-multiple-regression.html#cb254-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb254-3"><a href="practical-multiple-regression.html#cb254-3" aria-hidden="true" tabindex="-1"></a>num_iters <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb254-4"><a href="practical-multiple-regression.html#cb254-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb254-5"><a href="practical-multiple-regression.html#cb254-5" aria-hidden="true" tabindex="-1"></a><span class="co"># next we will initialise regression coefficients</span></span>
+<span id="cb254-6"><a href="practical-multiple-regression.html#cb254-6" aria-hidden="true" tabindex="-1"></a>coef <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="at">nrow=</span><span class="dv">2</span>)</span>
+<span id="cb254-7"><a href="practical-multiple-regression.html#cb254-7" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, <span class="fu">matrix</span>(x))</span>
+<span id="cb254-8"><a href="practical-multiple-regression.html#cb254-8" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, num_iters)</span></code></pre></div>
 <p>We now write a for loop to compute the optimisation, where we store the full history of the opmtimisation.</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="practical-multiple-regression.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_iters) {</span>
-<span id="cb260-2"><a href="practical-multiple-regression.html#cb260-2" aria-hidden="true" tabindex="-1"></a>  error <span class="ot">&lt;-</span> (X <span class="sc">%*%</span> coef <span class="sc">-</span> y)</span>
-<span id="cb260-3"><a href="practical-multiple-regression.html#cb260-3" aria-hidden="true" tabindex="-1"></a>  delta <span class="ot">&lt;-</span> <span class="fu">t</span>(X) <span class="sc">%*%</span> error <span class="sc">/</span> <span class="fu">length</span>(y)</span>
-<span id="cb260-4"><a href="practical-multiple-regression.html#cb260-4" aria-hidden="true" tabindex="-1"></a>  coef <span class="ot">&lt;-</span> coef <span class="sc">-</span> alpha <span class="sc">*</span> delta</span>
-<span id="cb260-5"><a href="practical-multiple-regression.html#cb260-5" aria-hidden="true" tabindex="-1"></a>  res_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">itr =</span> i , <span class="at">cost =</span> <span class="fu">cost_fn</span>(X, y, coef),</span>
-<span id="cb260-6"><a href="practical-multiple-regression.html#cb260-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">b0 =</span> coef[<span class="dv">1</span>], <span class="at">b1 =</span> coef[<span class="dv">2</span>])</span>
-<span id="cb260-7"><a href="practical-multiple-regression.html#cb260-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb260-8"><a href="practical-multiple-regression.html#cb260-8" aria-hidden="true" tabindex="-1"></a>  res[[i]] <span class="ot">&lt;-</span> res_df</span>
-<span id="cb260-9"><a href="practical-multiple-regression.html#cb260-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="practical-multiple-regression.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_iters) {</span>
+<span id="cb255-2"><a href="practical-multiple-regression.html#cb255-2" aria-hidden="true" tabindex="-1"></a>  error <span class="ot">&lt;-</span> (X <span class="sc">%*%</span> coef <span class="sc">-</span> y)</span>
+<span id="cb255-3"><a href="practical-multiple-regression.html#cb255-3" aria-hidden="true" tabindex="-1"></a>  delta <span class="ot">&lt;-</span> <span class="fu">t</span>(X) <span class="sc">%*%</span> error <span class="sc">/</span> <span class="fu">length</span>(y)</span>
+<span id="cb255-4"><a href="practical-multiple-regression.html#cb255-4" aria-hidden="true" tabindex="-1"></a>  coef <span class="ot">&lt;-</span> coef <span class="sc">-</span> alpha <span class="sc">*</span> delta</span>
+<span id="cb255-5"><a href="practical-multiple-regression.html#cb255-5" aria-hidden="true" tabindex="-1"></a>  res_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">itr =</span> i , <span class="at">cost =</span> <span class="fu">cost_fn</span>(X, y, coef),</span>
+<span id="cb255-6"><a href="practical-multiple-regression.html#cb255-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">b0 =</span> coef[<span class="dv">1</span>], <span class="at">b1 =</span> coef[<span class="dv">2</span>])</span>
+<span id="cb255-7"><a href="practical-multiple-regression.html#cb255-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb255-8"><a href="practical-multiple-regression.html#cb255-8" aria-hidden="true" tabindex="-1"></a>  res[[i]] <span class="ot">&lt;-</span> res_df</span>
+<span id="cb255-9"><a href="practical-multiple-regression.html#cb255-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>We created a list to store results <code>res</code> it is possible to combine all results into a simple <code>data.frame</code> using the <code>bind_rows()</code> function from the <code>dplyr</code> package. If we look at the final values in the resulting variable we will</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="practical-multiple-regression.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb261-2"><a href="practical-multiple-regression.html#cb261-2" aria-hidden="true" tabindex="-1"></a>res_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(res)</span>
-<span id="cb261-3"><a href="practical-multiple-regression.html#cb261-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(res_df)</span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="practical-multiple-regression.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb256-2"><a href="practical-multiple-regression.html#cb256-2" aria-hidden="true" tabindex="-1"></a>res_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(res)</span>
+<span id="cb256-3"><a href="practical-multiple-regression.html#cb256-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(res_df)</span></code></pre></div>
 <pre><code>##     itr      cost       b0       b1
 ## 95   95 0.5275707 2.034285 3.014512
 ## 96   96 0.5275707 2.034285 3.014512
@@ -533,24 +540,24 @@ The coefficients in the model can be interpreted as follows:</p>
 ## 99   99 0.5275707 2.034285 3.014512
 ## 100 100 0.5275707 2.034285 3.014512</code></pre>
 <p>We can see that <span class="math inline">\(\beta_0 = 2\)</span> and <span class="math inline">\(\beta_1 = 3\)</span> are reproduced faithfully. There are a few ways to visualise the optimisation. We can look at the convergence of the parameters, the cost function itself or even the estimated <span class="math inline">\(y\)</span> at each step of the optimisation.</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="practical-multiple-regression.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(res_df, <span class="fu">aes</span>(<span class="at">x =</span> itr, <span class="at">y =</span> b1)) <span class="sc">+</span></span>
-<span id="cb263-2"><a href="practical-multiple-regression.html#cb263-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb263-3"><a href="practical-multiple-regression.html#cb263-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Iteration&quot;</span>,</span>
-<span id="cb263-4"><a href="practical-multiple-regression.html#cb263-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Estimated beta_1&quot;</span>,</span>
-<span id="cb263-5"><a href="practical-multiple-regression.html#cb263-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Visuaslisation of the cconvergence of the beta_1 parameter&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="practical-multiple-regression.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(res_df, <span class="fu">aes</span>(<span class="at">x =</span> itr, <span class="at">y =</span> b1)) <span class="sc">+</span></span>
+<span id="cb258-2"><a href="practical-multiple-regression.html#cb258-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb258-3"><a href="practical-multiple-regression.html#cb258-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Iteration&quot;</span>,</span>
+<span id="cb258-4"><a href="practical-multiple-regression.html#cb258-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Estimated beta_1&quot;</span>,</span>
+<span id="cb258-5"><a href="practical-multiple-regression.html#cb258-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Visuaslisation of the cconvergence of the beta_1 parameter&quot;</span>)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/vis_gd-1.png" width="3000" /></p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="practical-multiple-regression.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(res_df, <span class="fu">aes</span>(<span class="at">x =</span> itr, <span class="at">y =</span> cost)) <span class="sc">+</span></span>
-<span id="cb264-2"><a href="practical-multiple-regression.html#cb264-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb264-3"><a href="practical-multiple-regression.html#cb264-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Iteration&quot;</span>,</span>
-<span id="cb264-4"><a href="practical-multiple-regression.html#cb264-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Cost function&quot;</span>,</span>
-<span id="cb264-5"><a href="practical-multiple-regression.html#cb264-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;History of cost function at each iteration&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="practical-multiple-regression.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(res_df, <span class="fu">aes</span>(<span class="at">x =</span> itr, <span class="at">y =</span> cost)) <span class="sc">+</span></span>
+<span id="cb259-2"><a href="practical-multiple-regression.html#cb259-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb259-3"><a href="practical-multiple-regression.html#cb259-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Iteration&quot;</span>,</span>
+<span id="cb259-4"><a href="practical-multiple-regression.html#cb259-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Cost function&quot;</span>,</span>
+<span id="cb259-5"><a href="practical-multiple-regression.html#cb259-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;History of cost function at each iteration&quot;</span>)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/vis_gd-2.png" width="3000" /></p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="practical-multiple-regression.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb265-2"><a href="practical-multiple-regression.html#cb265-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb265-3"><a href="practical-multiple-regression.html#cb265-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">data =</span> res_df, <span class="fu">aes</span>(<span class="at">intercept =</span> b0, <span class="at">slope =</span> b1),</span>
-<span id="cb265-4"><a href="practical-multiple-regression.html#cb265-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb265-5"><a href="practical-multiple-regression.html#cb265-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>,</span>
-<span id="cb265-6"><a href="practical-multiple-regression.html#cb265-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Estimated response at each step during optimisation&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="practical-multiple-regression.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb260-2"><a href="practical-multiple-regression.html#cb260-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb260-3"><a href="practical-multiple-regression.html#cb260-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">data =</span> res_df, <span class="fu">aes</span>(<span class="at">intercept =</span> b0, <span class="at">slope =</span> b1),</span>
+<span id="cb260-4"><a href="practical-multiple-regression.html#cb260-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb260-5"><a href="practical-multiple-regression.html#cb260-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>,</span>
+<span id="cb260-6"><a href="practical-multiple-regression.html#cb260-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Estimated response at each step during optimisation&quot;</span>)</span></code></pre></div>
 <p><img src="Practicals-module_1_files/figure-html/vis_gd-3.png" width="3000" /></p>
 <p>Now compare these results to the ones obtained by fitting a linear model in R using the function <code>lm()</code>, how different are the results. Try to reproduce these plots with <span class="math inline">\(\alpha =\)</span> (0.02, 0.1, 0.5), and different number of iterations in the optimisation and compare the estimated <span class="math inline">\(\hat{\beta}_0\)</span>, and <span class="math inline">\(\hat{\beta}_1\)</span> to the values you use during the simulation step. This will give you an idea how important the right choice of these two parameters is.</p>
 

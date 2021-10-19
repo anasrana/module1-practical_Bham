@@ -24,7 +24,7 @@
 <meta name="author" content="Anas A Rana" />
 
 
-<meta name="date" content="2021-10-12" />
+<meta name="date" content="2021-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -303,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb99-4"><a href="model-answer-confidence-interval.html#cb99-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb99-5"><a href="model-answer-confidence-interval.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (replicate <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
 <span id="cb99-6"><a href="model-answer-confidence-interval.html#cb99-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-7"><a href="model-answer-confidence-interval.html#cb99-7" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma) <span class="sc">+</span> mu <span class="co"># simulate a data set</span></span>
+<span id="cb99-7"><a href="model-answer-confidence-interval.html#cb99-7" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma) <span class="co"># simulate a data set</span></span>
 <span id="cb99-8"><a href="model-answer-confidence-interval.html#cb99-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb99-9"><a href="model-answer-confidence-interval.html#cb99-9" aria-hidden="true" tabindex="-1"></a>  sigmabar <span class="ot">&lt;-</span> <span class="fu">sd</span>(x) <span class="co"># compute the sample standard deviation</span></span>
 <span id="cb99-10"><a href="model-answer-confidence-interval.html#cb99-10" aria-hidden="true" tabindex="-1"></a></span>
@@ -339,14 +339,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="Practicals-module_1_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="model-answer-confidence-interval.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
 <pre><code>##    interval_width probability_var_contained
-## 1             0.1                     0.303
-## 2             0.2                     0.555
-## 3             0.3                     0.736
-## 4             0.4                     0.872
-## 5             0.5                     0.956
-## 6             0.6                     0.981
-## 7             0.7                     0.992
-## 8             0.8                     0.996
+## 1             0.1                     0.275
+## 2             0.2                     0.552
+## 3             0.3                     0.746
+## 4             0.4                     0.883
+## 5             0.5                     0.949
+## 6             0.6                     0.980
+## 7             0.7                     0.993
+## 8             0.8                     0.998
 ## 9             0.9                     1.000
 ## 10            1.0                     1.000</code></pre>
 
