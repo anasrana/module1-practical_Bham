@@ -43,7 +43,21 @@ For this practical you will require three datasets:
 
 - `stork.txt` ([download](https://canvas.bham.ac.uk/files/8117073/download?download_frd=1))
 - `lr_data1.Rdata` ([download](https://raw.github.com/anasrana/module1-practical_Bham/master/data/lr_data1.Rdata))
+
 - `lr_data2.Rdata` ([download](https://raw.github.com/anasrana/module1-practical_Bham/master/data/lr_data2.Rdata)).
+
+You can download these using bash commands. You can use the inbuilt terminal in RStudio to do this or start a terminal. Use the following commands:
+
+```{bash, eval = FALSE}
+# Stork download
+wget https://github.com/anasrana/module1-practical_Bham/blob/d4561d3f22f8138664f89ddba86a77f65a02cc45/data/stork.txt
+
+# lr_data1
+wget https://github.com/anasrana/module1-practical_Bham/blob/d4561d3f22f8138664f89ddba86a77f65a02cc45/data/lr_data1.Rdata
+
+# lr_data2
+wget https://github.com/anasrana/module1-practical_Bham/blob/d4561d3f22f8138664f89ddba86a77f65a02cc45/data/lr_data2.Rdata
+```
 
 ## Simulating data
 
